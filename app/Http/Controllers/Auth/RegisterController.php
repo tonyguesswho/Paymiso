@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/emailconfirmation';
 
     /**
      * Create a new controller instance.
@@ -48,7 +48,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -63,9 +64,27 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function confirmation(Request $request, $id){
+
+        $user         = User::where('id', Auth::user()->id)->get();
+        $user_array   = $user->toArray();
+
+        $merge        = array_merge($notice_array + $amount_array + $user_array);
+        //dd($merge);
+        Mail::send('notice.send', $merge, function ($message) use ($notice)
+        {
+
+            $message->from('info@myescrow.com', 'Ugwu Collins');
+
+            $message->to($notice['sellers_email']);
+        });  
+
     }
 }
