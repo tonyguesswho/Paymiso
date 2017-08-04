@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/emailconfirmation';
+    protected $redirectTo = '/verifyEmailFirst';
 
     /**
      * Create a new controller instance.
@@ -68,23 +69,12 @@ class RegisterController extends Controller
             'lastname' => $data['lastname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'token'    => Str::random(40),
         ]);
     }
 
-    public function confirmation(Request $request, $id){
-
-        $user         = User::where('id', Auth::user()->id)->get();
-        $user_array   = $user->toArray();
-
-        $merge        = array_merge($notice_array + $amount_array + $user_array);
-        //dd($merge);
-        Mail::send('notice.send', $merge, function ($message) use ($notice)
-        {
-
-            $message->from('info@myescrow.com', 'Ugwu Collins');
-
-            $message->to($notice['sellers_email']);
-        });  
-
+    public function verifyEmail(){  
+        
+        return view('email.verify');
     }
 }
