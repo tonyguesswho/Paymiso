@@ -92,10 +92,12 @@ class RegisterController extends Controller
         $user = User::Where(['email' => $email, 'token' =>$token])->first();
         if ($user) {
          User::Where(['email' => $email, 'token' =>$token])->update(['confirmed'=>1, 'token' =>Null]);
-         return redirect('/dashboard');
+         return redirect('/user_dashboard');
         }else{
             return 'fuck you';
         }
 
     }
+
+     
 }

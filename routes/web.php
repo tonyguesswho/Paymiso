@@ -22,4 +22,4 @@ Route::get('/dump','BlockIoTestController@dump');
 Route::get('/verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
 Route::get('verify/{email}/{token}', 'Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 
-
+Route::get('/user_dashboard','UserDashboardController@index');
