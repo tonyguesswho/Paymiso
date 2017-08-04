@@ -16,8 +16,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/dump','BlockIoTestController@dump');
-Route::get('/verifyEmailFirst', 'Auth\RegisterController@verifyEmail')->name('verifyEmailFirst');
+Route::get('/verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
+Route::get('verify/{email}/{token}', 'Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
+
 

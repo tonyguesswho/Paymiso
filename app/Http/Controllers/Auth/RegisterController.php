@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Str;
+use Mail;
+use App\Mail\verifyEmail;
 
 class RegisterController extends Controller
 {
@@ -28,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/verifyEmailFirst';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -64,17 +66,36 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'token'    => Str::random(40),
         ]);
+        $usermail = User::findorfail($user->id);
+        $this->sendEmail($usermail);
+        return $user;   
     }
 
-    public function verifyEmail(){  
+    public function verifyEmailFirst(){  
         
         return view('email.verify');
+    }
+
+    public function sendEmail($usermail){
+
+        Mail::to($usermail['email'])->send(new verifyEmail($usermail));
+    }
+
+    public function sendEmailDone($email,$token){
+        $user = User::Where(['email' => $email, 'token' =>$token])->first();
+        if ($user) {
+         User::Where(['email' => $email, 'token' =>$token])->update(['confirmed'=>1, 'token' =>Null]);
+         return redirect('/dashboard');
+        }else{
+            return 'fuck you';
+        }
+
     }
 }
