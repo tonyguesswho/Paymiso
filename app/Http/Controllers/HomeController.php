@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\BlockIoTest;
+use App\ExchangeRate;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -22,7 +24,15 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('home');
+    {   
+        $current_price = new BlockIoTest();
+        $current_price_usd = $current_price->CurrentPriceInUsd();
+        $ExchangeRate = new ExchangeRate();
+        $presentRate   = $ExchangeRate->rate();
+       // dd($presentRate);
+        
+        //dd($current_price_usd);
+        
+        return view('welcome',compact('current_price_usd','presentRate'));
     }
 }

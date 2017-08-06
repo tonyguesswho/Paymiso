@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Blockavel\LaraBlockIo\LaraBlockIoServiceProvider::class,
+        Swap\Laravel\SwapServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -227,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'LaraBlockIo' => 'Blockavel\LaraBlockIo\LaraBlockIoFacade',
+        'Swap' => Swap\Laravel\Facades\Swap::class,
 
     ],
 

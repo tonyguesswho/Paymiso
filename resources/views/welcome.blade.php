@@ -59,11 +59,11 @@
             <div class="container">
                 <nav role="navigation">
                     <ul class="pull-left left-menu">
-                        <li><a href="about.html">BTC/NGN 900,000</a></li>
-                        <li><a href="tour.html">Faq</a></li>
-                        <li><a href="pricing.html">Blog</a></li>
+                        <li id="naira"><a href="#">BTC/NGN &nbsp {{number_format($current_price_usd->data->prices[1]->price*$presentRate,2)}}</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Blog</a></li>
                     </ul>
-                    <h1 id="fh5co-logo"><a href="index.html">MyEscrow<span>.</span></a></h1>
+                    <h1 id="fh5co-logo"><a href="{{ url('/') }}">MyEscrow<span>.</span></a></h1>
                     <ul class="pull-right right-menu">
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li class="fh5co-cta-btn"><a href="{{ url('/register') }}">Create Wallet</a></li>

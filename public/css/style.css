@@ -275,6 +275,7 @@ body {
 #fh5co-header #fh5co-logo a span {
   color: #8dc63f;
 }
+
 #fh5co-header nav {
   position: relative;
 }
@@ -292,14 +293,24 @@ body {
 #fh5co-header nav ul li {
   display: inline;
 }
+#fh5co-header #naira a  {
+  color: white;
+  font-weight: 500;
+}
+#fh5co-header #naira a:hover  {
+  color: #8dc63f;
+}
+
 #fh5co-header nav ul li a {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.5);
   font-weight: 400;
 }
+
 #fh5co-header nav ul li a:hover {
-  color: white;
+  color:white ;
 }
+
 #fh5co-header nav ul li.fh5co-cta-btn a {
   position: relative;
   border-bottom: none;
@@ -505,13 +516,17 @@ body {
 #fh5co-features-3,
 #fh5co-features-4,
 #fh5co-projects,
-#fh5co-testimonials,
+/**#fh5co-testimonials,**/
 #fh5co-about,
 #fh5co-subscribe,
 #fh5co-info,
 #fh5co-pricing,
 #fh5co-faqs,
 #fh5co-footer {
+  background-color: #fff;
+  padding: 7em 0;
+}
+#fh5co-testimonials{
   background-color: #fff;
   padding: 1em 0;
 }
