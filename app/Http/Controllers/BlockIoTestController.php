@@ -4,7 +4,7 @@ namespace MyEscrow\Http\Controllers;
 
 use Illuminate\Http\Request;
 use MyEscrow\BlockIoTest;
-use MyEscrow\LaraBlockIo;
+
 
 //use MyEscrow\User;
 
@@ -17,7 +17,7 @@ class BlockIoTestController extends Controller
 
     public function dump(){
     	$balance = new BlockIoTest();
-    	$bal   = $balance->Test();
+    	$bal   = $balance->getbalance();
     	dd($bal);
     }
     

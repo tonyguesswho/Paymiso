@@ -41,12 +41,7 @@
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Buyers Email</label>
-                          <input type="email" name="buyer_email" placeholder="email" class="form-control" required="">
-                        </div>
-                        <div class="form-group">       
-                          <label class="form-control-label">Buyers Phone</label>
-                          <input type="number" name="buyer_phone" placeholder="Phone" class="form-control"
-                          required="">
+                          <input type="email" name="buyer_email" placeholder="email" class="form-control" required="optional">
                         </div>
                         <div class="form-group">
                          <label class="form-control-label">Amount of BTC in Dollar</label>
@@ -59,10 +54,6 @@
                               </div>
                             </div>
                         </div> 
-                         <div class="form-group">       
-                          <label class="form-control-label">Rate</label>
-                          <input type="number" name="rate" placeholder="Rate of sell" class="form-control">
-                        </div>   
                         
                           <button type="submit" class="btn btn-primary">Submit</button>       
                           <!-- <input type="submit" value="Submit" class="btn btn-primary"> -->

@@ -4,14 +4,14 @@ namespace MyEscrow;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BankDetail extends Model
+class CreateAddress extends Model
 {
     protected $fillable = [
-    'user_id','bank_name','account_name','account_number'
+
+    'user_id','btc_wallet_id'
     ];
 
     public function User(){
-    	
     	return $this->belongsTo('MyEscrow\User');
     }
 }

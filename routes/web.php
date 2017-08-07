@@ -30,8 +30,11 @@ Route::get('/history', 'UserDashboardController@history');
 Route::get('/bank_details', 'UserDashboardController@bankDetails');
 Route::get('/withdraw', 'UserDashboardController@withdrawCash');
 
-Route::post('/send','UserDashboardController@sellCoinCreate');
+Route::post('/sell','UserDashboardController@sellCoinCreate');
 Route::post('/bank_details', 'UserDashboardController@bankDetailsCreate');
+
+Route::get('/sellhome','TransactionController@sell');
+Route::get('/sendhome','TransactionController@send');
 
 
 

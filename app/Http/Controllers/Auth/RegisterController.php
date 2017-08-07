@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Str;
 use Mail;
+use MyEscrow\BlockIoTest;
+use MyEscrow\CreateAddress;
 use MyEscrow\Mail\verifyEmail;
 
 class RegisterController extends Controller
@@ -73,9 +75,21 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'token'    => Str::random(40),
         ]);
+
+        $address = new BlockIoTest();
+        $CreateAddress   = $address->createWalletAddress();
+        $wallet_id = $CreateAddress->data->address;
+
+         CreateAddress::create([
+            'user_id'   => $user->id,
+            'btc_wallet_id' => $wallet_id,   
+            ]);
+
         $usermail = User::findorfail($user->id);
         $this->sendEmail($usermail);
-        return $user;   
+        return $user;  
+
+        
     }
 
     public function verifyEmailFirst(){  

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use MyEscrow\SellCoin;
 use MyEscrow\Transaction;
 use MyEscrow\BankDetail;
+use MyEscrow\CreateAddress;
+use MyEscrow\BlockIoTest;
+use MyEscrow\ExchangeRate;
 use Mail;
 use Auth;
 use Illuminate\Support\Str;
@@ -19,7 +22,19 @@ class UserDashboardController extends Controller
 
     public function index(){
 
-    	return view('dashboard.home');
+        $btc_wallet_id = CreateAddress::where('user_id', Auth::User()->id)->first();
+        $btc_wallet = $btc_wallet_id->btc_wallet_id;
+
+        $btc_balance   = new BlockIoTest();
+        $balance  = $btc_balance->getbalance($btc_wallet);
+
+        $current_price = new BlockIoTest();
+        $current_price_usd = $current_price->CurrentPriceInUsd();
+
+        $ExchangeRate = new ExchangeRate();
+        $presentRateNaira   = $ExchangeRate->rate();
+        
+    	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira'));
     }
 
     public function sellcoin(){

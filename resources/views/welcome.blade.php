@@ -102,7 +102,7 @@
                         -->
                         <div class="fh5co-left-position">
                             <h2 class="animate-box">Secure and fast way to sell Bitcoin</h2>
-                            <p class="animate-box"><a href="" class="btn btn-outline popup-vimeo btn-video">SEND INSTANTLY </a> <a href="" target="_blank" class="btn btn-primary">SEND WITH ESCROW</a></p>
+                            <p class="animate-box"><a href="/sendhome" class="btn btn-outline popup-vimeo btn-video">SEND INSTANTLY </a> <a href="/sellhome" target="_blank" class="btn btn-primary">SELL WITH ESCROW</a></p>
                         </div>
                     </div>
                 </div>

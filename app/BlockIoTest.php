@@ -5,11 +5,13 @@ namespace MyEscrow;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraBlockIo;
+use Auth;
+use MyEscrow\CreateAddress;
 
 
 class BlockIoTest extends Model
 {
-    public function CreateAddress(){
+    public function createWalletAddress(){
     	$random = Str::random('5');
     	return LaraBlockIo::createAddress($random);
     }
@@ -35,5 +37,10 @@ class BlockIoTest extends Model
     public function CurrentPriceInUsd(){
 
     	return LaraBlockIo::getCurrentPrice('USD');
+    }
+
+    public function getbalance($addresses){
+        
+        return LaraBlockIo::getAddressesBalanceByAddress($addresses);
     }
 }

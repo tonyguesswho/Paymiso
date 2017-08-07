@@ -36,4 +36,8 @@ class User extends Authenticatable
 
         return $this->hasOne('MyEscrow\BankDetails');
     }
+
+    public function CreateAddress(){
+        return $this->hasOne('MyEscrow\CreateAddress');
+    }
 }
