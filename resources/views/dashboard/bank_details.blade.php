@@ -33,21 +33,23 @@
                     </div>
                     <div class="card-body">
                       <p>Do ensure to fill in your bank details completely</p>
-                      <form>
+                      <form method="POST" action="/bank_details">
+                      {{csrf_field()}}
                         <div class="form-group">
                           <label class="form-control-label">Bank Name</label>
-                          <input type="text" placeholder="Bank Name" class="form-control">
+                          <input type="text" name="bank_name" placeholder="Bank Name" class="form-control" required="">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Account Name</label>
-                          <input type="text" placeholder="Acc Name" class="form-control">
+                          <input type="text" name="account_name" placeholder="Acc Name" class="form-control" required="">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Account Number</label>
-                          <input type="number" placeholder="Acc num" class="form-control">
+                          <input type="number" name="account_number" placeholder="Acc num" class="form-control" required="">
                         </div>
-                        <div class="form-group">       
-                          <input type="submit" value="Submit" class="btn btn-primary">
+                        <div class="form-group">
+                        <button type="submit" class="btn btn-primary">submit</button>       
+                          <!-- <input type="submit" value="Submit" class="btn btn-primary"> -->
                         </div>
                       </form>
                     </div>

@@ -1,7 +1,7 @@
-@extends('dashboard.structure')
+ @extends('dashboard.structure')
 
 @section('content')
-	<div class="content-inner">
+  <div class="content-inner">
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
@@ -32,28 +32,30 @@
                     </div>
                     <div class="card-body">
                       <p>Do ensure to fill in the transaction details correctly</p>
-                      <form method="POST" action="/sell">
-                      {{csrf_field()}}
+                      
+                      <form method="POST" action="/send">
+                        {{csrf_field()}}
                         <div class="form-group">
                           <label class="form-control-label">Buyers Wallet Id</label>
-                          <input type="text" name="wallet_id" placeholder="wallet id" class="form-control">
+                          <input type="text" name="wallet_id" placeholder="wallet id" class="form-control" required="">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Buyers Email</label>
-                          <input type="email" name="email" placeholder="email" class="form-control">
+                          <input type="email" name="buyer_email" placeholder="email" class="form-control" required="">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Buyers Phone</label>
-                          <input type="number" name="phone" placeholder="Phone" class="form-control">
+                          <input type="number" name="buyer_phone" placeholder="Phone" class="form-control"
+                          required="">
                         </div>
                         <div class="form-group">
                          <label class="form-control-label">Amount of BTC in Dollar</label>
                             <div class="row">
                               <div class="col-md-6">
-                                <input type="number" name="amount_dollar" placeholder="amount in dollar" class="form-control">
+                                <input type="number" name="amount_dollar" placeholder="amount in dollar" class="form-control" required="">
                               </div>
                               <div class="col-md-6">
-                                <input type="number" name="amount_btc" placeholder="amount of btc" class="form-control">
+                                <input type="number" name="amount_btc" placeholder="amount of btc" class="form-control" required="">
                               </div>
                             </div>
                         </div> 
@@ -61,9 +63,10 @@
                           <label class="form-control-label">Rate</label>
                           <input type="number" name="rate" placeholder="Rate of sell" class="form-control">
                         </div>   
-                        <div class="form-group">       
-                          <input type="submit" value="Submit" class="btn btn-primary">
-                        </div>
+                        
+                          <button type="submit" class="btn btn-primary">Submit</button>       
+                          <!-- <input type="submit" value="Submit" class="btn btn-primary"> -->
+                        
                       </form>
                     </div>
                   </div>
@@ -73,3 +76,4 @@
     </section>
 </div>
 @endsection
+	
