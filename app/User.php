@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace MyEscrow;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function SellCoin(){
+
+        return $this->hasMany('MyEscrow\SellCoin');
+    }
+
+    public function BankDetails(){
+
+        return $this->hasOne('MyEscrow\BankDetails');
+    }
 }

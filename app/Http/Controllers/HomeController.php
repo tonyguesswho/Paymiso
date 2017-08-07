@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MyEscrow\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\BlockIoTest;
-use App\ExchangeRate;
+use MyEscrow\BlockIoTest;
+use MyEscrow\ExchangeRate;
 
 class HomeController extends Controller
 {

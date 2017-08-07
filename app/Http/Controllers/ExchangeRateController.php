@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MyEscrow\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ExchangeRate;
+use MyEscrow\ExchangeRate;
 
 class ExchangeRateController extends Controller
 {

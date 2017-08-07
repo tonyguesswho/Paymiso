@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MyEscrow\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\BlockIoTest;
-use App\LaraBlockIo;
+use MyEscrow\BlockIoTest;
+use MyEscrow\LaraBlockIo;
 
-//use App\User;
+//use MyEscrow\User;
 
 
 class BlockIoTestController extends Controller

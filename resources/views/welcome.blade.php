@@ -65,8 +65,24 @@
                     </ul>
                     <h1 id="fh5co-logo"><a href="{{ url('/') }}">MyEscrow<span>.</span></a></h1>
                     <ul class="pull-right right-menu">
+                        @if(Auth::guest())
+                        
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li class="fh5co-cta-btn"><a href="{{ url('/register') }}">Create Wallet</a></li>
+                        @else
+                        <li>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method= "POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                        <li class="fh5co-cta-btn"><a href="{{ url('/user_dashboard') }}">Wallet</a></li>
+                         @endif
                     </ul>
                 </nav>
             </div>
@@ -334,8 +350,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <p class="fh5co-left"><small>&copy; 2017 <a href=""> MyEscrow</a> All Rights Reserved.</small></p>
-                            <p class="fh5co-right"><small class="fh5co-right">Designed by <a href="" target="_blank">FREEHTML5.co</a> Demo Images: <a href="" target="_blank">Unsplash</a></small></p>
-                        </div>
+<!--                             <p class="fh5co-right"><small class="fh5co-right">Designed by <a href="" target="_blank">FREEHTML5.co</a> Demo Images: <a href="" target="_blank">Unsplash</a></small></p>
+ -->                        </div>
                     </div>
                 </div>
             </div>

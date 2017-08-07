@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace MyEscrow\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use MyEscrow\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -25,7 +25,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/user_dashboard';
 
     /**
      * Create a new controller instance.
@@ -36,4 +36,5 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
 }
