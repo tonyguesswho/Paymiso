@@ -72,9 +72,21 @@ class UserDashboardController extends Controller
          'transaction_token'=>Str::random(22), 
              ]); 
 
-         return 'reba thanks';  
+         return redirect('/confirmTransaction') ;  
 
     }
+
+    public function confirm(){
+        $user= SellCoin::where('user_id', Auth::User()->id)->latest()->first();
+
+        $amount_btc=$user->amount_btc;
+        $wallet_id=$user->wallet_id;
+        $network = new BlockIoTest();
+        //$networkFee = $network->NetworkFeeEstimate($amount_btc,$wallet_id);
+        //dd($networkFee);
+        
+        return view('dashboard.confirmpage',compact('user'));
+         }
 
    
 

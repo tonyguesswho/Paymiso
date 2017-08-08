@@ -40,7 +40,11 @@ class BlockIoTest extends Model
     }
 
     public function getbalance($addresses){
-        
+
         return LaraBlockIo::getAddressesBalanceByAddress($addresses);
+    }
+
+    public function NetworkFeeEstimate($amounts, $addresses){
+        return LaraBlockIo::getNetworkFeeEstimate($amounts, $addresses);
     }
 }

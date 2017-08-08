@@ -35,6 +35,7 @@ Route::post('/bank_details', 'UserDashboardController@bankDetailsCreate');
 
 Route::get('/sellhome','TransactionController@sell');
 Route::get('/sendhome','TransactionController@send');
+Route::get('/confirmTransaction','UserDashboardController@confirm');
 
 
 

@@ -26,6 +26,9 @@ a, i, span {
 a:hover, a:focus, i:hover, i:focus, span:hover, span:focus {
   text-decoration: none;
 }
+.cft{
+  width: 150px;
+}
 
 ul {
   margin: 0;
