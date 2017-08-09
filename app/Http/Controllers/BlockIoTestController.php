@@ -17,7 +17,7 @@ class BlockIoTestController extends Controller
 
     public function dump(){
     	$balance = new BlockIoTest();
-    	$bal   = $balance->getbalance();
+    	$bal   = $balance->SendCoin();
     	dd($bal);
     }
     

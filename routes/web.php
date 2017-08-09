@@ -12,7 +12,6 @@
 */
 
 
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -21,6 +20,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/dump','BlockIoTestController@dump');
 Route::get('/create_wallet','BlockIoTestController@createWallet');
 Route::get('/verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
+
+
 Route::get('verify/{email}/{token}', 'Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 
 
@@ -37,6 +38,8 @@ Route::get('/sellhome','TransactionController@sell');
 Route::get('/sendhome','TransactionController@send');
 Route::get('/confirmTransaction','UserDashboardController@confirm');
 
+Route::get('/edit', 'UserDashboardController@editConfirm')->name('edit');
+Route::get('/update/{id}', 'UserDashboardController@editConfirm');
 
 
 

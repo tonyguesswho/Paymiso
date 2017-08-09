@@ -3,6 +3,7 @@
 namespace MyEscrow\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use MyEscrow\SellCoin;
 use MyEscrow\Transaction;
 use MyEscrow\BankDetail;
@@ -77,20 +78,61 @@ class UserDashboardController extends Controller
     }
 
     public function confirm(){
-        $user= SellCoin::where('user_id', Auth::User()->id)->latest()->first();
+        $user = SellCoin::where('user_id', Auth::User()->id)->latest()->first();
 
         $amount_btc=$user->amount_btc;
-        $wallet_id=$user->wallet_id;
-        $network = new BlockIoTest();
-        //$networkFee = $network->NetworkFeeEstimate($amount_btc,$wallet_id);
+        $btc_wallet_id=$user->wallet_id;
+
+        $amount = $user->amount_dollar;
+        $amount_rate = $user->rate;
+
+        $amount_naira = $amount * $amount_rate;
+
+        $escrow_fee = $amount_naira * 0.75/100;
+
+        $btc_balance   = new BlockIoTest();
+        $balance  = $btc_balance->getbalance($btc_wallet_id);
+        $total_balance = $balance->data->available_balance;
+
+        if ($total_balance < $amount_btc) {
+
+            return bacK()->withErrors([
+                'insufficient fund'
+                ]);
+        }else{
+
+            return view('dashboard.confirmpage',compact('user', 'amount_naira', 'escrow_fee'));
+
+        }
         //dd($networkFee);
         
-        return view('dashboard.confirmpage',compact('user'));
          }
 
-   
+    public function editConfirm(){
+        //$user = SellCoin::find($id);
+        return view('dashboard.confirmEditPage');
+    }
 
-     public function history(){
+    public function updateConfirm($id){
+
+            $wallet_id     = input::get('wallet_id');
+            $buyer_email   = input::get('buyer_email');
+            $buyer_phone   = input::get('buyer_phone');
+            $amount_dollar = input::get('amount_dollar');
+            $amount_btc    = input::get('amount_btc');
+            $rate          = input::get('rate');
+
+        $user = SellCoin::where('id',$id)->update([
+            'wallet_id'         => $wallet_id,
+            'buyer_email'       => $buyer_email,
+            'buyer_phone'       => $buyer_phone,
+            'amount_dollar'     => $amount_dollar,
+            'amount_btc'        => $amount_btc,
+            'rate'              => $rate
+            ]);
+    }
+
+    public function history(){
 
     	return view('dashboard.history');
     }

@@ -17,9 +17,9 @@ class BlockIoTest extends Model
     }
 
     public function SendCoin(){
-    	$amounts =  0.00693760;
+    	$amounts =  0.002;
     	$fromAddresses = '2MtqRw3pMPj1SkScvP6T6LczUdjbVurAUcq';
-    	$toAddresses = '2NGSUqgRbrb8yxHW2FctyJdWhPNVtWoSbNs';
+    	$toAddresses = '2N2xzadjkKrKDqvYY96Y94ctTC1B72jpiwi';
 
     	return LaraBlockIo::withdrawFromAddressesToAddresses($amounts, $fromAddresses, $toAddresses);
     }
