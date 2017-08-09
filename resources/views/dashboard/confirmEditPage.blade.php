@@ -34,35 +34,35 @@
                     <div class="card-body">
                       <p>Do ensure to fill in the transaction details correctly</p>
                       
-                      <form method="POST" action="/sell">
+                      <form method="POST" action="/update">
                         {{csrf_field()}}
                         <div class="form-group">
                           <label class="form-control-label">Buyers Wallet Id</label>
-                          <input type="text" name="wallet_id" placeholder="wallet id" class="form-control" required="">
+                          <input type="text" name="wallet_id" placeholder="wallet id" class="form-control" required="" value="{{old('wallet_id', $user->wallet_id)}}">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Buyers Email</label>
-                          <input type="email" name="buyer_email" placeholder="email" class="form-control" required="">
+                          <input type="email" name="buyer_email" placeholder="email" class="form-control" required="" value="{{old('buyer_email', $user->buyer_email)}}">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Buyers Phone</label>
                           <input type="number" name="buyer_phone" placeholder="Phone" class="form-control"
-                          required="">
+                          required="" value="{{old('buyer_phone', $user->buyer_phone)}}">
                         </div>
                         <div class="form-group">
                          <label class="form-control-label">Amount of BTC in Dollar</label>
                             <div class="row">
                               <div class="col-md-6">
-                                <input type="number" name="amount_dollar" placeholder="amount in dollar" class="form-control" required="">
+                                <input type="number" name="amount_dollar" placeholder="amount in dollar" class="form-control" required="" value="{{old('amount_dollar', $user->amount_dollar)}}">
                               </div>
                               <div class="col-md-6">
-                                <input type="number" name="amount_btc" placeholder="amount of btc" class="form-control" required="">
+                                <input type="number" name="amount_btc" placeholder="amount of btc" class="form-control" required="" value="{{old('amount_btc', $user->amount_btc)}}">
                               </div>
                             </div>
                         </div> 
                          <div class="form-group">       
                           <label class="form-control-label">Rate</label>
-                          <input type="number" name="rate" placeholder="Rate of sell" class="form-control">
+                          <input type="number" name="rate" placeholder="Rate of sell" class="form-control" value="{{old('rate', $user->rate)}}">
                         </div>   
                         
                           <button type="submit" class="btn btn-primary">Submit</button>       

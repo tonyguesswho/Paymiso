@@ -10,7 +10,9 @@ use MyEscrow\BankDetail;
 use MyEscrow\CreateAddress;
 use MyEscrow\BlockIoTest;
 use MyEscrow\ExchangeRate;
+use MyEscrow\Mail\transactionEmail;
 use Mail;
+use Send;
 use Auth;
 use Illuminate\Support\Str;
 
@@ -109,12 +111,15 @@ class UserDashboardController extends Controller
          }
 
     public function editConfirm(){
-        //$user = SellCoin::find($id);
-        return view('dashboard.confirmEditPage');
+        $user = sellCoin::where('user_id',Auth::user()->id)->latest()->first();
+        
+        return view('dashboard.confirmEditPage',compact('user'));
     }
 
-    public function updateConfirm($id){
+    public function updateConfirm(){
 
+        $sellcoin = sellCoin::where('user_id',Auth::user()->id)->latest()->first();
+        $id = $sellcoin->id;
             $wallet_id     = input::get('wallet_id');
             $buyer_email   = input::get('buyer_email');
             $buyer_phone   = input::get('buyer_phone');
@@ -130,6 +135,7 @@ class UserDashboardController extends Controller
             'amount_btc'        => $amount_btc,
             'rate'              => $rate
             ]);
+        return redirect('/confirmTransaction');
     }
 
     public function history(){
@@ -161,5 +167,15 @@ class UserDashboardController extends Controller
     public function withdrawCash(){
 
     	return view('dashboard.withdraw');
+    }
+
+    public function transactionMail(){
+
+        $sellcoin = SellCoin::where('user_id', Auth::User()->id)->latest()->first();
+
+        Mail::to($sellcoin['buyer_email'])->send(new transactionEmail($sellcoin));
+        
+        //return back()->session()->flash('status', 'comfirmation mail sent successfully');
+
     }
 }

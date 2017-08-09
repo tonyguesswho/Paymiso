@@ -1,3 +1,4 @@
+        return back()->session()->flash('status', 'comfirmation mail sent successfully');
 @extends('dashboard.structure')
 
 @section('content')
@@ -14,6 +15,13 @@
               <li class="breadcrumb-item active">Sell Coins</li>
             </div>
           </ul>
+@if (session('status'))
+  <center>
+      <div class="alert alert-success">
+          <b>{{ session('status') }}</b>
+      </div>
+    </center>
+@endif
           <!-- Forms Section-->
           <section class="forms"> 
             <div class="container-fluid">
@@ -35,11 +43,11 @@
                       <h5><span class="cft">Buyer's Id:</span><span>{{$user->wallet_id}}</span> </h5>
                       <h5><span class="cft">Amount BTC:</span><span>{{$user->amount_btc}}</span> </h5>
                       <h5><span class="cft">Amount USD:</span><span>{{number_format($user->amount_dollar,2)}}</span> </h5>
-                      <h5><span class="cft">Amount BTC:</span><span>{{$user->rate}}</span> </h5>
+                      <h5><span class="cft">Rate:</span><span>{{$user->rate}}</span> </h5>
                       <h5><span class="cft">Amount NGN:</span><span>{{number_format($amount_naira,2)}}</span> </h5>
                       <h5><span class="cft">Escrow fee:</span>{{number_format($escrow_fee,2)}}<span></span> </h5>
                       </div>
-                      <span class="offset-lg-3"><a href="/confirmMail"><button class="btn btn-primary">Confirm</button></a>  <a href="{URL::route('edit')}"><button class="btn btn-primary">Edit</button></a></span>
+                      <span class="offset-lg-3"><a href="/confirmMail"><button class="btn btn-primary">Confirm</button></a>  <a href="/edit"><button class="btn btn-primary">Edit</button></a></span>
                   </div>
                 </div>
             </div>
