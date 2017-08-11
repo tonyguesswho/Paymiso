@@ -1,13 +1,127 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>Title</title>
+    <style type="text/css">
+      .wrapper{width:60%; margin:5% auto;height:100vh;  box-shadow:0 0 2px #aaa; font-family:Hind;}
+      .logo_header{width:100%; height:70px;background:#8DC53F; padding:10px;}
+      .email_body{width:100%; padding:0 15px;}
+      .receipt_list{width:100%;}
+      .receipt_list .left_list{float:left; width:40%;}
+      .receipt_list .right_list{float:left; width:60%;}
+      .left_list b,.right_list b{width:100%; float:left; margin:0 0 10px 0;}
+      .left_list span,.right_list span{width:100%; float:left; margin:0 0 5px 0;}
+      .right_list span{text-align:left; padding-left:15%;}
+      .list_divider{width:100%; border-top:1px solid rgba(0,0,0,0.2);float:left;}
+      .invoice_trans{width:100%;float:left; margin:5px 0;}
+      .invoice_left{float:left; width:40%;}
+      .invoice_right{float:left; width:60%;}
+      h2{
+        display:inline-block;
+      }
+      .btn{
+          margin: 4px;
+          
+          width: 80px;
+          height: 50px;
+          font-size: 20px;
+         }
+        .btn-sunny {
+          color: #fff;
+          background-color:#f5b75f ;
+          border-bottom:2px solid #c38a3a;
+          }
 
-                      <h5><span class="cft">Seller's Name:</span><span>{{$sellcoin->User->firstname}}&nbsp&nbsp{{$sellcoin->User->lastname}}</span> </h5>
-                      <h5><span class="cft">Buyer's Id:</span><span>{{$sellcoin->wallet_id}}</span> </h5>
-                      <h5><span class="cft">Amount BTC:</span><span>{{$sellcoin->amount_btc}}</span> </h5>
-                      <h5><span class="cft">Amount USD:</span><span>{{number_format($sellcoin->amount_dollar,2)}}</span> </h5>
-                      <h5><span class="cft">Rate:</span><span>{{$sellcoin->rate}}</span> </h5>
-                      <h5><span class="cft">Amount NGN:</span><span>{{number_format($sellcoin->amount_dollar*$sellcoin->rate,2)}}</span> </h5>
-                      <h5><span class="cft">Escrow fee:</span>{{number_format(($sellcoin->amount_dollar*$sellcoin->rate)*0.0075,2)}}<span></span> </h5>
-                      </div>
-                      <span class="offset-lg-3"><a href="#"><button class="btn btn-primary">Confirm</button></a>  <a href="#"><button class="btn btn-primary">Cancel</button></a></span>
+       .btn-fresh {
+          color: #fff;
+          background-color: #8DC53F;
+          border-bottom:2px solid #41996c;
+          }
+
+
+
          
+
+
+    </style>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7749520983305929"
+     data-ad-slot="1217000491"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+     <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+  <div class="row">
+            
+            <div class="wrapper">
+                <div class="logo_header">
+                    <a href=""><img src=""/></a>
+                </div>
+                <div class="email_banner">
+                    
+                </div>
+                <div class="email_body">
+                    <h1 class="text-center">Bitcoin Transaction Details</h1>
+                    <p>
+                        Kindly go through the details below before making payment
+                    </p>
+                    
+                    <div class="receipt_list">
+                        <div class="left_list">
+                          
+                            <span>Seller's Name:</span>
+                            <span>Buyer's Id:</span>
+                            <span>Amount BTC:</span>
+                            <span>Amount USD:</span>
+                            <span>Rate:</span>
+                            <span>Amount NGN:</span>
+                            <span>Escrow fee (0.75% for each participant):</span>
+                            
+                        </div>
+                          <div class="right_list">
+                            
+                                 <span>{{$sellcoin->User->firstname}}&nbsp{{$sellcoin->User->lastname}}</span>
+                                 <span>{{$sellcoin->wallet_id}}</span>
+                                 <span>{{$sellcoin->amount_btc}}</span>
+                                 <span>{{number_format($sellcoin->amount_dollar,2)}}</span>
+                                 <span>{{$sellcoin->rate}}</span>
+                                 <span>{{number_format($sellcoin->amount_dollar*$sellcoin->rate,2)}}</span>
+                                 <span>{{number_format(($sellcoin->amount_dollar*$sellcoin->rate)*0.0075,2)}}</span>
+                        </div>
+                        <span class="list_divider"></span>
+                         <div class="left_list">
+                             <b>Total</b>
+                              </div>
+                          <div class="right_list">
+                               <span><b>{{number_format($sellcoin->amount_dollar*$sellcoin->rate,2)+number_format(($sellcoin->amount_dollar*$sellcoin->rate)*0.0075,2)}}</b></span>
+                          </div>
+                    </div>
+                    
+                    <div class="invoice_trans">
+                        <div class="invoice_left">
+                           <a href="#"><button type="button" class="btn btn-fresh text-uppercase">PAY</button></a>
+                        </div>
+                        <div class="invoice_right">
+                            <a href="{{route('cancelEmailDone',['id' => $sellcoin->id,'token'=>$sellcoin->Transaction->transaction_token])}}"><button type="button" class="btn btn-sunny text-uppercase">Cancel</button></a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+  </div>
+</div>
   
+  </body>
+  </html>
  
+  
+        
+   

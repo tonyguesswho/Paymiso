@@ -175,7 +175,7 @@ class UserDashboardController extends Controller
 
         Mail::to($sellcoin['buyer_email'])->send(new transactionEmail($sellcoin));
         
-        //return back()->session()->flash('status', 'comfirmation mail sent successfully');
+        return back()->with('status', 'comfirmation mail sent successfully');
 
     }
 }

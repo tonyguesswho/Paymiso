@@ -13,4 +13,12 @@ class SellCoin extends Model
     public function User(){
     	return $this->belongsTo('MyEscrow\User');
     }
+
+    public function Transaction(){
+    	return $this->hasOne('MyEscrow\Transaction');
+    }
+
+    public function CanceledMail(){
+    	return $this->hasMany('MyEscrow\CanceledMail');
+    }
 }
