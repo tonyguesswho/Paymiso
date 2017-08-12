@@ -4,7 +4,7 @@ namespace MyEscrow;
 
 use Illuminate\Database\Eloquent\Model;
 
-class cancled_mail extends Model
+class CancledMail extends Model
 {
     protected $fillable = [
     'name','reason','sellcoin_id'

@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->boolean('transaction_status')->default('0');
             $table->bigInteger('sell_coin_id');
-            $table->String('transaction_token');
+            $table->String('transaction_token')->nullable();
             $table->timestamps();
 
         });

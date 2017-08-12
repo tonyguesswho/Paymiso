@@ -103,6 +103,7 @@ class RegisterController extends Controller
     }
 
     public function sendEmailDone($email,$token){
+        
         $user = User::Where(['email' => $email, 'token' =>$token])->first();
         if ($user) {
          User::Where(['email' => $email, 'token' =>$token])->update(['confirmed'=>1, 'token' =>Null]);

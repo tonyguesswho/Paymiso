@@ -1,3 +1,6 @@
-<input type="text" name="name"><br>
-<textarea name="response"></textarea><br>
-<button type="button" href="#" class="btn btn-default">button</button>
+
+<form method="POST" action="/canceled/email/{{$id}}/{{$token}}">
+	{{csrf_field()}}
+	<textarea name="reason"></textarea><br>
+	<button type="submit" href="" class="btn btn-default">button</button>
+</form>

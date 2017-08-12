@@ -23,6 +23,7 @@ Route::get('/create_wallet','BlockIoTestController@createWallet');
 Route::get('/verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
 Route::get('verify/{email}/{token}', 'Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 Route::get('/cancel/{id}/{token}', 'CancelledMailController@cancelEmailDone')->name('cancelEmailDone');
+Route::post('/canceled/email/{id}/{token}','CancelledMailController@sendCancledEmail');
 
 
 Route::get('/user_dashboard','UserDashboardController@index');
