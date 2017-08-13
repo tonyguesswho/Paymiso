@@ -18,7 +18,7 @@ class CreateSellCoinsTable extends Migration
             $table->bigInteger('user_id')->nullable();
             $table->string('wallet_id')->nullable();
             $table->string('buyer_email')->nullable();
-            $table->integer('buyer_phone')->nullable();
+            $table->bigInteger('buyer_phone')->nullable();
             $table->bigInteger('amount_dollar')->nullable();
             $table->bigInteger('amount_btc')->nullable();
             $table->integer('rate')->nullable();

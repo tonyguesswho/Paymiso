@@ -5,7 +5,7 @@
     <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MyEscrow</title>
+    <title>PayMiso</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
 
@@ -81,7 +81,7 @@
                                 {{ csrf_field() }}
                             </form>
                         </li>
-                        <li class="fh5co-cta-btn"><a href="{{ url('/user_dashboard') }}">Wallet</a></li>
+                        <li class="fh5co-cta-btn"><a href="{{ url('/userDashboard') }}">Wallet</a></li>
                          @endif
                     </ul>
                 </nav>

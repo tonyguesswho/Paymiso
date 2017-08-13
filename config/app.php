@@ -169,6 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Blockavel\LaraBlockIo\LaraBlockIoServiceProvider::class,
         Swap\Laravel\SwapServiceProvider::class,
+        Unicodeveloper\Paystack\PaystackServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'LaraBlockIo' => 'Blockavel\LaraBlockIo\LaraBlockIoFacade',
         'Swap' => Swap\Laravel\Facades\Swap::class,
+        'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
 
     ],
 

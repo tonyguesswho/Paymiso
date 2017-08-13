@@ -67,42 +67,20 @@
                       <h3 class="h4">Recent Activities</h3>
                     </div>
                     <div class="card-body no-padding">
+                    @foreach($cancel as $cancels)
                       <div class="item">
                         <div class="row">
                           <div class="col-4 date-holder text-right">
                             <div class="icon"><i class="icon-clock"></i></div>
-                            <div class="date"> <span class="pull-left">6:00 am</span><span class="text-info">6 hours ago</span></div>
+                            <div class="date"> <span class="pull-left">{{$cancels->buyer_email}}</span><span class="text-info">{{$cancels->created_at}}</span></div>
                           </div>
                           <div class="col-8 content">
-                            <h5>Meeting</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                            <h5 style="color: red;">Failed Transactions</h5>
+                            <p>{{$cancels->reason}}</p>
                           </div>
                         </div>
                       </div>
-                      <div class="item">
-                        <div class="row">
-                          <div class="col-4 date-holder text-right">
-                            <div class="icon"><i class="icon-clock"></i></div>
-                            <div class="date"> <span>6:00 am</span><span class="text-info">6 hours ago</span></div>
-                          </div>
-                          <div class="col-8 content">
-                            <h5>Meeting</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="item">
-                        <div class="row">
-                          <div class="col-4 date-holder text-right">
-                            <div class="icon"><i class="icon-clock"></i></div>
-                            <div class="date"> <span>6:00 am</span><span class="text-info">6 hours ago</span></div>
-                          </div>
-                          <div class="col-8 content">
-                            <h5>Meeting</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-                          </div>
-                        </div>
-                      </div>
+                      @endforeach
                     </div>
                   </div>
                 </div>

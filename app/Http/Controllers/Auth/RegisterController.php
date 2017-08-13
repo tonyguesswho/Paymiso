@@ -32,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/user_dashboard';
+    protected $redirectTo = '/userDashboard';
 
     /**
      * Create a new controller instance.
@@ -103,11 +103,11 @@ class RegisterController extends Controller
     }
 
     public function sendEmailDone($email,$token){
-        
+
         $user = User::Where(['email' => $email, 'token' =>$token])->first();
         if ($user) {
          User::Where(['email' => $email, 'token' =>$token])->update(['confirmed'=>1, 'token' =>Null]);
-         return redirect('/user_dashboard');
+         return redirect('/userDashboard');
         }else{
             return 'c you';
         }

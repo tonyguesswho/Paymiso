@@ -11,10 +11,17 @@
     </header>
         <ul class="breadcrumb">
           <div class="container-fluid">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="/userDashboard">Home</a></li>
             <li class="breadcrumb-item active">Bank Details</li>
           </div>
         </ul>
+  @if (session('status'))
+    <center>
+      <div class="alert alert-success">
+          <b>{{ session('status') }}</b>
+      </div>
+    </center>
+  @endif
           <!-- Forms Section-->
     <section class="forms"> 
         <div class="container-fluid">
@@ -33,7 +40,7 @@
                     </div>
                     <div class="card-body">
                       <p>Do ensure to fill in your bank details completely</p>
-                      <form method="POST" action="/bank_details">
+                      <form method="POST" action="/createBankDetails">
                       {{csrf_field()}}
                         <div class="form-group">
                           <label class="form-control-label">Bank Name</label>

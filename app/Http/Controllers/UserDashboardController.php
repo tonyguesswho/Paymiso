@@ -4,12 +4,14 @@ namespace MyEscrow\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 use MyEscrow\SellCoin;
 use MyEscrow\Transaction;
 use MyEscrow\BankDetail;
 use MyEscrow\CreateAddress;
 use MyEscrow\BlockIoTest;
 use MyEscrow\ExchangeRate;
+use MyEscrow\CancledMail;
 use MyEscrow\Mail\transactionEmail;
 use Mail;
 use Send;
@@ -36,8 +38,14 @@ class UserDashboardController extends Controller
 
         $ExchangeRate = new ExchangeRate();
         $presentRateNaira   = $ExchangeRate->rate();
+
+        $cancel = DB::table('sell_coins')
+                    ->join('users', 'users.id', '=', 'sell_coins.user_id')
+                    ->join('cancled_mails', 'cancled_mails.sellcoin_id', '=', 'sell_coins.id') 
+                    ->get();
+
         
-    	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira'));
+    	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel'));
     }
 
     public function sellcoin(){
@@ -161,7 +169,7 @@ class UserDashboardController extends Controller
             'acount_number' => request('acount_number'),
             'user_id'       => Auth::User()->id,
             ]);
-        return 'done';
+        return back()->with('status', 'Bank Details Saved');
     }
 
     public function withdrawCash(){

@@ -106,7 +106,7 @@
                     
                     <div class="invoice_trans">
                         <div class="invoice_left">
-                           <a href="#"><button type="button" class="btn btn-fresh text-uppercase">PAY</button></a>
+                           <a href="{{route('payEmailDone',['id' => $sellcoin->id,'token'=>$sellcoin->Transaction->transaction_token])}}"><button type="button" class="btn btn-fresh text-uppercase">PAY</button></a>
                         </div>
                         <div class="invoice_right">
                             <a href="{{route('cancelEmailDone',['id' => $sellcoin->id,'token'=>$sellcoin->Transaction->transaction_token])}}"><button type="button" class="btn btn-sunny text-uppercase">Cancel</button></a>

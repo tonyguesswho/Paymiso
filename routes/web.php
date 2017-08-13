@@ -25,18 +25,22 @@ Route::get('verify/{email}/{token}', 'Auth\RegisterController@sendEmailDone')->n
 Route::get('/cancel/{id}/{token}', 'CancelledMailController@cancelEmailDone')->name('cancelEmailDone');
 Route::post('/canceled/email/{id}/{token}','CancelledMailController@sendCancledEmail');
 
+Route::get('confirm/{id}/{token}', 'PaymentController@confirmMail')->name('payEmailDone');
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
-Route::get('/user_dashboard','UserDashboardController@index');
+
+Route::get('/userDashboard','UserDashboardController@index');
 Route::get('/sell', 'UserDashboardController@sellCoin');
 Route::get('/history', 'UserDashboardController@history');
-Route::get('/bank_details', 'UserDashboardController@bankDetails');
+Route::get('/bankDetails', 'UserDashboardController@bankDetails');
 Route::get('/withdraw', 'UserDashboardController@withdrawCash');
 Route::get('/edit', 'UserDashboardController@editConfirm')->name('edit');
 Route::get('/confirmTransaction','UserDashboardController@confirm');
 Route::get('/confirmMail', 'UserDashboardController@transactionMail');
 Route::post('/update', 'UserDashboardController@updateConfirm');
 Route::post('/sell','UserDashboardController@sellCoinCreate');
-Route::post('/bank_details', 'UserDashboardController@bankDetailsCreate');
+Route::post('/createBankDetails', 'UserDashboardController@bankDetailsCreate');
 
 
 Route::get('/sellhome','TransactionController@sell');
