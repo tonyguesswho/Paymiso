@@ -28,12 +28,12 @@
             <table style="padding: 10px;font-size:14px; width:100%;">
               <tr>
                 <td style="padding:10px;font-size:14px; width:100%;">
-                    <p>Hi person's firstname</p>
+                    <p>Hi {{$user->firstname}}</p>
                     <p><br />  Please click below to verify your account.</p>
                     <p><a href="{{route('sendEmailDone',['email' => $user->email,'token'=>$user->token])}}" style="color:blue;font-size:12px;">Verify Account</a></p>
                    
-                    <p>Thanks for choosing myescrow,</p>
-                    <p>myescrow Team.</p>
+                    <p>Thanks for choosing PayMiso,</p>
+                    <p>PayMiso Team.</p>
                   <!-- /Callout Panel -->
                   <!-- FOOTER -->
                  </td>

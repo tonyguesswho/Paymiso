@@ -4,13 +4,14 @@ namespace MyEscrow\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Paystack;
+use MyEscrow\SellCoin;
 
 class PaymentController extends Controller
 {
     public function confirmMail($id,$token){
-    	$id;
-    	$token;
-    	return view('dashboard.paymentForm', compact('id'));
+    	$sellcoin = SellCoin::find($id);
+
+    	return view('dashboard.paymentForm', compact('sellcoin'));
     }
 
     public function redirectToGateway(){

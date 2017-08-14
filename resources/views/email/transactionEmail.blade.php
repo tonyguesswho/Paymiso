@@ -37,23 +37,9 @@
           background-color: #8DC53F;
           border-bottom:2px solid #41996c;
           }
-
-
-
-         
-
-
+          
     </style>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-    <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7749520983305929"
-     data-ad-slot="1217000491"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+  
      <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
   </head>
   <body>
