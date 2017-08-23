@@ -49,6 +49,15 @@
                                     </span>
                         @endif
                     </div>
+                     <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                      <input id="register-email" type="phone" name="phone" required class="input-material" value="{{old('phone')}}">
+                      <label for="register-phone" class="label-material">Phone</label>
+                       @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                       <input id="register-passowrd" type="password" name="password" required class="input-material">
                       <label for="register-passowrd" class="label-material">Password</label>

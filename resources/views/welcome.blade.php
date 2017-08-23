@@ -63,7 +63,7 @@
                         <li><a href="#">Faq</a></li>
                         <li><a href="#">Blog</a></li>
                     </ul>
-                    <h1 id="fh5co-logo"><a href="{{ url('/') }}">MyEscrow<span>.</span></a></h1>
+                    <h1 id="fh5co-logo"><a href="{{ url('/') }}">PayMiso<span>.</span></a></h1>
                     <ul class="pull-right right-menu">
                         @if(Auth::guest())
                         

@@ -10,6 +10,13 @@
 	       	</div> 
 	    </div>
 	</header>
+  @if (session('status'))
+  <center>
+      <div class="alert alert-success">
+          <b>{{ session('status') }}</b>
+      </div>
+    </center>
+  @endif
 	 <!-- Dashboard Counts Section-->
 	 	<section style="margin-bottom: 10px;" class="dashboard-counts no-padding-bottom">
           <div class="container-fluid">
@@ -65,6 +72,23 @@
                     </div>
                     <div class="card-header">
                       <h3 class="h4">Recent Activities</h3>
+                    </div>
+                    <div class="card-body no-padding">
+                    @foreach($market as $markets)
+                      <div class="item">
+                        <div class="row">
+                          <div class="col-4 date-holder text-right">
+                            <div class="icon"><i class="icon-clock"></i></div>
+                            <div class="date"> <span class="pull-left">{{$markets->name}}</span><span class="text-info">{{$markets->email}}</span></div>
+                          </div>
+                          <div class="col-8 content">
+                            <h5 style="color: yellow;">You have a Buyer</h5>
+                            <p>phone: &nbsp{{$markets->phone}}</p>
+                            <p>Amount in Dollar: &nbsp{{$markets->amount_dollar}}</p>
+                          </div>
+                        </div>
+                      </div>
+                      @endforeach
                     </div>
                     <div class="card-body no-padding">
                     @foreach($cancel as $cancels)

@@ -6,7 +6,7 @@
         <td></td>
         <td bgcolor="#FFFFFF ">
           <div style="padding: 15px; max-width: 600px;margin: 0 auto;display: block; border-radius: 0px;padding: 0px; border: 1px solid lightseagreen;">
-            <table style="width: 100%;background: #8DC53F ;">
+            <table style="width: 100%;background: #5fcf80 ;">
               <tr>
                 <td></td>
                 <td>
@@ -41,7 +41,7 @@
 			  <tr>
 			  <td>
 				 <div align="center" style="font-size:12px; margin-top:20px; padding:5px; width:100%; background:#eee;">
-                    © 2017 <a href="" target="_blank" style="color:#333; text-decoration: none;">myescrow</a>
+                    © 2017 <a href="" target="_blank" style="color:#333; text-decoration: none;">PayMiso</a>
                   </div>
                 </td>
 			  </tr>

@@ -48,7 +48,7 @@
                    <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
                      	<div class="project-title d-flex align-items-center"> 
 	                      <div class="text">
-	                        <h3 class="h4"><span>WALLET-ID:<strong> 68ytgo7iuyho-9ugib97iuhn-9ijno</strong></span></h3>
+	                        <h3 class="h4"><span>WALLET-ID:<strong></strong></span></h3>
 	                      </div>
                    		</div> 
                 	</div> 

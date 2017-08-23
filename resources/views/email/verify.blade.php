@@ -47,19 +47,18 @@ html { -webkit-text-size-adjust:none; -ms-text-size-adjust: none;}
   width: 680px;
 }
 
-.btnc{
-      margin: 4px;
-          
-      width: 111px;
-      height: 30px;
-      font-size: 20px;
-         }
-        
-       .btn-fresh {
-          color: #fff;
-          background-color: #800080;
-          
-          }
+.btn {
+            border-radius: 0;
+            border: 0;
+            margin: 4px;
+          width: 80px;
+          height: 50px;
+          font-size: 20px;
+        }
+      .btn-info {
+                  background-color: #5fcf80;
+                  color: #fff;
+                } 
 </style>
 
 <!--
@@ -125,7 +124,7 @@ Licensed under MIT
       </td></tr>
       <tr><td align="center">
         <div style="line-height: 24px;">
-          <button type="button" class="btnc btn-fresh btn-default block-center">Resend</button>
+          <button type="button" class="btn btn-info btn-default block-center">Resend</button>
           
 
         </div>
@@ -145,7 +144,7 @@ Licensed under MIT
       <tr><td align="center" style="padding:20px;flaot:left;width:100%; text-align:center;">
         <font face="Arial, Helvetica, sans-serif" size="3" color="#96a5b5" style="font-size: 13px;">
         <span style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #96a5b5;">
-          2017 © Escrow. ALL Rights Reserved.
+          2017 © PayMiso. ALL Rights Reserved.
         </span></font>        
       </td></tr>      
     </table>

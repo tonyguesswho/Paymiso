@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use LaraBlockIo;
 use Auth;
-use MyEscrow\CreateAddress;
+//use MyEscrow\CreateAddress;
+use MyEscrow\SellCoin;
 
 
 class BlockIoTest extends Model
@@ -16,10 +17,16 @@ class BlockIoTest extends Model
     	return LaraBlockIo::createAddress($random);
     }
 
-    public function SendCoin(){
-    	$amounts =  0.002;
-    	$fromAddresses = '2MtqRw3pMPj1SkScvP6T6LczUdjbVurAUcq';
-    	$toAddresses = '2N2xzadjkKrKDqvYY96Y94ctTC1B72jpiwi';
+    public function SendCoin($id){
+        $id;
+        $sendcoin = SellCoin::where('id', $id)
+                    ->join('create_addresses', 'create_addresses.user_id', '=', 'sell_coins.user_id')
+                    ->get();
+
+    	$amounts =  $sendcoin->amount_btc;
+    	$fromAddresses = $sendcoin->btc_wallet_id;
+    	$toAddresses = $sendcoin->wallet_id;
+
 
     	return LaraBlockIo::withdrawFromAddressesToAddresses($amounts, $fromAddresses, $toAddresses);
     }

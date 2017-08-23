@@ -28,7 +28,7 @@ Route::post('/canceled/email/{id}/{token}','CancelledMailController@sendCancledE
 Route::get('confirm/{id}/{token}', 'PaymentController@confirmMail')->name('payEmailDone');
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
-
+Route::get('/transferPage/{id}', 'PaymentController@index');
 
 Route::get('/userDashboard','UserDashboardController@index');
 Route::get('/sell', 'UserDashboardController@sellCoin');
@@ -41,6 +41,11 @@ Route::get('/confirmMail', 'UserDashboardController@transactionMail');
 Route::post('/update', 'UserDashboardController@updateConfirm');
 Route::post('/sell','UserDashboardController@sellCoinCreate');
 Route::post('/createBankDetails', 'UserDashboardController@bankDetailsCreate');
+
+Route::get('/marketPlace', 'MarketPlaceController@index');
+Route::post('/joinMarket', 'MarketPlaceController@join');
+Route::post('/contactSeller/{id}', 'MarketPlaceController@create');
+
 
 
 Route::get('/sellhome','TransactionController@sell');

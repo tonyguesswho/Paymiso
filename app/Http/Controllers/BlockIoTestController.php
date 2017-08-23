@@ -16,9 +16,12 @@ class BlockIoTestController extends Controller
 	// }
 
     public function dump(){
-    	$balance = new BlockIoTest();
-    	$bal   = $balance->SendCoin();
-    	dd($bal);
+    
+    	//$balance = new BlockIoTest();
+    	//$bal   = $balance->SendCoin();
+    	//dd($bal);
+        return view('email.marketplace');
+    	
     }
     
     }

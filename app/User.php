@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname','lastname', 'email', 'password','token'
+        'firstname','lastname', 'email', 'phone', 'password','token'
     ];
 
     /**
@@ -39,5 +39,13 @@ class User extends Authenticatable
 
     public function CreateAddress(){
         return $this->hasOne('MyEscrow\CreateAddress');
+    }
+
+    public function MarketPlace(){
+        return $this->hasMany('MyEscrow\MarketPlace');
+    }
+
+    public function Rate(){
+        return $this->hasMany('MyEscrow\Rate');
     }
 }

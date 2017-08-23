@@ -2,7 +2,7 @@
   <html>
   <head>
     <title>Title</title>
-  <style type="text/css">
+    <style type="text/css">
       .wrapper{width:60%; margin:5% auto;  box-shadow:0 0 2px #aaa; font-family:Hind;}
       .logo_header{width:100%; height:70px;background:#8DC53F;}
       .email_body{width:100%; padding:0 10px;}
@@ -49,53 +49,52 @@
                     <a href=""><img src=""/></a>
                 </div>
                 <div class="email_banner">
+                  <p style="padding-left: 10px;">You have a purchase request</p>
                     
                 </div>
                 <div class="email_body">
-                    <h1 class="text-center">Bitcoin Transaction Details</h1>
+                    <h1 class="text-center">Transaction Details</h1>
                     <p>
-                        Kindly go through the details below before making payment
+                        You may wish to contact the buyer before proccessing the transaction
                     </p>
                     
                     <div class="receipt_list">
                         <div class="left_list">
                           
-                            <span>Seller's Name:</span>
-                            <span>Buyer's Id:</span>
-                            <span>Amount BTC:</span>
+                            <span>Buyer's Name:</span>
+                            <span>wallet Id:</span>
+                            <span>Phone</span>
+                            <span>Email</span>
                             <span>Amount USD:</span>
                             <span>Rate:</span>
-                            <span>Amount NGN:</span>
-                            <span>Escrow fee (0.75% for each participant):</span>
+                            <span>Comments</span>
+                            
+                            
                             
                         </div>
                           <div class="right_list">
+                             <span>Buyer's Name:</span>
+                            <span>6666666666666666666666666666666666666666666666666666666:</span>
+                            <span>Buyer's Phone</span>
+                            <span>Buyer's Email</span>
+                            <span>Amount USD:</span>
+                            <span>Rate:</span>
+                            <span>Comments</span>
                             
-                                 <span>{{$sellcoin->User->firstname}}&nbsp{{$sellcoin->User->lastname}}</span>
-                                 <span>{{$sellcoin->wallet_id}}</span>
-                                 <span>{{$sellcoin->amount_btc}}</span>
-                                 <span>{{number_format($sellcoin->amount_dollar,2)}}</span>
-                                 <span>{{$sellcoin->rate}}</span>
-                                 <span>{{number_format($sellcoin->amount_dollar*$sellcoin->rate,2)}}</span>
-                                 <span>{{number_format(($sellcoin->amount_dollar*$sellcoin->rate)*0.0075,2)}}</span>
+                                
                         </div>
                         <span class="list_divider"></span>
-                         <div class="left_list">
-                             <b>Total</b>
-                              </div>
-                          <div class="right_list">
-                               <span><b>{{number_format($sellcoin->amount_dollar*$sellcoin->rate,2)+number_format(($sellcoin->amount_dollar*$sellcoin->rate)*0.0075,2)}}</b></span>
-                          </div>
+                         
                     </div>
                     <div class="row">
-                     <div class="invoice_trans col-lg-6">
+                     <div class="invoice_trans col-lg-6 col-md-6">
                         <div class="invoice_left">
-                           <a href="{{route('payEmailDone',['id' => $sellcoin->Transaction->sell_coin_id,'token' => $sellcoin->Transaction->transaction_token])}}"><button type="button" class="btn btn-fresh text-uppercase">Confirm</button></a>
+                           <a href=""><button type="button" class="btn btn-fresh text-uppercase">Process Transaction</button></a>
                         </div>
                     </div>
-                     <div class="invoice_trans col-lg-6">
+                     <div class="invoice_trans col-lg-6 col-md-6">
                         <div class="invoice_right">
-                           <a href="{{route('cancelEmailDone',['id'=>$sellcoin->Transaction->sell_coin_id,'token'=>$sellcoin->Transaction->transaction_token])}}"><button type="button" class="btn btn-sunny text-uppercase">Cancel</button></a>
+                           <a href=""><button type="button" class="btn btn-sunny text-uppercase">Cancel</button></a>
                         </div>
                     </div> 
                   </div>

@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|min:11',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -72,6 +73,7 @@ class RegisterController extends Controller
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
             'token'    => Str::random(40),
         ]);
@@ -109,7 +111,7 @@ class RegisterController extends Controller
          User::Where(['email' => $email, 'token' =>$token])->update(['confirmed'=>1, 'token' =>Null]);
          return redirect('/userDashboard');
         }else{
-            return 'c you';
+            return 'This email has already been verified, proceed to login';
         }
 
     }

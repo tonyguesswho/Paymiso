@@ -12,6 +12,7 @@ use MyEscrow\CreateAddress;
 use MyEscrow\BlockIoTest;
 use MyEscrow\ExchangeRate;
 use MyEscrow\CancledMail;
+use MyEscrow\MarketPlace;
 use MyEscrow\Mail\transactionEmail;
 use Mail;
 use Send;
@@ -43,9 +44,9 @@ class UserDashboardController extends Controller
                     ->join('users', 'users.id', '=', 'sell_coins.user_id')
                     ->join('cancled_mails', 'cancled_mails.sellcoin_id', '=', 'sell_coins.id') 
                     ->get();
-
+        $market = MarketPlace::where('user_id',Auth::User()->id)->get();
         
-    	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel'));
+    	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market'));
     }
 
     public function sellcoin(){
@@ -98,7 +99,7 @@ class UserDashboardController extends Controller
 
         $amount_naira = $amount * $amount_rate;
 
-        $escrow_fee = $amount_naira * 0.75/100;
+        $escrow_fee = $amount_naira * (0.75/100);
 
         $btc_balance   = new BlockIoTest();
         $balance  = $btc_balance->getbalance($btc_wallet_id);

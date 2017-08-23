@@ -18,4 +18,9 @@ class Transaction extends Model
       	
     	return $this->hasMany('MyEscrow\CanceledMail');
     }
+
+    public function Authorization(){
+        
+        return $this->hasOne('MyEscrow\Authorization');
+    }
 }
