@@ -19,16 +19,26 @@ class BlockIoTest extends Model
 
     public function SendCoin($id){
         $id;
-        $sendcoin = SellCoin::where('id', $id)
-                    ->join('create_addresses', 'create_addresses.user_id', '=', 'sell_coins.user_id')
-                    ->get();
+        $sendcoin = SellCoin::find($id);
+        $SellCoin_user_id = $sendcoin->user_id;
 
-    	$amounts =  $sendcoin->amount_btc;
-    	$fromAddresses = $sendcoin->btc_wallet_id;
+        $createAddress = CreateAddress::where('user_id', $SellCoin_user_id)->first();
+
+    	$amounts = $sendcoin->amount_btc;
+        $fromAddresses = $createAddress->btc_wallet_id;
     	$toAddresses = $sendcoin->wallet_id;
 
-
     	return LaraBlockIo::withdrawFromAddressesToAddresses($amounts, $fromAddresses, $toAddresses);
+
+        return 'your coin will be sent in 20min';
+    }
+
+    public function Test(){
+        $amounts = 0.005;
+        $fromAddresses = '2MwVMPoyaTZUrgj49xB3BcL8aA1hYrSzp64';
+        $toAddresses = '2NGSUqgRbrb8yxHW2FctyJdWhPNVtWoSbNs';
+        return LaraBlockIo::withdrawFromAddressesToAddresses($amounts, $fromAddresses, $toAddresses);
+
     }
 
     public function AddressInfo(){

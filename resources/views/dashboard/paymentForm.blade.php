@@ -88,7 +88,7 @@
                           </div>
                     </div>
 
-        <form method="post" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+        <form method="post" action="{{ route('pay', ['id'=>$sellcoin->id]) }}" accept-charset="UTF-8" class="form-horizontal" role="form">
                     
             <input type="hidden" name="email" value="collinsuchinaka@gmail.com"> {{-- required --}}
             <input type="hidden" name="orderID" value="{{$sellcoin->id}}">

@@ -4,6 +4,8 @@ namespace MyEscrow\Http\Controllers;
 
 use Illuminate\Http\Request;
 use MyEscrow\BlockIoTest;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 
 
 //use MyEscrow\User;
@@ -17,11 +19,24 @@ class BlockIoTestController extends Controller
 
     public function dump(){
     
-    	//$balance = new BlockIoTest();
-    	//$bal   = $balance->SendCoin();
-    	//dd($bal);
-        return view('email.marketplace');
+    	$balance = new BlockIoTest();
+    	$bal   = $balance->Test();
+    	dd($bal);
+        
     	
+    }
+
+    public function bitco(){
+
+       $client = new Client();
+        $res = $client->get(
+    'https://bitcoinfees.21.co/api/v1/fees/recommended'
+        );
+
+        $contents = $res->getBody()->getContents();
+        
+        $json = json_decode($contents);
+        $json->hourFee;
     }
     
     }

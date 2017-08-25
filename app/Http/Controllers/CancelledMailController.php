@@ -12,6 +12,15 @@ class CancelledMailController extends Controller
 
     	$id;
     	$token;
+        $transaction = Transaction::where(['sell_coin_id' =>$id, 'transaction_token'=>$token])->first();
+        $transaction_status = $transaction->transaction_status;
+        if ($transaction_status === '1') {
+             Transaction::where(['sell_coin_id' =>$id, 'transaction_token'=>$token])->update(['transaction_token' => Null ]);
+             
+        }else{
+            return 'You cannot cancel a completed transaction';
+        }
+
     	return view('dashboard.canceledMail', compact('id','token'));
     }
 
@@ -25,12 +34,8 @@ class CancelledMailController extends Controller
     		'reason'      =>request('reason'),
     		'sellcoin_id' => $id,
     		]);
-    	$transaction = Transaction::where(['sell_coin_id' =>$id, 'transaction_token'=>$token])->first();
-    	if ($transaction) {
-    		 Transaction::where(['sell_coin_id' =>$id, 'transaction_token'=>$token])->update(['transaction_token' => Null ]);
-    		 
-    	}
-
+    	
+        return redirect('/home');
 
     }
 }

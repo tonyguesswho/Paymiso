@@ -14,4 +14,8 @@ class CreateAddress extends Model
     public function User(){
     	return $this->belongsTo('MyEscrow\User');
     }
+
+    public function SellCoin(){
+    	return $this->hasOne('MyEscrow\SellCoin');
+    }
 }

@@ -12,7 +12,7 @@
 	</header>
   @if (session('status'))
   <center>
-      <div class="alert alert-success">
+      <div class="alert alert-success title">
           <b>{{ session('status') }}</b>
       </div>
     </center>

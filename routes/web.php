@@ -17,7 +17,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
 
-Route::get('/dump','BlockIoTestController@dump');
+Route::get('/dump','BlockIoTestController@bitco');
 Route::get('/create_wallet','BlockIoTestController@createWallet');
 
 Route::get('/verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
@@ -26,7 +26,7 @@ Route::get('/cancel/{id}/{token}', 'CancelledMailController@cancelEmailDone')->n
 Route::post('/canceled/email/{id}/{token}','CancelledMailController@sendCancledEmail');
 
 Route::get('confirm/{id}/{token}', 'PaymentController@confirmMail')->name('payEmailDone');
-Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+Route::post('/pay/{id}', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 Route::get('/transferPage/{id}', 'PaymentController@index');
 

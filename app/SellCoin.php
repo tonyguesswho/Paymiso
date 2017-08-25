@@ -21,4 +21,8 @@ class SellCoin extends Model
     public function CanceledMail(){
     	return $this->hasMany('MyEscrow\CanceledMail');
     }
+
+    public function CreateAddress(){
+        return $this->belongsTo('MyEscrow\CreateAddress');
+    }
 }

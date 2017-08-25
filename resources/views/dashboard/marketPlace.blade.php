@@ -64,24 +64,26 @@
                             </div>
                         </div>
                         </div>
+                        
 
-                        <div class="col-md-12">
+
+
+                             
+                            <div class="col-md-12 col-sm-12 col-xs-12">
                            <div class="row">
-                           
-                            <div class="col-md-12" style="padding-top: 20px;">
-                            <center>
-                                 <a class="btn btn-primary" data-toggle="modal" href='#modal-id-{{$users->user_id}}'>Request</a>
-                                    <div class="modal fade" id="#modal-id-{{$users->user_id}}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                    <h4 class="modal-title">Modal title</h4>
-                                                </div>
+                          
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <a class="btn btn-primary" data-toggle="modal" href='#modal-id-{{$users->user_id}}'>Request</a>
+                                <div class="modal fade" id="modal-id-{{$users->user_id}}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title">Modal title</h4>
+                                            </div>
+                                            <div class="modal-body">
                                                 <form method="POST" action="/contactSeller/{{$users->user_id}}">
                                                 {{csrf_field()}}
-                                                <div class="modal-body">
-
                                                     <legend>Buyer's Details</legend>
                                                     
                                                         <div class="form-group">
@@ -98,36 +100,51 @@
                                                         </div>
                                                         <div class="form-group">
                                                             
-                                                            <input type="tel" class="form-control" id="amount_dollar" placeholder="amount_dollar" name="amount_dollar">
+                                                            <input type="tel" class="form-control" id="amount_dollar" placeholder="Amount in dollar" name="amount_dollar">
                                                         </div>
                                                         <div class="form-group">
                                                             
-                                                            <input type="textarea" class="form-control" id="comment" placeholder="Comments" name="comment">
+                                                            <input type="textarea" class="form-control" id="comment" placeholder="Comments" name="comments">
                                                         </div>
-                                                    </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                                </div>
+                                                        <div class="modal-footer">
+                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
                                                 </form>
+
+                                                
                                             </div>
+                                            
+
                                         </div>
                                     </div>
-                              </center>  
+                                </div>
+                                
+
                             </div>
                             
-                        </div>
+                            
+                            </div>
+                            </div>
+                            
+
+                        
+
+                                
+                            
+                            
                         </div>
                     </div>
-                    
-                    
-                    </div>
+                
                 </div>
+                    
+                    
+                    
+                
             @endforeach
         </div>
-        <div class="text-center">
-        {{$user->links()}}
-        </div>
+        
 </div>
+
     
 @endsection

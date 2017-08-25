@@ -47,7 +47,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="js/js/charts-home.js"></script>
     <script src="js/js/front.js"></script>
-    <script src="js/jquery.min.js"></script>
+    <script src="js/js/jquery.min.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
     <!---->
     <script>

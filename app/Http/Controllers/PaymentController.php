@@ -16,7 +16,6 @@ class PaymentController extends Controller
         $sendcoin = new BlockIoTest();
         $send     = $sendcoin->SendCoin($transaction_id);
 
-        return 'your coin will be transfered to you within 1hr';
     }
 
     public function confirmMail($id,$token){
@@ -25,8 +24,18 @@ class PaymentController extends Controller
     	return view('dashboard.paymentForm', compact('sellcoin'));
     }
 
-    public function redirectToGateway(){
+    public function redirectToGateway($id){
+        $id;
+        $sellcoin = Transaction::where('sell_coin_id', $id)->first();
+        
+        $transaction_token = $sellcoin->transaction_token;
+
+        if($transaction_token !== Null){
+
     	return Paystack::getAuthorizationUrl()->redirectNow();
+        }else{
+            return 'You have canceled the transaction.';
+        }
     }
 
     public function handleGatewayCallback()
