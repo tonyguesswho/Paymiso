@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuthorizationsTable extends Migration
+class CreateWithdrawalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateAuthorizationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('authorizations', function (Blueprint $table) {
+        Schema::create('withdrawals', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('transaction_id')->nullable();
-            $table->string('authorization_code')->nullable();
-            $table->bigInteger('fee')->nullable();
-            $table->bigInteger('seller_id')->nullable();
+            $table->bigInteger('user_id')->nullable();
+            $table->string('bank_name')->nullable();
+            $table->string('account_name')->nullable();
+            $table->bigInteger('account_number')->nullable();
+            $table->bigInteger('amount')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateAuthorizationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('authorizations');
+        Schema::dropIfExists('withdrawals');
     }
 }

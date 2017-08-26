@@ -41,6 +41,7 @@ Route::get('/confirmMail', 'UserDashboardController@transactionMail');
 Route::post('/update', 'UserDashboardController@updateConfirm');
 Route::post('/sell','UserDashboardController@sellCoinCreate');
 Route::post('/createBankDetails', 'UserDashboardController@bankDetailsCreate');
+Route::post('/createWithdrawal', 'UserDashboardController@createWithdrawal');
 
 Route::get('/marketPlace', 'MarketPlaceController@index');
 Route::post('/joinMarket', 'MarketPlaceController@join');

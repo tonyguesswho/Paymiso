@@ -16,6 +16,7 @@ class PaymentController extends Controller
         $sendcoin = new BlockIoTest();
         $send     = $sendcoin->SendCoin($transaction_id);
 
+        
     }
 
     public function confirmMail($id,$token){
@@ -44,7 +45,7 @@ class PaymentController extends Controller
          $status = $paymentDetails['status'];
         if ($status === true) {
             $amount = $paymentDetails['data']['amount'];
-            $fee = ($amount - ($amount*0.0075))/100;
+            $fee = ($amount - ($amount*0.015))/100;
             $authorization_code = $paymentDetails['data']['authorization']['authorization_code'];
             $referrer = $paymentDetails['data']['metadata']['referrer'];
             $url = explode("/", $referrer);
@@ -53,12 +54,18 @@ class PaymentController extends Controller
 
     $transaction = Transaction::where(['sell_coin_id' =>$url_id, 'transaction_token'=>$url_token])->first();
     $transaction_id = $transaction->id;
+
+    $sell_coin = SellCoin::find($url_id);
+    $seller_id = $sell_coin->user_id;
+    // get seller_id by getting the ids of transaction, sellcoin,user.
+
             if ($transaction) {
              Transaction::where(['sell_coin_id' =>$url_id, 'transaction_token'=>$url_token])->update(['transaction_status' => 1 ]);
             $authorization = Authorization::create([
                     'fee' => $fee,
                     'authorization_code' => $authorization_code,
                     'transaction_id' => $transaction->id,
+                    'seller_id'      => $seller_id;
                 ]);
 
              $this->index($transaction_id);

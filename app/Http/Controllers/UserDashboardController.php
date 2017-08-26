@@ -13,6 +13,7 @@ use MyEscrow\BlockIoTest;
 use MyEscrow\ExchangeRate;
 use MyEscrow\CancledMail;
 use MyEscrow\MarketPlace;
+use MyEscrow\withdrawal;
 use MyEscrow\Mail\transactionEmail;
 use Mail;
 use Send;
@@ -45,8 +46,14 @@ class UserDashboardController extends Controller
                     ->join('cancled_mails', 'cancled_mails.sellcoin_id', '=', 'sell_coins.id') 
                     ->get();
         $market = MarketPlace::where('user_id',Auth::User()->id)->get();
-        
-    	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market'));
+
+        $amount_balance = DB::table('authorizations')
+                            ->where('authorizations.seller_id','=', Auth::User()->id)
+                            ->select(DB::raw('sum(fee) as total'))
+                            ->get();
+
+        $amount_balance_total = $amount_balance['0']->total;
+    	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market', 'amount_balance_total'));
     }
 
     public function sellcoin(){
@@ -55,6 +62,7 @@ class UserDashboardController extends Controller
     }
 
     public function sellCoinCreate(){
+        
         $this->validate(request(),[
             'wallet_id'     => 'required',
             'buyer_email'   => 'required',
@@ -154,8 +162,9 @@ class UserDashboardController extends Controller
 
 
     public function bankDetails(){
+        $withdraw = BankDetail::where('user_id', Auth::User()->id)->first();
 
-    	return view('dashboard.bank_details');
+    	return view('dashboard.bank_details', compact('withdraw'));
     }
 
     public function bankDetailsCreate(){
@@ -164,18 +173,45 @@ class UserDashboardController extends Controller
             'account_name'  => 'required',
             'account_number' => 'required' 
             ]);
-        BankDetail::create([
+       $bankDetail = BankDetail::where('user_id', Auth::User()->id)->update([
             'bank_name'     => request('bank_name'),
             'account_name'  => request('account_name'),
-            'acount_number' => request('acount_number'),
-            'user_id'       => Auth::User()->id,
+            'account_number' => request('account_number'),
             ]);
-        return back()->with('status', 'Bank Details Saved');
+        
     }
 
     public function withdrawCash(){
 
-    	return view('dashboard.withdraw');
+       $withdraw = BankDetail::where('user_id', Auth::User()->id)->first();
+       
+    	return view('dashboard.withdraw', compact('withdraw'));
+    }
+
+    public function createWithdrawal(){
+        $this->validate(request(),[
+            'bank_name'     => 'required',
+            'account_name'  => 'required',
+            'account_number' => 'required', 
+            'amount'        => 'required'
+            ]);
+
+        $amount_balance = DB::table('authorizations')
+                            ->where('authorizations.seller_id','=', Auth::User()->id)
+                            ->select(DB::raw('sum(fee) as total'))
+                            ->get();
+        $amount_balance_total = $amount_balance['0']->total;
+
+        $withdrawal =  DB::table('withdrawals')
+                            ->where('withdrawals.user_id', '=', Auth::User()->id)
+                            ->select(DB::raw('sum(account) as total'))
+                            ->get();
+        $withdrawal_total  = $withdrawal['0']->total;
+
+        $amount = 'amount'
+        
+        $total = $amount_balance_total - $withdrawal_total;
+        dd($total);
     }
 
     public function transactionMail(){

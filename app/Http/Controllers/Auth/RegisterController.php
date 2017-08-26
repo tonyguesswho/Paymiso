@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Str;
 use Mail;
+use MyEscrow\BankDetail;
 use MyEscrow\BlockIoTest;
 use MyEscrow\CreateAddress;
 use MyEscrow\Mail\verifyEmail;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -86,6 +88,8 @@ class RegisterController extends Controller
             'user_id'   => $user->id,
             'btc_wallet_id' => $wallet_id,   
             ]);
+         
+         BankDetail::Create(['user_id'=>$user->id]);
 
         $usermail = User::findorfail($user->id);
         $this->sendEmail($usermail);

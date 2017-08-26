@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function Rate(){
         return $this->hasMany('MyEscrow\Rate');
     }
+
+    public function Withdrawal(){
+        return $this->hasMany('MyEscrow\Withdrawal');
+    }
 }

@@ -32,22 +32,23 @@
                     </div>
                     <div class="card-body">
                       <p>Do ensure to fill in your bank details complete</p>
-                      <form>
+                      <form method="POST" action="/createWithdrawal">
+                      {{csrf_field()}}
                         <div class="form-group">
                           <label class="form-control-label">Bank Name</label>
-                          <input type="text" placeholder="Bank Name" class="form-control">
+                          <input type="text" name="bank_name" value="{{old('bank_name',$withdraw->bank_name)}}" class="form-control">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Account Name</label>
-                          <input type="text" placeholder="Acc Name" class="form-control">
+                          <input type="text" name="account_name" value="{{old('account_name',$withdraw->account_name)}}"  class="form-control">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Account Number</label>
-                          <input type="number" placeholder="Acc num" class="form-control">
+                          <input type="number" name="account_number" value="{{old('account_number',$withdraw->account_number)}}" class="form-control">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Amount</label>
-                          <input type="number" placeholder="Amount" class="form-control">
+                          <input type="number" name="amount" class="form-control">
                         </div>
                         <div class="form-group">       
                           <input type="submit" value="Submit" class="btn btn-primary">

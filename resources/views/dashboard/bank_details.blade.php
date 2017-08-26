@@ -44,15 +44,15 @@
                       {{csrf_field()}}
                         <div class="form-group">
                           <label class="form-control-label">Bank Name</label>
-                          <input type="text" name="bank_name" placeholder="Bank Name" class="form-control" required="">
+                          <input type="text" name="bank_name" value="{{old('bank_name',$withdraw->bank_name)}}" class="form-control" required="">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Account Name</label>
-                          <input type="text" name="account_name" placeholder="Acc Name" class="form-control" required="">
+                          <input type="text" name="account_name" value="{{old('account_name',$withdraw->account_name)}}"  class="form-control" required="">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Account Number</label>
-                          <input type="number" name="account_number" placeholder="Acc num" class="form-control" required="">
+                          <input type="number" name="account_number" value="{{old('account_number',$withdraw->account_number)}}" class="form-control" required="">
                         </div>
                         <div class="form-group">
                         <button type="submit" class="btn btn-primary">submit</button>       
