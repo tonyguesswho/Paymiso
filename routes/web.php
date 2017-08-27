@@ -17,7 +17,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
 
-Route::get('/dump','BlockIoTestController@bitco');
+Route::get('/dump','BlockIoTestController@dump');
 Route::get('/create_wallet','BlockIoTestController@createWallet');
 
 Route::get('/verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
@@ -36,7 +36,7 @@ Route::get('/history', 'UserDashboardController@history');
 Route::get('/bankDetails', 'UserDashboardController@bankDetails');
 Route::get('/withdraw', 'UserDashboardController@withdrawCash');
 Route::get('/edit', 'UserDashboardController@editConfirm')->name('edit');
-Route::get('/confirmTransaction','UserDashboardController@confirm');
+//Route::get('/confirmTransaction','UserDashboardController@confirm');
 Route::get('/confirmMail', 'UserDashboardController@transactionMail');
 Route::post('/update', 'UserDashboardController@updateConfirm');
 Route::post('/sell','UserDashboardController@sellCoinCreate');

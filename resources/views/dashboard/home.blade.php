@@ -38,12 +38,7 @@
                   <div class="icon bg-red"><i class="icon-padnote"></i></div>
                   <div class="title"><span>Sales Balance</span>
                   </div>
-                  <div class="number"><span>NGN<b>@if($amount_balance_total === Null)
-                                                       0.00                                                  
-                                                  @else
-                                                          {{$amount_balance_total}}
-                                                        
-                                                  @endif
+                  <div class="number"><span>NGN:<b>&nbsp{{$total_balance}}
                   </b></span></div>
                 </div>
               </div>

@@ -19,9 +19,10 @@ class BlockIoTestController extends Controller
 
     public function dump(){
     
-    	$balance = new BlockIoTest();
-    	$bal   = $balance->Test();
-    	dd($bal);
+    	// $balance = new BlockIoTest();
+    	// $bal   = $balance->Test();
+    	// dd($bal);
+        return view('dashboard.marketPlace');
         
     	
     }

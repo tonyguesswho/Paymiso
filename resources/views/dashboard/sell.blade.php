@@ -38,22 +38,22 @@
                         {{csrf_field()}}
                         <div class="form-group">
                           <label class="form-control-label">Buyers Wallet Id</label>
-                          <input type="text" name="wallet_id" placeholder="wallet id" class="form-control" required="">
+                          <input type="text" name="wallet_id"  class="form-control" required="">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Buyers Email</label>
-                          <input type="email" name="buyer_email" placeholder="email" class="form-control" required="">
+                          <input type="email" name="buyer_email"  class="form-control" required="">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Buyers Phone</label>
-                          <input type="number" name="buyer_phone" placeholder="Phone" class="form-control"
+                          <input type="number" name="buyer_phone"  class="form-control"
                           required="">
                         </div>
                         <div class="form-group">
                          <label class="form-control-label">Amount of BTC in Dollar</label>
                             <div class="row">
                               <div class="col-md-6">
-                                <input type="number" name="amount_dollar" placeholder="amount in dollar" class="form-control" required="">
+                                <input type="number" name="amount_dollar"  class="form-control" required="">
                               </div>
                               <div class="col-md-6">
                                 <input type="number" name="amount_btc" placeholder="amount of btc" class="form-control" required="">
@@ -62,7 +62,7 @@
                         </div> 
                          <div class="form-group">       
                           <label class="form-control-label">Rate</label>
-                          <input type="number" name="rate" placeholder="Rate of sell" class="form-control">
+                          <input type="number" name="rate"  class="form-control">
                         </div>   
                         
                           <button type="submit" class="btn btn-primary">Submit</button>       

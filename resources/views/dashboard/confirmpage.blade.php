@@ -52,7 +52,7 @@
                         </div>
                           <div class="right_list">
                             
-                                 <span>{{$user->User->firstname}}&nbsp&nbsp{{$user->User->firstname}}</span>
+                                 <span>{{$user->User->firstname}}&nbsp&nbsp{{$user->User->lastname}}</span>
                                  <span>{{$user->wallet_id}}</span>
                                  <span>{{$user->amount_btc}}</span>
                                  <span>{{number_format($user->amount_dollar,2)}}</span>

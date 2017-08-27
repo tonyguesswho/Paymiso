@@ -15,6 +15,8 @@ use MyEscrow\CancledMail;
 use MyEscrow\MarketPlace;
 use MyEscrow\withdrawal;
 use MyEscrow\Mail\transactionEmail;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 use Mail;
 use Send;
 use Auth;
@@ -51,9 +53,18 @@ class UserDashboardController extends Controller
                             ->where('authorizations.seller_id','=', Auth::User()->id)
                             ->select(DB::raw('sum(fee) as total'))
                             ->get();
-
         $amount_balance_total = $amount_balance['0']->total;
-    	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market', 'amount_balance_total'));
+
+
+        $withdrawal =  DB::table('withdrawals')
+                            ->where('withdrawals.user_id', '=', Auth::User()->id)
+                            ->select(DB::raw('sum(amount) as total'))
+                            ->get();
+        $withdrawal_total  = $withdrawal['0']->total;
+
+        $total_balance = $amount_balance_total - $withdrawal_total;
+
+    	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market', 'total_balance'));
     }
 
     public function sellcoin(){
@@ -62,7 +73,7 @@ class UserDashboardController extends Controller
     }
 
     public function sellCoinCreate(){
-        
+
         $this->validate(request(),[
             'wallet_id'     => 'required',
             'buyer_email'   => 'required',
@@ -70,72 +81,78 @@ class UserDashboardController extends Controller
             'amount_dollar' => 'required',
             'amount_btc'    => 'required',
             'rate'          => 'required',
-
              ]);
 
-             $sellCoin =  SellCoin::create([
-            'user_id'       => Auth::User()->id,
-            'wallet_id'     => request('wallet_id'),
-            'buyer_email'   => request('buyer_email'),
-            'buyer_phone'   => request('buyer_phone'),
-            'amount_dollar' => request('amount_dollar'),
-            'amount_btc'    => request('amount_btc'),
-            'rate'          => request('rate')
-            
-            ]);
-        
-           
-          $sellCoins = $sellCoin->id;
+            $amount_btc     = request('amount_btc');
+            $btc_wallet_id  = request('wallet_id');
+            $amount         = request('amount_dollar');
+            $amount_rate    = request('rate');
+            $amount_naira   = $amount * $amount_rate;
+            $escrow_fee     = $amount_naira * (0.75/100);
 
-          $transaction= Transaction::create([    
-         'sell_coin_id' =>$sellCoins,
-         'transaction_token'=>Str::random(22), 
-             ]); 
+            $btc_balance        = new BlockIoTest();
+            $balance            = $btc_balance->getbalance($btc_wallet_id);
+            $total_balance_btc  = $balance->data->available_balance;
 
-         return redirect('/confirmTransaction') ;  
+            $client = new Client();
+            $res = $client->get(
+                'https://bitcoinfees.21.co/api/v1/fees/recommended'
+                );
+            $contents = $res->getBody()->getContents();
+            $json = json_decode($contents);
+            $jsonFee =  $json->fastestFee;
 
-    }
+            $pendingFee = DB::table('sell_coins')
+                        ->join('users', 'users.id','=','sell_coins.user_id')
+                        ->join('transactions','transactions.sell_coin_id','=','sell_coins.id' )
+                        ->where(['transaction_status' => 0 AND 'transaction_token' <> Null])
+                        ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
+                        ->get();
 
-    public function confirm(){
-        $user = SellCoin::where('user_id', Auth::User()->id)->latest()->first();
+        $pendingFee_total       = $pendingFee['0']->total;
+        $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;
+        $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
+        $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + ($jsonFee * 226 * 0.00000001));
 
-        $amount_btc=$user->amount_btc;
-        $btc_wallet_id=$user->wallet_id;
-
-        $amount = $user->amount_dollar;
-        $amount_rate = $user->rate;
-
-        $amount_naira = $amount * $amount_rate;
-
-        $escrow_fee = $amount_naira * (0.75/100);
-
-        $btc_balance   = new BlockIoTest();
-        $balance  = $btc_balance->getbalance($btc_wallet_id);
-        $total_balance = $balance->data->available_balance;
-
-        if ($total_balance < $amount_btc) {
+        if ($total_balance_btc > $total_amount_btc) {
 
             return bacK()->withErrors([
                 'insufficient fund'
                 ]);
         }else{
 
-            return view('dashboard.confirmpage',compact('user', 'amount_naira', 'escrow_fee'));
+            $sellCoin =  SellCoin::create([
+            'user_id'       => Auth::User()->id,
+            'wallet_id'     => request('wallet_id'),
+            'buyer_email'   => request('buyer_email'),
+            'buyer_phone'   => request('buyer_phone'),
+            'amount_dollar' => request('amount_dollar'),
+            'amount_btc'    => request('amount_btc'),
+            'rate'          => request('rate')         
+            ]);
+                      
+          $sellCoins = $sellCoin->id;
+          $transaction= Transaction::create([    
+         'sell_coin_id' =>$sellCoins,
+         'user_id'      => Auth::User()->id,
+         'transaction_token'=>Str::random(22), 
+             ]); 
 
+          $user = SellCoin::where('user_id', Auth::user()->id)->latest()->first();
+            return view('dashboard.confirmpage',compact('user', 'amount_naira', 'escrow_fee'));
         }
-        //dd($networkFee);
-        
-         }
+           
+    }
 
     public function editConfirm(){
-        $user = sellCoin::where('user_id',Auth::user()->id)->latest()->first();
+        $user = SellCoin::where('user_id',Auth::user()->id)->latest()->first();
         
         return view('dashboard.confirmEditPage',compact('user'));
     }
 
     public function updateConfirm(){
 
-        $sellcoin = sellCoin::where('user_id',Auth::user()->id)->latest()->first();
+        $sellcoin = SellCoin::where('user_id',Auth::user()->id)->latest()->first();
         $id = $sellcoin->id;
             $wallet_id     = input::get('wallet_id');
             $buyer_email   = input::get('buyer_email');
@@ -143,6 +160,44 @@ class UserDashboardController extends Controller
             $amount_dollar = input::get('amount_dollar');
             $amount_btc    = input::get('amount_btc');
             $rate          = input::get('rate');
+
+            $amount_btc     = request('amount_btc');
+            $btc_wallet_id  = request('wallet_id');
+            $amount         = request('amount_dollar');
+            $amount_rate    = request('rate');
+            $amount_naira   = $amount * $amount_rate;
+            $escrow_fee     = $amount_naira * (0.75/100);
+
+            $btc_balance        = new BlockIoTest();
+            $balance            = $btc_balance->getbalance($btc_wallet_id);
+            $total_balance_btc  = $balance->data->available_balance;
+
+            $client = new Client();
+            $res = $client->get(
+                'https://bitcoinfees.21.co/api/v1/fees/recommended'
+                );
+            $contents = $res->getBody()->getContents();
+            $json = json_decode($contents);
+            $jsonFee =  $json->fastestFee;
+
+            $pendingFee = DB::table('sell_coins')
+                        ->join('users', 'users.id','=','sell_coins.user_id')
+                        ->join('transactions','transactions.sell_coin_id','=','sell_coins.id' )
+                        ->where(['transaction_status' => 0 AND 'transaction_token' <> Null])
+                        ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
+                        ->get();
+
+        $pendingFee_total       = $pendingFee['0']->total;
+        $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;
+        $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
+        $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + ($jsonFee * 226 * 0.00000001));
+
+        if ($total_balance_btc > $total_amount_btc) {
+
+            return bacK()->withErrors([
+                'insufficient fund'
+                ]);
+        }else{
 
         $user = SellCoin::where('id',$id)->update([
             'wallet_id'         => $wallet_id,
@@ -152,7 +207,9 @@ class UserDashboardController extends Controller
             'amount_btc'        => $amount_btc,
             'rate'              => $rate
             ]);
-        return redirect('/confirmTransaction');
+          $user = SellCoin::where('user_id', Auth::user()->id)->latest()->first();
+            return view('dashboard.confirmpage',compact('user', 'amount_naira', 'escrow_fee'));
+        }
     }
 
     public function history(){
@@ -178,7 +235,8 @@ class UserDashboardController extends Controller
             'account_name'  => request('account_name'),
             'account_number' => request('account_number'),
             ]);
-        
+        return redirect('/userDashboard')->with('status', 'Bank details have been saved');
+
     }
 
     public function withdrawCash(){
@@ -204,14 +262,25 @@ class UserDashboardController extends Controller
 
         $withdrawal =  DB::table('withdrawals')
                             ->where('withdrawals.user_id', '=', Auth::User()->id)
-                            ->select(DB::raw('sum(account) as total'))
+                            ->select(DB::raw('sum(amount) as total'))
                             ->get();
         $withdrawal_total  = $withdrawal['0']->total;
-
-        $amount = 'amount'
-        
+        $amount = request('amount');
         $total = $amount_balance_total - $withdrawal_total;
-        dd($total);
+
+        if ($total < $amount) {
+            return back()->with('status', 'insufficient fund');
+        }else{
+                withdrawal::create([
+                    'bank_name'     => request('bank_name'),
+                    'account_name'  => request('account_name'),
+                    'account_number'=> request('account_number'),
+                    'amount'        => request('amount'),
+                    'user_id'       => Auth::User()->id
+                    ]);
+                return redirect('/userDashboard')->with('status', 'your money will sent soon');
+        }
+        
     }
 
     public function transactionMail(){

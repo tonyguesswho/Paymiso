@@ -15,6 +15,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
+            $table->bigInteger('user_id');
             $table->boolean('transaction_status')->default('0');
             $table->bigInteger('sell_coin_id');
             $table->String('transaction_token')->nullable();

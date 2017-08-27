@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     protected $fillable =
-    ['transaction_token','sell_coin_id'];
+    ['transaction_token','sell_coin_id','user_id'];
 
     public function SellCoin(){
     	
