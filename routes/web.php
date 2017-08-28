@@ -31,8 +31,8 @@ Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 Route::get('/transferPage/{id}', 'PaymentController@index');
 
 Route::get('/userDashboard','UserDashboardController@index');
-Route::get('/sell', 'UserDashboardController@sellCoin');
 Route::get('/history', 'UserDashboardController@history');
+Route::get('/sell', 'UserDashboardController@sellCoin');
 Route::get('/bankDetails', 'UserDashboardController@bankDetails');
 Route::get('/withdraw', 'UserDashboardController@withdrawCash');
 Route::get('/edit', 'UserDashboardController@editConfirm')->name('edit');
@@ -52,7 +52,7 @@ Route::post('/contactSeller/{id}', 'MarketPlaceController@create');
 Route::get('/sellhome','TransactionController@sell');
 Route::get('/sendhome','TransactionController@send');
 
-
+Route::post('/sellInstantly','SendInstantlyController@SendInstantly');
 
 
 

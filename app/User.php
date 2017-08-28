@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function Withdrawal(){
         return $this->hasMany('MyEscrow\Withdrawal');
     }
+
+    public function SendInstantly(){
+        return $this->hasMany('MyEscrow\SendInstantly');
+    }
 }

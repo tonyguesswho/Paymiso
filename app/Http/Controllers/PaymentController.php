@@ -16,7 +16,7 @@ class PaymentController extends Controller
         $sendcoin = new BlockIoTest();
         $send     = $sendcoin->SendCoin($transaction_id);
 
-        
+        return redirect('/home');
     }
 
     public function confirmMail($id,$token){
@@ -65,7 +65,7 @@ class PaymentController extends Controller
                     'fee' => $fee,
                     'authorization_code' => $authorization_code,
                     'transaction_id' => $transaction->id,
-                    'seller_id'      => $seller_id;
+                    'seller_id'      => $seller_id,
                 ]);
 
              $this->index($transaction_id);

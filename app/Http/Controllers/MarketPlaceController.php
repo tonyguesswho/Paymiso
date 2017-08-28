@@ -20,12 +20,16 @@ class MarketPlaceController extends Controller
     public function join($id){
         $id;
         $this->validate(request(),[
-            'rate'     => 'required',
+            'rate'          => 'required',
+            'availability'  => 'required',
+            'negotiable'    => 'required'
          ]);   
 
         $rate = Rate::create([
-            'user_id' => $id,
-            'rate'    => request('rate')
+            'user_id'       => $id,
+            'rate'          => request('rate'),
+            'availability'  => request('availability'),
+            'negotiable'    => request('negotiable')  
             ]);
         return redirect('/marketPlace');
     }

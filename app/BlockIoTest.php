@@ -33,12 +33,16 @@ class BlockIoTest extends Model
         return 'your coin will be sent in 20min';
     }
 
-    public function Test(){
-        $amounts = 0.005;
-        $fromAddresses = '2MwVMPoyaTZUrgj49xB3BcL8aA1hYrSzp64';
-        $toAddresses = '2NGSUqgRbrb8yxHW2FctyJdWhPNVtWoSbNs';
+    public function sendInstantly($id,$wallet_id){
+        $id;
+        $fromAddresses = $wallet_id;
+        $sendInstantly = SendInstantly::find($id);
+        $amounts = $sendInstantly->amount_btc;
+        $toAddresses = $sendInstantly->wallet_id;
+
         return LaraBlockIo::withdrawFromAddressesToAddresses($amounts, $fromAddresses, $toAddresses);
 
+        return 'Transaction complete';
     }
 
     public function AddressInfo(){

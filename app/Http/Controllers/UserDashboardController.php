@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use MyEscrow\SellCoin;
+use MyEscrow\User;
 use MyEscrow\Transaction;
 use MyEscrow\BankDetail;
 use MyEscrow\CreateAddress;
@@ -67,11 +68,6 @@ class UserDashboardController extends Controller
     	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market', 'total_balance'));
     }
 
-    public function sellcoin(){
-
-        return view('dashboard.sell');
-    }
-
     public function sellCoinCreate(){
 
         $this->validate(request(),[
@@ -84,11 +80,13 @@ class UserDashboardController extends Controller
              ]);
 
             $amount_btc     = request('amount_btc');
-            $btc_wallet_id  = request('wallet_id');
             $amount         = request('amount_dollar');
             $amount_rate    = request('rate');
             $amount_naira   = $amount * $amount_rate;
             $escrow_fee     = $amount_naira * (0.75/100);
+
+            $btc_wallet = CreateAddress::where('user_id', Auth()->User()->id)->first();
+            $btc_wallet_id = $btc_wallet->btc_wallet_id;
 
             $btc_balance        = new BlockIoTest();
             $balance            = $btc_balance->getbalance($btc_wallet_id);
@@ -162,11 +160,13 @@ class UserDashboardController extends Controller
             $rate          = input::get('rate');
 
             $amount_btc     = request('amount_btc');
-            $btc_wallet_id  = request('wallet_id');
             $amount         = request('amount_dollar');
             $amount_rate    = request('rate');
             $amount_naira   = $amount * $amount_rate;
             $escrow_fee     = $amount_naira * (0.75/100);
+
+            $btc_wallet = CreateAddress::where('user_id', Auth()->User()->id)->first();
+            $btc_wallet_id = $btc_wallet->btc_wallet_id;
 
             $btc_balance        = new BlockIoTest();
             $balance            = $btc_balance->getbalance($btc_wallet_id);
@@ -281,6 +281,11 @@ class UserDashboardController extends Controller
                 return redirect('/userDashboard')->with('status', 'your money will sent soon');
         }
         
+    }
+
+    public function sellCoin(){
+        
+        return view('dashboard.sell');
     }
 
     public function transactionMail(){
