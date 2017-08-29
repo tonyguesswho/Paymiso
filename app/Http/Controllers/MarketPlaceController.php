@@ -17,6 +17,10 @@ class MarketPlaceController extends Controller
     	return view('dashboard.marketplace', compact('user'));
     }
 
+    public function marketForm(){
+        return view('dashboard.marketForm');
+    }
+
     public function join($id){
         $id;
         $this->validate(request(),[
