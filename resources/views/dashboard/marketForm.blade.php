@@ -34,7 +34,7 @@
                     <div class="card-body">
                       <p>Do ensure to fill in the transaction details correctly</p>
                       
-                      <form method="POST" action="/sell">
+                      <form method="POST" action="/joinMarket/{{$id}}">
                         {{csrf_field()}}
                         <div class="form-group">
                           <label class="form-control-label">Rate</label>
@@ -42,10 +42,10 @@
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Amount of BTC in Dollar</label>
-                          <input type="email" name="availability"  class="form-control" required="">
+                          <input type="number" name="availability"  class="form-control" required="">
                         </div>
                         <div class="radio form-group">
-                        <label class="form-control-label">Amount of BTC in Dollar</label>
+                        <label class="form-control-label">Negotiable</label>
                           <label>
                             <input type="radio" name="negotiable" id="inputNegotiable" value="Yes" checked="checked">
                             Yes

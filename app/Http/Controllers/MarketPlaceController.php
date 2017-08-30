@@ -6,6 +6,7 @@ use MyEscrow\Mail\marketPlaceEmail;
 use MyEscrow\MarketPLace;
 use MyEscrow\Rate;
 use MyEscrow\User;
+use Auth;
 use Mail;
 use Send;
 
@@ -18,7 +19,8 @@ class MarketPlaceController extends Controller
     }
 
     public function marketForm(){
-        return view('dashboard.marketForm');
+        $id = Auth::User()->id;
+        return view('dashboard.marketForm',compact('id'));
     }
 
     public function join($id){

@@ -45,7 +45,7 @@ Route::post('/createWithdrawal', 'UserDashboardController@createWithdrawal');
 
 Route::get('/marketPlace', 'MarketPlaceController@index');
 Route::get('/market', 'MarketPlaceController@marketForm');
-Route::post('/joinMarket', 'MarketPlaceController@join');
+Route::post('/joinMarket/{id}', 'MarketPlaceController@join');
 Route::post('/contactSeller/{id}', 'MarketPlaceController@create');
 
 

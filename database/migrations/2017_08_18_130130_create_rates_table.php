@@ -18,7 +18,7 @@ class CreateRatesTable extends Migration
             $table->bigInteger('user_id')->nullable();
             $table->bigInteger('rate')->nullable();
             $table->string('negotiable')->nullable();
-            $table->string('avaiability')->nullable();
+            $table->string('availability')->nullable();
             $table->timestamps();
         });
     }
