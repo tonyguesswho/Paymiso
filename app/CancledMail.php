@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CancledMail extends Model
 {
     protected $fillable = [
-    'name','reason','sellcoin_id'
+    'name','user_id','reason','sellcoin_id'
     ];
 
     public function SellCoin(){

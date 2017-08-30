@@ -44,10 +44,8 @@ class UserDashboardController extends Controller
         $ExchangeRate = new ExchangeRate();
         $presentRateNaira   = $ExchangeRate->rate();
 
-        $cancel = DB::table('sell_coins')
-                    ->join('users', 'users.id', '=', 'sell_coins.user_id')
-                    ->join('cancled_mails', 'cancled_mails.sellcoin_id', '=', 'sell_coins.id') 
-                    ->get();
+        $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
+            
         $market = MarketPlace::where('user_id',Auth::User()->id)->get();
 
         $amount_balance = DB::table('authorizations')
