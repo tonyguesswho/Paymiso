@@ -62,8 +62,8 @@ class UserDashboardController extends Controller
 
         $total_balance = $amount_balance_total - $withdrawal_total;
 
-        return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market', 'total_balance'));
-        // return view('dashboard.home');
+        // return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market', 'total_balance'));
+         return view('dashboard.home');
     }
 
     public function sellCoinCreate(){
