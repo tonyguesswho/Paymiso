@@ -97,7 +97,7 @@
                         <div class="row">
                           <div class="col-4 date-holder text-right">
                             <div class="icon"><i class="icon-clock"></i></div>
-                            <div class="date"> <span class="pull-left"></span><span class="text-info">{{$cancels->created_at}}</span></div>
+                            <div class="date"> <span class="pull-left">{{$cancels->buyer_email}}</span><span class="text-info">{{$cancels->created_at}}</span></div>
                           </div>
                           <div class="col-8 content">
                             <h5 style="color: red;">Failed Transactions</h5>
