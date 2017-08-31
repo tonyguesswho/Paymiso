@@ -32,37 +32,38 @@ class UserDashboardController extends Controller
 
     public function index(){
 
-        $btc_wallet_id = CreateAddress::where('user_id', Auth::User()->id)->first();
-        $btc_wallet = $btc_wallet_id->btc_wallet_id;
+        // $btc_wallet_id = CreateAddress::where('user_id', Auth::User()->id)->first();
+        // $btc_wallet = $btc_wallet_id->btc_wallet_id;
 
-        $btc_balance   = new BlockIoTest();
-        $balance  = $btc_balance->getbalance($btc_wallet);
+        // $btc_balance   = new BlockIoTest();
+        // $balance  = $btc_balance->getbalance($btc_wallet);
 
-        $current_price = new BlockIoTest();
-        $current_price_usd = $current_price->CurrentPriceInUsd();
+        // $current_price = new BlockIoTest();
+        // $current_price_usd = $current_price->CurrentPriceInUsd();
 
-        $ExchangeRate = new ExchangeRate();
-        $presentRateNaira   = $ExchangeRate->rate();
+        // $ExchangeRate = new ExchangeRate();
+        // $presentRateNaira   = $ExchangeRate->rate();
 
-        $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
-        $market = MarketPlace::where('user_id',Auth::User()->id)->get();
+        // $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
+        // $market = MarketPlace::where('user_id',Auth::User()->id)->get();
 
-        $amount_balance = DB::table('authorizations')
-                            ->where('authorizations.seller_id','=', Auth::User()->id)
-                            ->select(DB::raw('sum(fee) as total'))
-                            ->get();
-        $amount_balance_total = $amount_balance['0']->total;
+        // $amount_balance = DB::table('authorizations')
+        //                     ->where('authorizations.seller_id','=', Auth::User()->id)
+        //                     ->select(DB::raw('sum(fee) as total'))
+        //                     ->get();
+        // $amount_balance_total = $amount_balance['0']->total;
 
 
-        $withdrawal =  DB::table('withdrawals')
-                            ->where('withdrawals.user_id', '=', Auth::User()->id)
-                            ->select(DB::raw('sum(amount) as total'))
-                            ->get();
-        $withdrawal_total  = $withdrawal['0']->total;
+        // $withdrawal =  DB::table('withdrawals')
+        //                     ->where('withdrawals.user_id', '=', Auth::User()->id)
+        //                     ->select(DB::raw('sum(amount) as total'))
+        //                     ->get();
+        // $withdrawal_total  = $withdrawal['0']->total;
 
-        $total_balance = $amount_balance_total - $withdrawal_total;
+        // $total_balance = $amount_balance_total - $withdrawal_total;
 
-        return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market', 'total_balance'));
+        // return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market', 'total_balance'));
+        return view('dashboard.home');
     }
 
     public function sellCoinCreate(){
