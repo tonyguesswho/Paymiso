@@ -44,10 +44,7 @@ class UserDashboardController extends Controller
         $ExchangeRate = new ExchangeRate();
         $presentRateNaira   = $ExchangeRate->rate();
 
-        $cancel = DB::table('sell_coins')
-                    ->join('users', 'users.id', '=', 'sell_coins.user_id')
-                    ->join('cancled_mails', 'cancled_mails.sellcoin_id', '=', 'sell_coins.id') 
-                    ->get();
+        $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
         $market = MarketPlace::where('user_id',Auth::User()->id)->get();
 
         $amount_balance = DB::table('authorizations')
@@ -99,14 +96,16 @@ class UserDashboardController extends Controller
             $contents = $res->getBody()->getContents();
             $json = json_decode($contents);
             $jsonFee =  $json->fastestFee;
-
-            $pendingFee = DB::table('sell_coins')
-                        ->join('users', 'users.id','=','sell_coins.user_id')
-                        ->join('transactions','transactions.sell_coin_id','=','sell_coins.id' )
-                        ->where(['transaction_status' => 0 AND 'transaction_token' <> Null])
-                        ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
-                        ->get();
-                
+            $pendingFee = DB::table('transactions')
+                    ->where([
+                    ['transactions.user_id', '=', Auth::User()->id],
+                    ['transactions.transaction_status', '=', 0],
+                    ['transactions.transaction_token', '<>', Null]
+                    ])
+                    ->join('sell_coins','sell_coins.id','=','transactions.sell_coin_id')
+                    ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
+                    ->get();
+                 
         $pendingFee_total       = $pendingFee['0']->total;
         $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;
         $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
@@ -180,12 +179,15 @@ class UserDashboardController extends Controller
             $json = json_decode($contents);
             $jsonFee =  $json->fastestFee;
 
-            $pendingFee = DB::table('sell_coins')
-                        ->join('users', 'users.id','=','sell_coins.user_id')
-                        ->join('transactions','transactions.sell_coin_id','=','sell_coins.id' )
-                        ->where(['transaction_status' => 0 AND 'transaction_token' <> Null])
-                        ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
-                        ->get();
+            $pendingFee = DB::table('transactions')
+                    ->where([
+                    ['transactions.user_id', '=', Auth::User()->id],
+                    ['transactions.transaction_status', '=', 0],
+                    ['transactions.transaction_token', '<>', Null]
+                    ])
+                    ->join('sell_coins','sell_coins.id','=','transactions.sell_coin_id')
+                    ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
+                    ->get();
 
         $pendingFee_total       = $pendingFee['0']->total;
         $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;

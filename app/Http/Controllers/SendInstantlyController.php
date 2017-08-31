@@ -44,12 +44,15 @@ class SendInstantlyController extends Controller
             $json = json_decode($contents);
             $jsonFee =  $json->fastestFee;
 
-             $pendingFee = DB::table('sell_coins')
-                        ->join('users', 'users.id','=','sell_coins.user_id')
-                        ->join('transactions','transactions.sell_coin_id','=','sell_coins.id' )
-                        ->where(['transaction_status' => 0 AND 'transaction_token' <> Null])
-                        ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
-                        ->get();
+         $pendingFee = DB::table('transactions')
+                    ->where([
+                    ['transactions.user_id', '=', Auth::User()->id],
+                    ['transactions.transaction_status', '=', 0],
+                    ['transactions.transaction_token', '<>', Null]
+                    ])
+                    ->join('sell_coins','sell_coins.id','=','transactions.sell_coin_id')
+                    ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
+                    ->get();
 
 	        $pendingFee_total       = $pendingFee['0']->total;
 	        $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;

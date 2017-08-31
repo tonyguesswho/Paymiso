@@ -4,6 +4,7 @@ namespace MyEscrow\Http\Controllers;
 
 use Illuminate\Http\Request;
 use MyEscrow\CancledMail;
+use MyEscrow\SellCoin;
 use MyEscrow\Transaction;
 
 class CancelledMailController extends Controller
@@ -28,8 +29,12 @@ class CancelledMailController extends Controller
     	$this->validate(request(),[
     		'reason' => 'required',
     		]);
+         $sell_coin = SellCoin::find($id);
+         $user_id   = $sell_coin->user_id;
+
     	$cancel = CancledMail::create([
-    		'reason'      =>request('reason'),
+            'user_id'     => $user_id,
+    		'reason'      => request('reason'),
     		'sellcoin_id' => $id,
     		]);
     	

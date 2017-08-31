@@ -56,4 +56,8 @@ class User extends Authenticatable
     public function SendInstantly(){
         return $this->hasMany('MyEscrow\SendInstantly');
     }
+
+    public function CancledMail(){
+        return $this->hasMany('MyEscrow\CancledMail');
+    }
 }
