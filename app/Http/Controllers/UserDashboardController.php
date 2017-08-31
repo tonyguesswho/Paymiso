@@ -38,11 +38,11 @@ class UserDashboardController extends Controller
         $btc_balance   = new BlockIoTest();
         $balance  = $btc_balance->getbalance($btc_wallet);
 
-        $current_price = new BlockIoTest();
-        $current_price_usd = $current_price->CurrentPriceInUsd();
+        // $current_price = new BlockIoTest();
+        // $current_price_usd = $current_price->CurrentPriceInUsd();
 
-        $ExchangeRate = new ExchangeRate();
-        $presentRateNaira   = $ExchangeRate->rate();
+        // $ExchangeRate = new ExchangeRate();
+        // $presentRateNaira   = $ExchangeRate->rate();
 
        // $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
        //  $market = MarketPlace::where('user_id',Auth::User()->id)->get();
