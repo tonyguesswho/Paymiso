@@ -106,7 +106,7 @@ class UserDashboardController extends Controller
                         ->where(['transaction_status' => 0 AND 'transaction_token' <> Null])
                         ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
                         ->get();
-
+                
         $pendingFee_total       = $pendingFee['0']->total;
         $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;
         $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
