@@ -6,6 +6,8 @@ use MyEscrow\User;
 use MyEscrow\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Str;
 use Mail;
 use MyEscrow\BankDetail;
@@ -96,6 +98,19 @@ class RegisterController extends Controller
         return $user;  
 
         
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        //$this->guard()->login($user);
+        return redirect(route('verifyEmailFirst'));
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
     }
 
     public function verifyEmailFirst(){  
