@@ -32,19 +32,19 @@ class UserDashboardController extends Controller
 
     public function index(){
 
-        // $btc_wallet_id = CreateAddress::where('user_id', Auth::User()->id)->first();
-        // $btc_wallet = $btc_wallet_id->btc_wallet_id;
+        $btc_wallet_id = CreateAddress::where('user_id', Auth::User()->id)->first();
+        $btc_wallet = $btc_wallet_id->btc_wallet_id;
 
-        // $btc_balance   = new BlockIoTest();
-        // $balance  = $btc_balance->getbalance($btc_wallet);
+        $btc_balance   = new BlockIoTest();
+        $balance  = $btc_balance->getbalance($btc_wallet);
 
-        // $current_price = new BlockIoTest();
-        // $current_price_usd = $current_price->CurrentPriceInUsd();
+        $current_price = new BlockIoTest();
+        $current_price_usd = $current_price->CurrentPriceInUsd();
 
-        // $ExchangeRate = new ExchangeRate();
-        // $presentRateNaira   = $ExchangeRate->rate();
+        $ExchangeRate = new ExchangeRate();
+        $presentRateNaira   = $ExchangeRate->rate();
 
-       // $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
+       $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
        // $market = MarketPlace::where('user_id',Auth::User()->id)->get();
 
         $amount_balance = DB::table('authorizations')
