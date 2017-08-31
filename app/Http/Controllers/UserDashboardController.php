@@ -27,7 +27,7 @@ class UserDashboardController extends Controller
 {
     public function __construct(){
 
-        $this->middleware('auth');
+    	$this->middleware('auth');
     }
 
     public function index(){
@@ -44,14 +44,14 @@ class UserDashboardController extends Controller
         $ExchangeRate = new ExchangeRate();
         $presentRateNaira   = $ExchangeRate->rate();
 
-       $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
-       $market = MarketPlace::where('user_id',Auth::User()->id)->get();
+        $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
+        $market = MarketPlace::where('user_id',Auth::User()->id)->get();
 
-        // $amount_balance = DB::table('authorizations')
-        //                     ->where('authorizations.seller_id','=', Auth::User()->id)
-        //                     ->select(DB::raw('sum(fee) as total'))
-        //                     ->get();
-        // $amount_balance_total = $amount_balance['0']->total;
+        $amount_balance = DB::table('authorizations')
+                            ->where('authorizations.seller_id','=', Auth::User()->id)
+                            ->select(DB::raw('sum(fee) as total'))
+                            ->get();
+        $amount_balance_total = $amount_balance['0']->total;
 
 
         $withdrawal =  DB::table('withdrawals')
@@ -62,8 +62,7 @@ class UserDashboardController extends Controller
 
         $total_balance = $amount_balance_total - $withdrawal_total;
 
-         //return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel', 'total_balance'));
-         return view('dashboard.home');
+    	return view('dashboard.home',compact('btc_wallet_id','balance','current_price_usd','presentRateNaira','cancel','market', 'total_balance'));
     }
 
     public function sellCoinCreate(){
@@ -217,14 +216,14 @@ class UserDashboardController extends Controller
 
     public function history(){
 
-        return view('dashboard.history');
+    	return view('dashboard.history');
     }
 
 
     public function bankDetails(){
         $withdraw = BankDetail::where('user_id', Auth::User()->id)->first();
 
-        return view('dashboard.bank_details', compact('withdraw'));
+    	return view('dashboard.bank_details', compact('withdraw'));
     }
 
     public function bankDetailsCreate(){
@@ -246,7 +245,7 @@ class UserDashboardController extends Controller
 
        $withdraw = BankDetail::where('user_id', Auth::User()->id)->first();
        
-        return view('dashboard.withdraw', compact('withdraw'));
+    	return view('dashboard.withdraw', compact('withdraw'));
     }
 
     public function createWithdrawal(){
