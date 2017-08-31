@@ -47,11 +47,11 @@ class UserDashboardController extends Controller
        // $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
        //  $market = MarketPlace::where('user_id',Auth::User()->id)->get();
 
-        $amount_balance = DB::table('authorizations')
-                            ->where('authorizations.seller_id','=', Auth::User()->id)
-                            ->select(DB::raw('sum(fee) as total'))
-                            ->get();
-        $amount_balance_total = $amount_balance['0']->total;
+        // $amount_balance = DB::table('authorizations')
+        //                     ->where('authorizations.seller_id','=', Auth::User()->id)
+        //                     ->select(DB::raw('sum(fee) as total'))
+        //                     ->get();
+        // $amount_balance_total = $amount_balance['0']->total;
 
 
         $withdrawal =  DB::table('withdrawals')
