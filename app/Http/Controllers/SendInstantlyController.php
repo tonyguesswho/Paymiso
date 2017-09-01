@@ -59,7 +59,7 @@ class SendInstantlyController extends Controller
 	        $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
 	        $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + ($jsonFee * 226 * 0.00000001));
 
-	        if ($total_balance_btc > $total_amount_btc) {
+	        if ($total_balance_btc < $total_amount_btc) {
 
             return bacK()->withErrors([
                 'insufficient fund'
