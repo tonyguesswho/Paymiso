@@ -84,7 +84,7 @@
                              <b>Total</b>
                               </div>
                           <div class="right_list">
-                               <span><b>{{number_format($sellcoin->amount_dollar*$sellcoin->rate,2)+number_format(($sellcoin->amount_dollar*$sellcoin->rate)*0.0075,2)}}</b></span>
+                               <span><b>{{$sellcoin->amount_dollar*$sellcoin->rate + (($sellcoin->amount_dollar*$sellcoin->rate)*0.0075)}}</b></span>
                           </div>
                     </div>
                     <div class="row">

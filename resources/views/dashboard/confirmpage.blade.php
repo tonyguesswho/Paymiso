@@ -65,7 +65,7 @@
                              <b>Total</b>
                               </div>
                           <div class="right_list">
-                               <span><b>{{number_format($amount_naira,2)+number_format(($amount_naira)*0.0075,2)}}</b></span>
+                               <span><b>{{number_format(($amount_naira + $escrow_fee),2)}}</b></span>
                           </div>
                     </div>
                     
