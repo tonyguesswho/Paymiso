@@ -5,7 +5,7 @@
     <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>PayMiso</title>
+    <title>Paymiso</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
 
@@ -62,8 +62,9 @@
                         <li id="naira"><a href="#">BTC/NGN &nbsp {{number_format($current_price_usd->data->prices[1]->price*$presentRate,2)}}</a></li>
                         <li><a href="#">Faq</a></li>
                         <li><a href="#">Blog</a></li>
+                        <li><a href="#">Marketplace</a></li>
                     </ul>
-                    <h1 id="fh5co-logo"><a href="{{ url('/') }}">PayMiso<span>.</span></a></h1>
+                    <h1 id="fh5co-logo"><a href="{{ url('/') }}">Paymiso<span></span></a></h1>
                     <ul class="pull-right right-menu">
                         @if(Auth::guest())
                         
@@ -122,7 +123,7 @@
                 <div class="row row-bottom-padded-md">
                     <div class="col-md-6 col-md-offset-3 text-center">
                         <h2 class="fh5co-lead animate-box">Easy Steps</h2>
-                        <p class="fh5co-sub-lead animate-box">MyEscrow Enables pear to pear exchanges in three simple steps. </p>
+                        <p class="fh5co-sub-lead animate-box">Paymiso Enables peer to peer exchanges in three simple steps. </p>
                     </div>
                 </div>
                 <div class="row">
@@ -321,7 +322,7 @@
                         <div class="fh5co-footer-widget">
                             <h3>Contact Us</h3>
                             <p>
-                                <a href="mailto:hello@myescrow.com">hello@myescrow.com</a> <br>
+                                <a href="mailto:support@myescrow.com">support@myescrow.com</a> <br>
                                 Roar Hub, <br>
                                 UNN  <br>
                                 <a href="tel:+8107268142">+8107268142</a>
@@ -349,7 +350,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="fh5co-left"><small>&copy; 2017 <a href=""> MyEscrow</a> All Rights Reserved.</small></p>
+                            <p class="fh5co-left"><small>&copy; 2017 <a href=""> Paymiso</a> All Rights Reserved.</small></p>
 <!--                             <p class="fh5co-right"><small class="fh5co-right">Designed by <a href="" target="_blank">FREEHTML5.co</a> Demo Images: <a href="" target="_blank">Unsplash</a></small></p>
  -->                        </div>
                     </div>

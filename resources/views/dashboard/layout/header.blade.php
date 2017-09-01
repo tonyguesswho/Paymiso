@@ -13,7 +13,7 @@
               <!-- Navbar Header-->
               <div class="navbar-header">
                 <!-- Navbar Brand --><a href="/" class="navbar-brand">
-                  <div class="brand-text brand-big hidden-lg-down"><span>Pay </span><strong>Misoo</strong></div>
+                  <div class="brand-text brand-big hidden-lg-down"><span>Pay </span><strong>miso</strong></div>
                   <div class="brand-text brand-small"><strong>ME</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
               </div>
@@ -22,7 +22,7 @@
                 <!-- Search-->
                 <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>
                 <!-- Notifications-->
-                <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red">12</span></a>
+                <!-- <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red">12</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
                     <li><a rel="nofollow" href="#" class="dropdown-item"> 
                         <div class="notification">
@@ -46,8 +46,8 @@
                         </div></a></li>
                     <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>view all notifications                                            </strong></a></li>
                   </ul>
-                </li>
-                <!-- Messages                        -->
+                </li> -->
+                <!-- Messages                       
                 <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange">10</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
                     <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
@@ -67,7 +67,7 @@
                         </div></a></li>
                     <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Read all messages    </strong></a></li>
                   </ul>
-                </li>
+                </li> -->
                 <!-- Logout    -->
                 <li class="nav-item"><a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
