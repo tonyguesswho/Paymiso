@@ -1,7 +1,7 @@
   <!DOCTYPE html>
   <html>
   <head>
-    <title>Title</title>
+    <title>paymiso</title>
     <style type="text/css">
       .wrapper{width:60%; margin:5% auto;height:100vh;  box-shadow:0 0 2px #aaa; font-family:Hind;}
       .logo_header{width:100%; height:70px;background:#8DC53F; padding:10px;}
@@ -90,15 +90,15 @@
 
         <form method="post" action="{{ route('pay', ['id'=>$sellcoin->id]) }}" accept-charset="UTF-8" class="form-horizontal" role="form">
                     
-            <input type="hidden" name="email" value="collinsuchinaka@gmail.com"> {{-- required --}}
+            <input type="hidden" name="email" value="{{$sellcoin->buyer_email}}"> {{-- required --}}
             <input type="hidden" name="orderID" value="{{$sellcoin->id}}">
-            <input type="hidden" name="amount" value="100000"> {{-- required in kobo --}}
+            <input type="hidden" name="amount" value="{{number_format($sellcoin->amount_dollar*$sellcoin->rate,2)+number_format(($sellcoin->amount_dollar*$sellcoin->rate)*0.0075,2)}}"> {{-- required in kobo --}}
             <!-- <input type="hidden" name="quantity" value="3"> -->
-            <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
+            <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}" }}"> {{-- required --}}
             <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> {{-- required --}}
             {{ csrf_field() }} 
 
-             <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
+             <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}">  -->
                     <div class="invoice_trans" class="form-group">
                         <div class="invoice_left">
                            <button type="submit" class="btn btn-fresh text-uppercase">PAY</button>

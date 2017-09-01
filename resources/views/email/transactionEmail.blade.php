@@ -1,7 +1,7 @@
   <!DOCTYPE html>
   <html>
   <head>
-    <title>Title</title>
+    <title>paymiso</title>
   <style type="text/css">
       .wrapper{width:60%; margin:5% auto;  box-shadow:0 0 2px #aaa; font-family:Hind;}
       .logo_header{width:100%; height:70px;background:#8DC53F;}
