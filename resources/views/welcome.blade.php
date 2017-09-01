@@ -68,7 +68,7 @@
                         @if(Auth::guest())
                         
                         <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li class="fh5co-cta-btn"><a href="{{ url('/register') }}">Create Wallet</a></li>
+                        <li class="fh5co-cta-btn"><a href="{{ url('/register') }}">Createa Wallet</a></li>
                         @else
                         <li>
                             <a href="{{ route('logout') }}"
