@@ -53,7 +53,9 @@ Route::get('/sendhome','TransactionController@send');
 
 Route::post('/sellInstantly','SendInstantlyController@SendInstantly');
 
-Route::get('adminPaymisoDashboard', 'AdminDashboardController@index');
+Route::get('error', 'AdminController@error');
+
+Route::get('/admin', ['middleware' => 'admin', 'uses' => 'AdminController@index']);
 
 
 
