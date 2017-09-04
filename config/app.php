@@ -171,7 +171,8 @@ return [
         Blockavel\LaraBlockIo\LaraBlockIoServiceProvider::class,
         Swap\Laravel\SwapServiceProvider::class,
         Unicodeveloper\Paystack\PaystackServiceProvider::class,
-        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+    
 
         /*
          * Application Service Providers...
@@ -233,7 +234,7 @@ return [
         'LaraBlockIo' => 'Blockavel\LaraBlockIo\LaraBlockIoFacade',
         'Swap' => Swap\Laravel\Facades\Swap::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
-        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+        
 
     ],
 

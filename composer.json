@@ -6,14 +6,15 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "anhskohbo/no-captcha": "^2.4",
         "blockavel/lara-block-io": "^0.0.4",
         "florianv/laravel-swap": "^1.1",
+        "greggilbert/recaptcha": "dev-master",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/message": "^1.6",
-        "unicodeveloper/laravel-paystack": "^1.0",
-        "greggilbert/recaptcha": "dev-master"
+        "unicodeveloper/laravel-paystack": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
