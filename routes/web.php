@@ -44,15 +44,16 @@ Route::post('/createBankDetails', 'UserDashboardController@bankDetailsCreate');
 Route::post('/createWithdrawal', 'UserDashboardController@createWithdrawal');
 
 Route::get('/marketPlace', 'MarketPlaceController@index');
-Route::post('/joinMarket', 'MarketPlaceController@join');
+Route::post('/join', 'MarketPlaceController@join');
+Route::get('/joinMarket', 'MarketPlaceController@joinMarket');
 Route::post('/contactSeller/{id}', 'MarketPlaceController@create');
-
-
 
 Route::get('/sellhome','TransactionController@sell');
 Route::get('/sendhome','TransactionController@send');
 
 Route::post('/sellInstantly','SendInstantlyController@SendInstantly');
+
+Route::get('adminPaymisoDashboard', 'AdminDashboardController@index');
 
 
 

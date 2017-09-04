@@ -1,165 +1,175 @@
-<style>
-/***
-User Profile Sidebar by @keenthemes
-A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-Licensed under MIT
-***/
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verify Email</title>
 
-body {
-    padding: 0;
-    margin: 0;
+    <!-- Bootstrap CSS -->
+   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+   
+    <style type="text/css">
+      body {
+  background-color: #CCCCCC;
 }
 
-html { -webkit-text-size-adjust:none; -ms-text-size-adjust: none;}
-@media only screen and (max-device-width: 680px), only screen and (max-width: 680px) { 
-    *[class="table_width_100"] {
-    width: 96% !important;
-  }
-  *[class="border-right_mob"] {
-    border-right: 1px solid #dddddd;
-  }
-  *[class="mob_100"] {
-    width: 100% !important;
-  }
-  *[class="mob_center"] {
-    text-align: center !important;
-  }
-  *[class="mob_center_bl"] {
-    float: none !important;
-    display: block !important;
-    margin: 0px auto;
-  } 
-  .iage_footer a {
-    text-decoration: none;
-    color: #929ca8;
-  }
-  img.mob_display_none {
-    width: 0px !important;
-    height: 0px !important;
-    display: none !important;
-  }
-  img.mob_width_50 {
-    width: 40% !important;
-    height: auto !important;
-  }
+body,p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 2em;
+
 }
-.table_width_100 {
-  width: 680px;
+p{
+  font-size: 17px;
+}
+a, a:hover, a:focus {
+  color: #9c27b0;
+}
+.nav-tabs {
+  background: #9c27b0;
+  border: 0;
+  border-radius: 3px;
+  padding: 0 15px;
+}
+.nav-tabs > li > h4 {
+  color: #FFFFFF;
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  line-height: 34px;
+  text-transform: uppercase;
+  font-size: 15px;
+  
 }
 
+.card {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  border-radius: 3px;
+  color: rgba(0,0,0, 0.87);
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card .card-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.card .content {
+  padding: 15px;
+}
+
+.card .header {
+  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  margin: 15px;
+  border-radius: 3px;
+  padding: 15px 0;
+  background-color: #FFFFFF;
+}
+
+.card .header-success {
+  background: linear-gradient(60deg, #66bb6a, #388e3c);
+}
+
+.card-nav-tabs {
+  margin-top: 60px;
+}
+.card-nav-tabs .header {
+  margin-top: -30px;
+}
+.card-nav-tabs .nav-tabs {
+  background: transparent;
+}
 .btn {
-            border-radius: 0;
-            border: 0;
-            margin: 4px;
-          width: 80px;
-          height: 50px;
-          font-size: 20px;
-        }
-      .btn-info {
-                  background-color: #5fcf80;
-                  color: #fff;
-                } 
+  border: none;
+  border-radius: 3px;
+  position: relative;
+  padding: 12px 30px;
+  margin: 10px 1px;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  will-change: box-shadow, transform;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.btn.btn-primary, .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active, .btn.btn-primary.active, .btn.btn-primary:active:focus, .btn.btn-primary:active:hover, .btn.btn-primary.active:focus, .btn.btn-primary.active:hover{
+  background-color: #03a9f4;
+  color: #FFFFFF;
+}
+.btn.btn-primary:focus, .btn.btn-primary:active, .btn.btn-primary:hover {
+  
+  box-shadow: 0 14px 26px -12px rgba(3, 169, 244, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(3, 169, 244, 0.2);
+}
+
 </style>
 
-<!--
-Responsive Email Template by @keenthemes
-A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-Licensed under MIT
--->
+    
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="title text-center">
+              <h3>PAYMISO</h3>
+            </div>
 
-<div id="mailsub" class="notification" align="center">
+            <!-- Tabs with icons on Card -->
+            <div class="card card-nav-tabs">
+              <div class="header header-success">
+                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                <div class="nav-tabs-navigation">
+                  <div class="nav-tabs-wrapper">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                      <li class="active" style="width: 100%;">
+                        <h4 class="text-center">
+                          
+                          Please verify your account to enjoy all our services
+                        </h4>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="content">
+                <div class="tab-content text-center">
+                  <div class="tab-pane active" id="profile">
+                 <p> An Email has been sent to you</p>
+                 <p>Click on the resend button if you did not receive the email</p>
+                  <button class="btn btn-primary">RESEND</button>
+                    
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <span style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #96a5b5;">
+          2017 © PayMiso Technologies LTD. ALL Rights Reserved.
+        </span>
+            <!-- End Tabs with icons on Card -->
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="min-width: 320px;"><tr><td align="center" bgcolor="#eff3f8">
-
-
-<!--[if gte mso 10]>
-<table width="680" border="0" cellspacing="0" cellpadding="0">
-<tr><td>
-<![endif]-->
-
-<table border="0" cellspacing="0" cellpadding="0" class="table_width_100" width="100%" style="max-width: 680px; min-width: 300px;">
-    <tr><td>
-  <!-- padding -->
-  </td></tr>
-  <!--header -->
-  <tr><td align="center" bgcolor="#ffffff">
-    <!-- padding -->
-    <table width="90%" border="0" cellspacing="0" cellpadding="0"><div style="height: 30px; line-height: 30px; font-size: 10px;"></div>
-      <tr><td align="center">
-              <a href="#" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; float:left; width:100%; padding:20px;text-align:center; font-size: 13px;">
-                  <font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
-                  <img src="http://dev.yogabar.sg/web/images/img_logo.png" width="120" alt="Metronic" border="0"  /></font></a>
-          </td>
-          <td align="right">
-        <!--[endif]--><!-- 
-
-      </td>
-      </tr>
-    </table>
-    <!-- padding --><div style="height: 50px; line-height: 50px; font-size: 10px;"></div>
-  </td></tr>
-  <!--header END-->
-
-  <!--content 1 -->
-  <tr><td align="center" bgcolor="#fbfcfd">
-    <table width="90%" border="0" cellspacing="0" cellpadding="0">
-      <tr><td align="center">
-        <!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;"></div>
-        <div style="line-height: 44px;">
-          <font face="Arial, Helvetica, sans-serif" size="5" color="#57697e" style="font-size: 34px;">
-          <span style="font-family: Arial, Helvetica, sans-serif; font-size: 34px; color: #57697e;">
-            Please verify your account to enjoy all our services
-          </span></font>
-        </div>
-        <!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;"></div>
-      </td></tr>
-      <tr><td align="center">
-        <div style="line-height: 24px;">
-          <font face="Arial, Helvetica, sans-serif" size="4" color="#57697e" style="font-size: 15px;">
-          <span style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; color: #57697e;">
-            An Email has been sent to you<br> didn't get the email, click on the resend button
-          </span></font>
-        </div>
-        <!-- padding --><div style="height: 40px; line-height: 40px; font-size: 10px;"></div>
-      </td></tr>
-      <tr><td align="center">
-        <div style="line-height: 24px;">
-          <button type="button" class="btn btn-info btn-default block-center">Resend</button>
-          
-
-        </div>
-        <!-- padding --><div style="height: 60px; line-height: 60px; font-size: 10px;"></div>
-      </td></tr>
-      
-    </table>    
-  </td></tr>
-  <!--content 1 END-->
-
-
-  <!--footer -->
-  <tr><td class="iage_footer" align="center" bgcolor="#ffffff">
+          </div>
+          </div>
+          </div>
 
     
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr><td align="center" style="padding:20px;flaot:left;width:100%; text-align:center;">
-        <font face="Arial, Helvetica, sans-serif" size="3" color="#96a5b5" style="font-size: 13px;">
-        <span style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #96a5b5;">
-          2017 © PayMiso. ALL Rights Reserved.
-        </span></font>        
-      </td></tr>      
-    </table>
+
+    <!-- jQuery -->
+     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
     
-
-  </td></tr>
-  <!--footer END-->
-  <tr><td>
-
-  </td></tr>
-</table>
-<!--[if gte mso 10]>
-</td></tr>
-</table>
-<![endif]-->
- 
-</td></tr>
-</table>
+  </body>
+</html>

@@ -5,13 +5,13 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Sell Coin</h2>
+              <h2 class="no-margin-bottom">Join Market</h2>
             </div>
           </header>
           <ul class="breadcrumb">
             <div class="container-fluid">
               <li class="breadcrumb-item"><a href="/userDashboard">Home</a></li>
-              <li class="breadcrumb-item active">Sell Coins</li>
+              <li class="breadcrumb-item active">Join Market</li>
             </div>
           </ul>
           @include('layouts.error')
@@ -29,41 +29,40 @@
                       </div>
                     </div>
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Transaction Details</h3>
+                      <h3 class="h4">Market Details</h3>
                     </div>
                     <div class="card-body">
                       <p>Do ensure to fill in the transaction details correctly</p>
                       
-                      <form method="POST" action="/update">
+                      <form method="POST" action="/join">
                         {{csrf_field()}}
-                        <div class="form-group">
-                          <label class="form-control-label">Buyers Wallet Id</label>
-                          <input type="text" name="wallet_id" placeholder="wallet id" class="form-control" required="" value="{{old('wallet_id', $user->wallet_id)}}">
-                        </div>
+                        
                         <div class="form-group">       
-                          <label class="form-control-label">Buyers Email</label>
-                          <input type="email" name="buyer_email" placeholder="email" class="form-control" required="" value="{{old('buyer_email', $user->buyer_email)}}">
+                          <label class="form-control-label">Amount of BTC in Dollar</label>
+                          <input type="number" name="buyer_phone"  class="form-control"
+                          required="">
                         </div>
-                        <div class="form-group">       
-                          <label class="form-control-label">Buyers Phone</label>
-                          <input type="number" name="buyer_phone" placeholder="Phone" class="form-control"
-                          required="" value="{{old('buyer_phone', $user->buyer_phone)}}">
-                        </div>
-                        <div class="form-group">
-                         <label class="form-control-label">Amount of BTC in Dollar</label>
-                            <div class="row">
-                              <div class="col-md-6">
-                                <input type="number" name="amount_dollar" placeholder="amount in dollar" class="form-control" required="" value="{{old('amount_dollar', $user->amount_dollar)}}">
-                              </div>
-                              <div class="col-md-6">
-                                <input type="text" name="amount_btc" placeholder="amount of btc" class="form-control" required="" value="{{old('amount_btc', $user->amount_btc)}}">
-                              </div>
-                            </div>
-                        </div> 
+                        
+                         
                          <div class="form-group">       
                           <label class="form-control-label">Rate</label>
-                          <input type="number" name="rate" placeholder="Rate of sell" class="form-control" value="{{old('rate', $user->rate)}}">
+                          <input type="number" name="rate"  class="form-control">
                         </div>   
+
+                         
+                         <div class="form-group">       
+                          <label class="form-control-label">Negotiable</label>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="negotiable" id="input" value="yes" checked="checked">
+                              Yes
+                            </label>
+                            <label>
+                              <input type="radio" name="negotiable" id="input" value="no" checked="checked">
+                              No
+                            </label>
+                          </div>
+                        </div> 
                         
                           <button type="submit" class="btn btn-primary">Submit</button>       
                           <!-- <input type="submit" value="Submit" class="btn btn-primary"> -->
@@ -77,4 +76,4 @@
     </section>
 </div>
 @endsection
-  
+	

@@ -50,7 +50,7 @@
                                 <input type="number" name="amount_dollar" class="form-control" required="">
                               </div>
                               <div class="col-md-6">
-                                <input type="number" name="amount_btc" placeholder="amount of btc" class="form-control" required="">
+                                <input type="text" name="amount_btc" placeholder="amount of btc" class="form-control" required="">
                               </div>
                             </div>
                         </div> 

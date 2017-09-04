@@ -76,7 +76,7 @@
                       <label for="license">Agree the terms and policy</label>
                     </div>
                     <button id="register" type="submit" class="btn btn-primary">Sign up</button>
-                  </form><small>Already have an account? </small><a href="login.html" class="signup">Login</a>
+                  </form><small>Already have an account? </small><a href="/login" class="signup">Login</a>
                 </div>
               </div>
             </div>

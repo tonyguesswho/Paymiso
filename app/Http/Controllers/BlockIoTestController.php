@@ -22,7 +22,7 @@ class BlockIoTestController extends Controller
     	// $balance = new BlockIoTest();
     	// $bal   = $balance->Test();
     	// dd($bal);
-        return view('dashboard.marketPlace');
+        return view('email.send');
         
     	
     }

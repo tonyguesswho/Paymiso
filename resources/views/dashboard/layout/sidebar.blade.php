@@ -17,5 +17,6 @@
             <li> <a href="/history"> <i class="fa fa-bar-chart"></i>Transaction History</a></li>
             <li> <a href="/bankDetails"> <i class="icon-padnote"></i>Bank Details</a></li>
             <li> <a href="/withdraw"> <i class="fa fa-money"></i>Withdraw Cash</a></li>
+            <li> <a href="/joinMarket"> <i class="fa fa-money"></i>Join Market</a></li>
           </ul>
         </nav>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MyEscrow</title>
+    <title>Paymiso</title>
     <meta name="description" content=""> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -33,7 +33,7 @@
 
     </div>
     <!-- Javascript files-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    
     <script src="js/js/tether.min.js"></script>
     <script src="js/js/bootstrap.min.js"></script>
     <script src="js/js/jquery.cookie.js"> </script>
