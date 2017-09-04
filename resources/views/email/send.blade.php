@@ -98,7 +98,7 @@ a, a:hover, a:focus {
   margin: 10px 1px;
   font-size: 14px;
   font-weight: 400;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0;
   will-change: box-shadow, transform;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -122,7 +122,7 @@ a, a:hover, a:focus {
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <div class="title text-center">
-              <h3>PAYMISO</h3>
+              <h3>Paymiso</h3>
             </div>
 
             <!-- Tabs with icons on Card -->
