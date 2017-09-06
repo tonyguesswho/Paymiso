@@ -27,7 +27,7 @@ class UserDashboardController extends Controller
 {
     public function __construct(){
 
-    	$this->middleware('auth');
+    	$this->middleware(['auth','timeout']);
     }
 
     public function index(){

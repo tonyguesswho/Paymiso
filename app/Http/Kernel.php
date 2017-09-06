@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'guest' => \MyEscrow\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin' => \MyEscrow\Http\Middleware\Admin::class,
+        'timeout'=>\MyEscrow\Http\Middleware\SessionTimeout::class,
     ];
 }

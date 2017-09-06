@@ -18,6 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
 
 Route::get('/dump','BlockIoTestController@dump');
+
 Route::get('/create_wallet','BlockIoTestController@createWallet');
 
 Route::get('/verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
@@ -55,11 +56,11 @@ Route::post('/sellInstantly','SendInstantlyController@SendInstantly');
 
 Route::get('/error', 'AdminController@error');
 
-Route::get('/admin', ['middleware' => 'admin', 'uses' => 'AdminController@index']);
-Route::get('/admin/action', ['middleware' => 'admin', 'uses' => 'AdminController@action']);
-Route::get('/admin/table', ['middleware' => 'admin', 'uses' => 'AdminController@table']);
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/action','AdminController@action');
+Route::get('/admin/table',  'AdminController@table');
 
-Route::get('/admin/data', ['middleware' => 'admin', 'uses' => 'AdminController@data']);
+Route::get('/admin/data', 'AdminController@data');
 
 
 

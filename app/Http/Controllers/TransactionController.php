@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    public function __construct(){
+     public function __construct(){
 
-    $this->middleware('auth');
+    	$this->middleware(['auth','timeout']);
     }
 
      public function sell(){
