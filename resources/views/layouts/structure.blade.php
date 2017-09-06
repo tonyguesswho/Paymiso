@@ -33,7 +33,7 @@
 
     </div>
     <!-- Javascript files-->
-    
+     <script src="js/jquery.min.js"></script>
     <script src="js/js/tether.min.js"></script>
     <script src="js/js/bootstrap.min.js"></script>
     <script src="js/js/jquery.cookie.js"> </script>

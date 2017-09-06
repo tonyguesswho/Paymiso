@@ -53,9 +53,14 @@ Route::get('/sendhome','TransactionController@send');
 
 Route::post('/sellInstantly','SendInstantlyController@SendInstantly');
 
-Route::get('error', 'AdminController@error');
+Route::get('/error', 'AdminController@error');
 
 Route::get('/admin', ['middleware' => 'admin', 'uses' => 'AdminController@index']);
+Route::get('/admin/action', ['middleware' => 'admin', 'uses' => 'AdminController@action']);
+Route::get('/admin/table', ['middleware' => 'admin', 'uses' => 'AdminController@table']);
+
+Route::get('/admin/data', ['middleware' => 'admin', 'uses' => 'AdminController@data']);
+
 
 
 

@@ -20,7 +20,7 @@
               <!-- Navbar Menu -->
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Search-->
-                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>
+              <!--   <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li> -->
                 <!-- Notifications-->
                 <!-- <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red">12</span></a>
                   <ul aria-labelledby="notifications" class="dropdown-menu">
@@ -68,6 +68,7 @@
                     <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong>Read all messages    </strong></a></li>
                   </ul>
                 </li> -->
+                <li class="nav-item">{{Auth::User()->firstname}}</li>
                 <!-- Logout    -->
                 <li class="nav-item"><a href="{{ route('logout') }}"
                     onclick="event.preventDefault();

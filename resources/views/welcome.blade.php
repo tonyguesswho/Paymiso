@@ -56,7 +56,7 @@
             <div class="container">
                 <nav role="navigation">
                     <ul class="pull-left left-menu">
-                        <li id="naira"><a href="#">ABTC/NGN &nbsp {{number_format($current_price_usd->data->prices[1]->price*$presentRate,2)}}</a></li>
+                        <li id="naira"><a href="#">BTC/NGN &nbsp {{number_format($current_price_usd->data->prices[1]->price*$presentRate,2)}}</a></li>
                         <li><a href="#">Faq</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Marketplace</a></li>
