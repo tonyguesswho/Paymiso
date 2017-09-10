@@ -22,7 +22,7 @@ class BlockIoTestController extends Controller
     	// $balance = new BlockIoTest();
     	// $bal   = $balance->Test();
     	// dd($bal);
-        return view('admin.data');
+        return view('dashboard.canceledMail');
         
     	
     }
@@ -38,6 +38,13 @@ class BlockIoTestController extends Controller
         
         $json = json_decode($contents);
         $json->hourFee;
+    }
+
+     public function faq(){
+    
+        return view('dashboard.faq');
+        
+        
     }
     
     }

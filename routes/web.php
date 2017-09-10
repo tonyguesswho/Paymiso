@@ -18,6 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
 
 Route::get('/dump','BlockIoTestController@dump');
+Route::get('/faq','BlockIoTestController@faq');
 
 Route::get('/create_wallet','BlockIoTestController@createWallet');
 
@@ -31,36 +32,40 @@ Route::post('/pay/{id}', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 Route::get('/transferPage/{id}', 'PaymentController@index');
 
-Route::get('/userDashboard','UserDashboardController@index');
+Route::get('/userDashboard','UserDashboardController@index')->name('userDashboard');
 Route::get('/history', 'UserDashboardController@history');
 Route::get('/sell', 'UserDashboardController@sellCoin');
 Route::get('/bankDetails', 'UserDashboardController@bankDetails');
 Route::get('/withdraw', 'UserDashboardController@withdrawCash');
 Route::get('/edit', 'UserDashboardController@editConfirm')->name('edit');
-//Route::get('/confirmTransaction','UserDashboardController@confirm');
 Route::get('/confirmMail', 'UserDashboardController@transactionMail');
 Route::post('/update', 'UserDashboardController@updateConfirm');
 Route::post('/sell','UserDashboardController@sellCoinCreate');
 Route::post('/createBankDetails', 'UserDashboardController@bankDetailsCreate');
 Route::post('/createWithdrawal', 'UserDashboardController@createWithdrawal');
 
+Route::post('/send','SendInstantlyController@sendHomeInstantly');
 Route::get('/marketPlace', 'MarketPlaceController@index');
-Route::post('/join', 'MarketPlaceController@join');
+Route::post('/join/{id}', 'MarketPlaceController@join');
 Route::get('/joinMarket', 'MarketPlaceController@joinMarket');
 Route::post('/contactSeller/{id}', 'MarketPlaceController@create');
 
-Route::get('/sellhome','TransactionController@sell');
-Route::get('/sendhome','TransactionController@send');
+Route::post('/sellhome/','TransactionController@sell');
+Route::get('/sendhome','TransactionController@sendhome');
+Route::get('/twoFactorSell','TransactionController@twoFactorsell');
+Route::get('/twoFactorSendhome','TransactionController@twoFactorsendhome');
 
-Route::post('/sellInstantly','SendInstantlyController@SendInstantly');
+
+Route::post('/sellInstantly','SendInstantlyController@sendInstantly');
+
 
 Route::get('/error', 'AdminController@error');
 
 Route::get('/admin', 'AdminController@index');
-Route::get('/admin/action','AdminController@action');
-Route::get('/admin/table',  'AdminController@table');
+Route::get('/action','AdminController@action');
+Route::get('/table',  'AdminController@table');
 
-Route::get('/admin/data', 'AdminController@data');
+Route::get('/data', 'AdminController@data');
 
 
 

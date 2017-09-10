@@ -6,9 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use MyEscrow\MarketPlace;
+use MyEscrow\TwoFactor;
 
-class marketPlaceEmail extends Mailable
+class twoFactorMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,10 +17,11 @@ class marketPlaceEmail extends Mailable
      *
      * @return void
      */
-    public $marketplace_mail;
-    public function __construct(MarketPlace $marketplace_mail)
+    public $confirmation_code;
+
+    public function __construct(TwoFactor $confirmation_code)
     {
-        $this->marketplace_mail = $marketplace_mail;
+        $this->confirmation_code = $confirmation_code;
     }
 
     /**
@@ -30,6 +31,6 @@ class marketPlaceEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.marketplace');
+        return $this->view('email.twoFactor');
     }
 }

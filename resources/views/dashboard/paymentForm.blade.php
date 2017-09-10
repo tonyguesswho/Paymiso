@@ -92,7 +92,7 @@
                     
             <input type="hidden" name="email" value="{{$sellcoin->buyer_email}}"> {{-- required --}}
             <input type="hidden" name="orderID" value="{{$sellcoin->id}}">
-            <input type="hidden" name="amount" value="{{$sellcoin->amount_dollar*$sellcoin->rate + (($sellcoin->amount_dollar*$sellcoin->rate)*0.0075)}}"> {{-- required in kobo --}}
+            <input type="hidden" name="amount" value="{{($sellcoin->amount_dollar*$sellcoin->rate + (($sellcoin->amount_dollar*$sellcoin->rate)*0.0075))*100}}"> {{-- required in kobo --}}
             <!-- <input type="hidden" name="quantity" value="3"> -->
             <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}" }}"> {{-- required --}}
             <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> {{-- required --}}

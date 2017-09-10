@@ -28,7 +28,7 @@
                     <div class="icon bg-violet"><i class="icon-padnote"></i></div>
                     <div class="title"><span>Balance</span>
                     </div>
-                    <div class="number"><span><span>BTC&nbsp</span><span><b> {{$balance->data->available_balance}}</b></span><br><span class="h4">NGN {{number_format($balance->data->available_balance*$current_price_usd->data->prices[1]->price*$presentRateNaira,2)}}</span></span></div>
+                    <div class="number"><span><span>BTC&nbsp</span><span><b> {{$balance->data->available_balance}}</b></span><br><span class="h4">USD {{number_format(($balance->data->available_balance*$current_price_usd->data->prices[1]->price),2)}}</span></span></div>
                   <!-- </div> -->
                 </div>
               </div>
@@ -83,7 +83,7 @@
                             <div class="date"> <span class="pull-left">{{$markets->name}}</span><span class="text-info">{{$markets->email}}</span></div>
                           </div>
                           <div class="col-8 content">
-                            <h5 style="color: yellow;">You have a Buyer</h5>
+                            <h5 style="color: green;">You have a Buyer</h5>
                             <p>phone: &nbsp{{$markets->phone}}</p>
                             <p>Amount in Dollar: &nbsp{{$markets->amount_dollar}}</p>
                           </div>
@@ -111,6 +111,9 @@
                 </div>
               </div>
             </div>
+            {{ $cancel->links() }}
           </section>
+
 </div>
+
 @endsection

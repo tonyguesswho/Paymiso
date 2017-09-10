@@ -18,7 +18,7 @@ class SendInstantlyController extends Controller
         $this->middleware(['auth','timeout']);
     }
 
-    public function SendInstantly(){
+    public function sendInstantly(){
     	$this->validate(request(),[
             'wallet_id'     => 'required',
             'buyer_email'   => 'required',
@@ -59,7 +59,7 @@ class SendInstantlyController extends Controller
 	        $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
 	        $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + ($jsonFee * 226 * 0.00000001));
 
-	        if ($total_balance_btc < $total_amount_btc) {
+	        if ($total_balance_btc > $total_amount_btc) {
 
             return bacK()->withErrors([
                 'insufficient fund'
@@ -74,10 +74,36 @@ class SendInstantlyController extends Controller
             'amount_btc'    => request('amount_btc')        
             ]);
 
-        	$sendCoin_id = $sendCoin->id;
+            $transaction = new TransactionController();
+            $twofactor = $transaction->twoFActorSend();
+            return $twofactor;
 
-        	$SendInstantly = new BlockIoTest();
-        	$SendInstantly_id = $SendInstantly->sendInstantly($sendCoin_id,$btc_wallet_id);
+        	// $sendCoin_id = $sendCoin->id;
+
+        	// $SendInstantly = new BlockIoTest();
+        	// $SendInstantly_id = $SendInstantly->sendInstantly($sendCoin_id,$btc_wallet_id);
+        }
+    }
+
+      public function sendHomeInstantly(){
+        
+        $this->validate(request(),
+        ['confirmation_code' => 'required']);
+
+        $confirmation_code = request('confirmation_code');
+
+        $user = SendInstantly::where('user_id', Auth::user()->id)->latest()->first();
+        $SendInstantlyId = $user->id;
+
+        $btc_wallet = CreateAddress::where('user_id', Auth()->User()->id)->first();
+        $btc_wallet_id = $btc_wallet->btc_wallet_id;
+
+        $confirmation = TwoFactor::where('user_id', Auth::User()->id)->latest()->first();
+        $getConfirmation = $confirmation->confirmation_code;
+
+        if($getConfirmation === $confirmation_code){
+             $SendInstantly = new BlockIoTest();
+             $SendInstantlyClass = $SendInstantly->sendInstantly($SendInstantlyId,$btc_wallet_id);
         }
     }
 

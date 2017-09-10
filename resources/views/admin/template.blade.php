@@ -53,20 +53,20 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/action">
+                    <a href="/action">
                         <i class="pe-7s-user"></i>
                         <p>Action</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/table">
+                    <a href="/table">
                         <i class="pe-7s-note2"></i>
                         <p>Tables</p>
                     </a>
                 </li>
                
                 <li>
-                    <a href="/admin/data">
+                    <a href="/data">
                         <i class="pe-7s-science"></i>
                         <p>Data</p>
                     </a>

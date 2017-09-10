@@ -15,16 +15,16 @@
           color: white;
          }
          textarea {
-    		width: 80%;
-    		height: 150px;
-    		padding: 10px;
-    		box-sizing: border-box;
-    		border: 2px solid #ccc;
-    		border-radius: 4px;
-    		background-color: #f8f8f8;
-    		resize: none;
-			
-			}
+        width: 80%;
+        height: 150px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        resize: none;
+      
+      }
    
           
     </style>
@@ -33,7 +33,7 @@
   </head>
   <body>
     <div class="container">
-  		<div class="row">
+      <div class="row">
             
             <div class="wrapper">
                 <div class="logo_header">
@@ -44,23 +44,23 @@
                     
                     
                     <div>
-                    	<form class="well" method="POST" action="/canceled/email/{{$id}}/{{$token}}">
-                    		{{csrf_field()}}
-                			 <div>
+                      <form class="well" method="POST" action="/canceled/email/{{$id}}/{{$token}}">
+                        {{csrf_field()}}
+                       <div>
                 
-                				<textarea class="" id="message" name="reason" rows="10">
-    							</textarea>
-            				</div>
-            				<button class="btn btn-succesks pull-right" type="submit">Submit</button>
-            			</form>
-        			
+                        <textarea class="" id="message" name="reason" rows="10">
+                  </textarea>
+                    </div>
+                    <button class="btn btn-succesks pull-right" type="submit">Submit</button>
+                  </form>
+              
                     
                     
-                	</div>
+                  </div>
             </div>
             
-  		</div>
-	</div>
+      </div>
+  </div>
   
   </body>
   </html>

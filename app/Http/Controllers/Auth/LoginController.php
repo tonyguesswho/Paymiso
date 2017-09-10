@@ -47,7 +47,7 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         $credentials = $request->only($this->username(), 'password');
-        $credentials['confirmed'] = 0; 
+        $credentials['confirmed'] = 1; 
         return $credentials;
     }
 }

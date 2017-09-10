@@ -48,7 +48,7 @@
             <button type="submit" class="btn btn-neutral btn-round btn-modern">Submit</button>
           </form>
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="#">Faq</a></li>
+            
             
             </li>
           </ul>

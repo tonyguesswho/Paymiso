@@ -56,10 +56,11 @@ class MarketPlaceController extends Controller
             'amount_dollar' => request('amount_dollar'),
             'comments'    =>request('comments')
             ]);
-
+        $marketplace_id = $marketplace->id;
+        $marketplace_mail = MarketPLace::find($marketplace_id);
     	$marketMail = User::find($id);
     
-        Mail::to($marketMail['email'])->send(new marketPlaceEmail($marketMail));
+        Mail::to($marketMail['email'])->send(new marketPlaceEmail($marketplace_mail));
 
         return 'Notiication sent sucessfully';
     }

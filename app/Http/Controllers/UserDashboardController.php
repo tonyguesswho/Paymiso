@@ -28,6 +28,10 @@ class UserDashboardController extends Controller
     public function __construct(){
 
     	$this->middleware(['auth','timeout']);
+
+        // $pendingFee = DB::table('transactions')->get();
+        // dd($pendingFee);   
+
     }
 
     public function index(){
@@ -44,8 +48,8 @@ class UserDashboardController extends Controller
         $ExchangeRate = new ExchangeRate();
         $presentRateNaira   = $ExchangeRate->rate();
 
-        $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
-        $market = MarketPlace::where('user_id',Auth::User()->id)->get();
+        $cancel = CancledMail::where('user_id',Auth::User()->id)->latest()->paginate(10);
+        $market = MarketPlace::where('user_id',Auth::User()->id)->latest()->paginate(10);
 
         $amount_balance = DB::table('authorizations')
                             ->where('authorizations.seller_id','=', Auth::User()->id)
@@ -135,8 +139,11 @@ class UserDashboardController extends Controller
          'transaction_token'=>Str::random(22), 
              ]); 
 
-          $user = SellCoin::where('user_id', Auth::user()->id)->latest()->first();
-            return view('dashboard.confirmpage',compact('user', 'amount_naira', 'escrow_fee'));
+          
+            $transaction = new TransactionController();
+            $twofactor = $transaction->twoFActorSell();
+            return $twofactor;
+            
         }
            
     }
@@ -210,6 +217,7 @@ class UserDashboardController extends Controller
             'rate'              => $rate
             ]);
           $user = SellCoin::where('user_id', Auth::user()->id)->latest()->first();
+
             return view('dashboard.confirmpage',compact('user', 'amount_naira', 'escrow_fee'));
         }
     }
@@ -287,7 +295,10 @@ class UserDashboardController extends Controller
 
     public function sellCoin(){
         
-        return view('dashboard.sell');
+        $current_price = new BlockIoTest();
+        $current_price_usd = $current_price->CurrentPriceInUsd();
+
+        return view('dashboard.sell',compact($current_price_usd));
     }
 
     public function transactionMail(){

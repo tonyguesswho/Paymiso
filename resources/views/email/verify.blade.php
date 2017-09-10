@@ -98,7 +98,7 @@ a, a:hover, a:focus {
   margin: 10px 1px;
   font-size: 14px;
   font-weight: 400;
-  text-transform: lowercase;
+  text-transform: uppercase;
   letter-spacing: 0;
   will-change: box-shadow, transform;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);

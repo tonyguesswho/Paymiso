@@ -60,4 +60,8 @@ class User extends Authenticatable
     public function CancledMail(){
         return $this->hasMany('MyEscrow\CancledMail');
     }
+
+      public function TwoFactor(){
+        return $this->hasMany('MyEscrow\TwoFactor');
+    }
 }
