@@ -56,7 +56,7 @@
                                 <input type="number" id="amount_dollar" onkeydown ="convertDollar()" name="amount_dollar"  class="form-control" required="">
                               </div>
                               <div class="col-md-6">
-                                <input type="text" id="amount_btc"  name="amount_btc" placeholder="amount of btc" class="form-control" required="" disabled="">
+                                <input type="text" id="amount_btc"  name="amount_btc" placeholder="amount of btc" class="form-control"  disabled="">
                               </div>
                             </div>
                         </div> 

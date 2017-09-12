@@ -81,13 +81,13 @@ input[type="submit"]::-moz-focus-inner,
 
 .btn {
   border-width: 1px;
-  background-color: transparent;
+  
   font-weight: 400;
   opacity: 0.8;
   filter: alpha(opacity=80);
   padding: 8px 16px;
-  border-color: #888888;
-  color: #888888;
+  
+  color: #ffffff;
 }
 .btn:hover, .btn:focus, .btn:active, .btn.active, .open > .btn.dropdown-toggle {
   background-color: transparent;

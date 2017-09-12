@@ -18,11 +18,12 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index');
 
 Route::get('/dump','BlockIoTestController@dump');
+Route::get('/test','BlockIoTestController@test');
 Route::get('/faq','BlockIoTestController@faq');
 
 Route::get('/create_wallet','BlockIoTestController@createWallet');
 
-Route::get('/verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
+Route::get('/{id}', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
 Route::get('verify/{email}/{token}', 'Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 Route::get('/cancel/{id}/{token}', 'CancelledMailController@cancelEmailDone')->name('cancelEmailDone');
 Route::post('/canceled/email/{id}/{token}','CancelledMailController@sendCancledEmail');
@@ -50,7 +51,7 @@ Route::post('/join/{id}', 'MarketPlaceController@join');
 Route::get('/joinMarket', 'MarketPlaceController@joinMarket');
 Route::post('/contactSeller/{id}', 'MarketPlaceController@create');
 
-Route::post('/sellhome/','TransactionController@sell');
+Route::post('/sellhome','TransactionController@sell');
 Route::get('/sendhome','TransactionController@sendhome');
 Route::get('/twoFactorSell','TransactionController@twoFactorsell');
 Route::get('/twoFactorSendhome','TransactionController@twoFactorsendhome');

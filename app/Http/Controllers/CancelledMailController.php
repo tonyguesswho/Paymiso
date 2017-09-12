@@ -15,6 +15,7 @@ class CancelledMailController extends Controller
     	$token;
         $transaction = Transaction::where(['sell_coin_id' =>$id, 'transaction_token'=>$token])->first();
         $transaction_status = $transaction->transaction_status;
+        $transaction_time = $transaction->created_at;
         if ($transaction_status === '1') {            
              return 'You cannot cancel a completed transaction';
         }else{

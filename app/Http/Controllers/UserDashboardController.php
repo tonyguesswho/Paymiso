@@ -76,7 +76,7 @@ class UserDashboardController extends Controller
             'buyer_email'   => 'required',
             'buyer_phone'   => 'required',
             'amount_dollar' => 'required',
-            'amount_btc'    => 'required',
+           // 'amount_btc'    => 'required',
             'rate'          => 'required',
              ]);
 

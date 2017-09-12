@@ -52,6 +52,7 @@
     <script type="text/javascript">
     
      function convertDollar(){
+        
         var amount_dollar = document.getElementById("amount_dollar").value();
          document.getElementById("amount_btc").value() =  amount_dollar;
         var current_price_usd = {!! ! empty($current_price_usd->data->prices[1]->price) ? json_encode($current_price_usd->data->prices[1]->price): "{}" !!};

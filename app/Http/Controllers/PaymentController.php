@@ -8,6 +8,7 @@ use MyEscrow\SellCoin;
 use MyEscrow\Authorization;
 use MyEscrow\Transaction;
 use MyEscrow\BlockIoTest;
+use Carbon\carbon;
 
 class PaymentController extends Controller
 {   
@@ -21,8 +22,20 @@ class PaymentController extends Controller
 
     public function confirmMail($id,$token){
     	$sellcoin = SellCoin::find($id);
+        $transaction = Transaction::find($id);
+        $transaction_created_at = $transaction->created_at;
+        $current = Carbon::now();
+        $dt = Carbon::now();
+        $dt = $current->subHours(2);
+        if ($transaction_created_at <= $dt) {
+            
+           return 'Transaction time out.';
+        }
+        else{
+           return view('dashboard.paymentForm', compact('sellcoin')); 
+        }
 
-    	return view('dashboard.paymentForm', compact('sellcoin'));
+    	
     }
 
     public function redirectToGateway($id){

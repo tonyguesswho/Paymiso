@@ -108,15 +108,15 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         //$this->guard()->login($user);
-        return redirect(route('verifyEmailFirst'));
+        return redirect(route('verifyEmailFirst',['email' => $user->id]));
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
     }
 
-    public function verifyEmailFirst(){  
-        
-        return view('email.verify');
+    public function verifyEmailFirst($id){  
+        $usermail = User::find($id);
+        return view('email.verify',compact('usermail'));
     }
 
     public function sendEmail($usermail){

@@ -39,12 +39,12 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                <h5 class="modal-title">Please fill in the information below and your buying request will be sent to the seller</h5>
+                                                <h5 class="modal-title text-center">Please fill in the information below and your buying request will be sent to the seller</h5>
                                             </div>
                                             <div class="modal-body">
                                                 <form method="POST" action="/contactSeller/{{$users->user_id}}">
                                                 {{csrf_field()}}
-                                                    <legend>Buyer's Details</legend>
+                                                    <legend class="text-center">Buyer's Details</legend>
                                                     
                                                         <div class="form-group">
                                                             
@@ -63,13 +63,12 @@
                                                             
                                                             <input type="tel" class="form-control" id="amount_dollar" placeholder="Amount in dollar" name="amount_dollar">
                                                         </div>
-                                                        <div class="form-group">
-                                                            
-                                                            <input type="textarea" class="form-control" id="comment" placeholder="Comments" name="comments">
-                                                        </div>
+                                                        
+                                                        <textarea name="comments" id="comment" class="form-control" rows="3" required="required" placeholder="Comments"></textarea>
                                                         <div class="modal-footer">
-                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                        <button type="submit" class="btn btn-success">Submit</button>
+                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            
                                         </div>
                                                 </form>
 

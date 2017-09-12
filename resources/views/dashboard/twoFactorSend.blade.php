@@ -5,13 +5,13 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Two Factor Authentication</h2>
+              <h2 class="no-margin-bottom">Trasaction confirmation</h2>
             </div>
           </header>
           <ul class="breadcrumb">
             <div class="container-fluid">
               <li class="breadcrumb-item"><a href="/userDashboard">Home</a></li>
-              <li class="breadcrumb-item active">2FA</li>
+              <li class="breadcrumb-item active">Confirmation</li>
             </div>
           </ul>
           @include('layouts.error')
@@ -29,7 +29,7 @@
                       </div>
                     </div>
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Two Factor Authentication</h3>
+                      <h3 class="h4">Trasaction Confirmation</h3>
                     </div>
                     <div class="card-body">
                       <p>Enter the Confirmation Code sent to {{Auth::User()->email}}</p>
