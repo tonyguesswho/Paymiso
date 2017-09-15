@@ -351,12 +351,12 @@
             {{ csrf_field() }} 
 
              <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}">  -->
-                    <div class="invoice_trans" class="form-group">
-                        <div class="invoice_left">
+                    
+                        
                            <button class="buttonText" type="submit" style="color: #ffffff;text-decoration: none;font-weight: normal;display: block;padding: 10px 80px;font-family: Arial; background: #4caf50; box-shadow: 0 2px 2px 0 rgba(76, 175, 80, 0.14), 0 3px 1px -2px rgba(76, 175, 80, 0.2), 0 1px 5px 0 rgba(76, 175, 80, 0.12);">PAY</button>
-                        </div>
+                        
         
-                    </div>
+                    
                     
                 
             

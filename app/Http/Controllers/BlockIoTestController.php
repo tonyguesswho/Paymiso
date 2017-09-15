@@ -53,7 +53,7 @@ class BlockIoTestController extends Controller
     }
 
     public function test(){
-        return view('dashboard.paymentFormu');
+        return view('dashboard.conv');
 
     } 
     

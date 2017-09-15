@@ -34,7 +34,7 @@
                     <div class="card-body">
                       <p>Enter the Confirmation Code sent to {{Auth::User()->email}}</p>
                       
-                      <form method="POST" action="/send">
+                      <form method="POST" action="{{route('send')}}">
                         {{csrf_field()}}
                         <div class="form-group">
                           <label class="form-control-label">Confirmation Code</label>

@@ -147,7 +147,7 @@ a, a:hover, a:focus {
               <div class="content">
                 <div class="tab-content text-center">
                   <div class="tab-pane active" id="profile">
-                 <p> An Email has been sent to :<span style="color: green;">{{$usermail->email}}</span></p>
+                 <p> An Email has been sent to :&nbsp<span style="color: green;">{{$usermail->email}}</span></p>
                  <p>Click on the resend button if you did not receive the email</p>
                   <button class="btn btn-primary">RESEND</button>
                     

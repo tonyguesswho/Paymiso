@@ -38,6 +38,7 @@
    
 
      </div>
+
      <!-- Javascript files-->
     <script src="js/jquery.min.js"></script>
     <script src="js/js/tether.min.js"></script>
@@ -51,14 +52,23 @@
     <!---->
     <script type="text/javascript">
     
-     function convertDollar(){
-        
-        var amount_dollar = document.getElementById("amount_dollar").value();
-         document.getElementById("amount_btc").value() =  amount_dollar;
-        var current_price_usd = {!! ! empty($current_price_usd->data->prices[1]->price) ? json_encode($current_price_usd->data->prices[1]->price): "{}" !!};
-        
+        function toBTC() {
+            var usd = document.getElementById("amount_dollar").value;
+            var current_price_usd = {!! ! empty($current_price_usd->data->prices[1]->price) ? json_encode($current_price_usd->data->prices[1]->price): "{}" !!};
+
+            var btc = ( usd/current_price_usd);
+            document.getElementById("amount_btc").value = btc;
+        }
+        function toUSD() {
+            var current_price_usd = {!! ! empty($current_price_usd->data->prices[1]->price) ? json_encode($current_price_usd->data->prices[1]->price): "{}" !!};
+
+            var btc = document.getElementById("amount_btc").value;
+            var usd = (btc*current_price_usd);
+            document.getElementById("amount_dollar").value = usd;
+            console.log(current_price_usd);
         }
 
     </script>
+    
   </body>
 </html>

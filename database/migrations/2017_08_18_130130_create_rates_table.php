@@ -16,6 +16,7 @@ class CreateRatesTable extends Migration
         Schema::create('rates', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('user_id')->nullable();
+            $table->string('username')->nullable()->unique();
             $table->bigInteger('rate')->nullable();
             $table->string('negotiable')->nullable();
             $table->string('availability')->nullable();

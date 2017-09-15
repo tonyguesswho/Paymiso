@@ -57,7 +57,7 @@
                 <nav role="navigation">
                     <ul class="pull-left left-menu">
                         <li id="naira"><a href="#">BTC/NGN &nbsp {{number_format($current_price_usd->data->prices[1]->price*$presentRate,2)}}</a></li>
-                        <li><a href="#">Faq</a></li>
+                        <li><a href="/faq">FAQ</a></li>
                         <li><a href="https://blog.paymiso.com/" target="_blank">Blog</a></li>
                         <li><a href="/marketPlace" target="_blank">Marketplace</a></li>
                     </ul>
@@ -233,7 +233,7 @@
 
 
         
-        <!-- END #fh5co-features-2 -->
+        <!-- END #fh5co-features-2 
         
         <section id="fh5co-testimonials">
             <div class="container">
@@ -272,7 +272,7 @@
                 </div>
             </div>
         </section>
-        <!-- END #fh5co-testimonials -->
+       END #fh5co-testimonials -->
 
         <section id="fh5co-subscribe">
             <div class="container">
@@ -319,7 +319,7 @@
                         <div class="fh5co-footer-widget">
                             <h3>Contact Us</h3>
                             <p>
-                                <a href="mailto:support@myescrow.com">support@myescrow.com</a> <br>
+                                <a href="mailto:support@myescrow.com">support@Paymiso.com</a> <br>
                                 Roar Hub, <br>
                                 UNN  <br>
                                 <a href="tel:+8107268142">+8107268142</a>

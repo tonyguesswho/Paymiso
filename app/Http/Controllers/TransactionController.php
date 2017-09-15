@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use MyEscrow\Mail\twoFactorMail;
 use Mail;
 Use Auth;
+use MyEscrow\BlockIoTest;
 
 
 class TransactionController extends Controller
@@ -71,7 +72,10 @@ class TransactionController extends Controller
 
 
      public function sendhome(){
-        return view('dashboard.send');
+        $current_price = new BlockIoTest();
+        $current_price_usd = $current_price->CurrentPriceInUsd();
+        //dd($current_price_usd);
+        return view('dashboard.send',compact('current_price_usd'));
     }
 
 

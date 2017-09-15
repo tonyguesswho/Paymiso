@@ -23,7 +23,7 @@ class SendInstantlyController extends Controller
             'wallet_id'     => 'required',
             'buyer_email'   => 'required',
             'amount_dollar' => 'required',
-            //'amount_btc'    => 'required',
+            'amount_btc'    => 'required',
              ]);
 
             $amount_btc     = request('amount_btc');

@@ -14,6 +14,13 @@
               <li class="breadcrumb-item active">Withdraw Cash</li>
             </div>
           </ul>
+  @if (session('status'))
+  <center>
+      <div class="alert alert-danger title">
+          <b>{{ session('status') }}</b>
+      </div>
+    </center>
+  @endif
           <!-- Forms Section-->
     <section class="forms"> 
         <div class="container-fluid">

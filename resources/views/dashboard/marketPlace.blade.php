@@ -4,14 +4,20 @@
     <div class="wrapper">       
     <div class="container">        
         
-        
+@if (session('status'))
+  <center>
+      <div class="alert alert-success title">
+          <b>{{ session('status') }}</b>
+      </div>
+    </center>
+  @endif
             
             @foreach($user as $users)
             <div class="card-box col-md-3 col-sm-3">
                 <div class="card text-center" data-background="image" data-src="assets/img/city-1.jpg">
-                    <h4 class="title title-modern" style="margin-bottom: 5px;">{{$users->User->firstname}}</h4>
+                    <h4 class="title title-modern" style="margin-bottom: 5px;">{{$users->username}}</h4>
                     <h5 class="">{{$users->User->phone}}</h5>
-                    <h5 class="title">Available:{{$users->avaiability}}&nbspUSD</h5>
+                    <h5 class="title">Available:&nbsp{{$users->availability}}&nbspUSD</h5>
                     
                     
                     

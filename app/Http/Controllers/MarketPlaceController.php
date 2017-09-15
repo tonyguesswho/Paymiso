@@ -8,17 +8,23 @@ use MyEscrow\Rate;
 use MyEscrow\User;
 use Mail;
 use Send;
+use Auth;
 
 class MarketPlaceController extends Controller
 {
     public function index(){
-        $user = Rate::paginate('5');
-        //dd($user);
+        $search = \Request::get('search');
+        $user = Rate::where('username','like', '%'.$search.'%' )
+                ->latest()
+                ->paginate();
+        
     	return view('dashboard.marketplace', compact('user'));
     }
 
     public function joinMarket(){
-        return view('dashboard.joinMarket');
+        $user = Rate::where('user_id', Auth::User()->id)->first();
+        
+        return view('dashboard.joinMarket', compact('user'));
     }
 
     public function join($id){
@@ -26,14 +32,16 @@ class MarketPlaceController extends Controller
         $this->validate(request(),[
             'rate'          => 'required',
             'availability'  => 'required',
-            'negotiable'    => 'required'
+            'negotiable'    => 'required',
+            'username'      => 'required'
          ]);   
 
-        $rate = Rate::create([
-            'user_id'       => $id,
+        $rate = Rate::where('user_id', Auth::User()->id)->update([
+            
             'rate'          => request('rate'),
             'availability'  => request('availability'),
-            'negotiable'    => request('negotiable')  
+            'negotiable'    => request('negotiable'),
+            'username'    => request('username')  
             ]);
         return redirect('/marketPlace');
     }
@@ -62,7 +70,7 @@ class MarketPlaceController extends Controller
     
         Mail::to($marketMail['email'])->send(new marketPlaceEmail($marketplace_mail));
 
-        return 'Notiication sent sucessfully';
+        return back()->with('status', 'Notification sent successfully');
     }
 }
 

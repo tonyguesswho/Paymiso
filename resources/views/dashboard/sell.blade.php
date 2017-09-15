@@ -53,10 +53,11 @@
                          <label class="form-control-label">Amount of BTC in Dollar</label>
                             <div class="row">
                               <div class="col-md-6">
-                                <input type="number" id="amount_dollar" onkeydown ="convertDollar()" name="amount_dollar"  class="form-control" required="">
+                                <input type="float" id="amount_dollar" onkeyup ="toBTC()" name="amount_dollar"  class="form-control" required="">
                               </div>
                               <div class="col-md-6">
-                                <input type="text" id="amount_btc"  name="amount_btc" placeholder="amount of btc" class="form-control"  disabled="">
+                              
+                                <input type="float" id="amount_btc"  name="amount_btc" placeholder="amount of btc" class="form-control" onkeyup ="toUSD()" required="">
                               </div>
                             </div>
                         </div> 
@@ -64,7 +65,6 @@
                           <label class="form-control-label">Rate</label>
                           <input type="number" name="rate"  class="form-control">
                         </div>   
-                        
                           <button type="submit" class="btn btn-primary">Submit</button>       
                           <!-- <input type="submit" value="Submit" class="btn btn-primary"> -->
                         
@@ -76,5 +76,6 @@
         </div>
     </section>
 </div>
+
 @endsection
 	

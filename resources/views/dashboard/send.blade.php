@@ -47,10 +47,11 @@
                          <label class="form-control-label">Amount of BTC in Dollar</label>
                             <div class="row">
                               <div class="col-md-6">
-                                <input type="number" id="amount_dollar"  name="amount_dollar" class="form-control" required="">
+                                <input type="float" id="amount_dollar" onkeyup ="toBTC()" name="amount_dollar"  class="form-control" required="">
                               </div>
                               <div class="col-md-6">
-                                <input type="text" id="amount_btc" name="amount_btc" placeholder="amount of btc" class="form-control" required="" disabled="">
+                              
+                                <input type="float" id="amount_btc"  name="amount_btc" placeholder="amount of btc" class="form-control" onkeyup ="toUSD()" required="">
                               </div>
                             </div>
                         </div> 

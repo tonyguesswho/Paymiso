@@ -11,6 +11,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Str;
 use Mail;
 use MyEscrow\BankDetail;
+use MyEscrow\Rate;
 use MyEscrow\BlockIoTest;
 use MyEscrow\CreateAddress;
 use MyEscrow\Mail\verifyEmail;
@@ -73,15 +74,30 @@ class RegisterController extends Controller
      * @return \MyEscrow\User
      */
     protected function create(array $data)
-    {
-        $user = User::create([
+    {    $mail = $data['email'];
+
+        if($mail === 'collins@paymiso.com' || $mail === 'anthony@paymiso.com'){
+             $user = User::create([
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'email' => $data['email'],
+            'is_admin' => 1,
+            'phone' => $data['phone'],
+            'password' => bcrypt($data['password']),
+            'token'    => Str::random(40),
+        ]);
+        }else{
+
+            $user = User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
             'token'    => Str::random(40),
-        ]);
+            ]);
+        }
+       
 
         $address = new BlockIoTest();
         $CreateAddress   = $address->createWalletAddress();
@@ -93,6 +109,8 @@ class RegisterController extends Controller
             ]);
          
          BankDetail::Create(['user_id'=>$user->id]);
+
+         Rate::Create(['user_id'=>$user->id]);
 
         $usermail = User::findorfail($user->id);
         $this->sendEmail($usermail);

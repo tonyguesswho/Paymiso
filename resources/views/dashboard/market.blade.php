@@ -41,11 +41,13 @@
             
             <li><a href="http://blog.paymiso.com">Blog</a></li>
           </ul>
-          <form class="navbar-form navbar-right" role="search">
+          <form class="navbar-form navbar-right">
+            <span style="display: none;"> {Form::open(['method'=>'GET', 'url'=>'/marketPlace', 'role' =>'search'])} </span>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input type="text" class="form-control" placeholder="Search" name="search">
             </div>
             <button type="submit" class="btn btn-neutral btn-round btn-modern">Submit</button>
+            <span style="display: none;"> {Form::close()}</span>
           </form>
           <ul class="nav navbar-nav navbar-left">
             

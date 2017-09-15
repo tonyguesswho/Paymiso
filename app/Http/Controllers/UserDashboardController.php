@@ -288,7 +288,7 @@ class UserDashboardController extends Controller
                     'amount'        => request('amount'),
                     'user_id'       => Auth::User()->id
                     ]);
-                return redirect('/userDashboard')->with('status', 'your money will sent soon');
+                return redirect('/userDashboard')->with('status', 'your money will be sent soon');
         }
         
     }
@@ -298,7 +298,7 @@ class UserDashboardController extends Controller
         $current_price = new BlockIoTest();
         $current_price_usd = $current_price->CurrentPriceInUsd();
 
-        return view('dashboard.sell',compact($current_price_usd));
+        return view('dashboard.sell',compact('current_price_usd'));
     }
 
     public function transactionMail(){

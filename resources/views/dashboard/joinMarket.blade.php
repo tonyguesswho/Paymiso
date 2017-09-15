@@ -36,7 +36,18 @@
                       
                       <form method="POST" action="/join/{{Auth::User()->id}}">
                         {{csrf_field()}}
-                        
+
+                        <div class="form-group">       
+                          <label class="form-control-label">Username</label>
+                          <input type="text" name="username" value="{{old('username',$user->username)}}" class="form-control"
+                          required="">
+                        </div>
+                        @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                        @endif
+
                         <div class="form-group">       
                           <label class="form-control-label">Amount of BTC in Dollar</label>
                           <input type="number" name="availability"  class="form-control"
