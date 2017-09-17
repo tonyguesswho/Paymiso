@@ -20,7 +20,7 @@ class CreateSendInstantliesTable extends Migration
             $table->string('buyer_email')->nullable();
             $table->bigInteger('buyer_phone')->nullable();
             $table->bigInteger('amount_dollar')->nullable();
-            $table->float('amount_btc')->nullable();
+            $table->string('amount_btc')->nullable();
             $table->timestamps();
         });
     }

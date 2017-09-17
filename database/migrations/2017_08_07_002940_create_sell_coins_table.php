@@ -20,7 +20,7 @@ class CreateSellCoinsTable extends Migration
             $table->string('buyer_email')->nullable();
             $table->bigInteger('buyer_phone')->nullable();
             $table->float('amount_dollar')->nullable();
-            $table->float('amount_btc')->nullable();
+            $table->string('amount_btc')->nullable();
             $table->integer('rate')->nullable();
             $table->timestamps();
         });
