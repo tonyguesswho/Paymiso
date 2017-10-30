@@ -18,4 +18,7 @@ class CancledMail extends Model
     	return $this->belongsTo('MyEscrow\Transaction');
     }
 
+    public function User(){
+    	return $this->belongsTo('MyEscrow\User');
+    }
 }

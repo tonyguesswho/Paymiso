@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'demo.paymiso.com',
+        'secret' => 'key-b9e4a938eb3045014e51edfc2e671ef6',
     ],
 
     'ses' => [

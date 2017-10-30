@@ -27,7 +27,11 @@ class UserDashboardController extends Controller
 {
     public function __construct(){
 
-    	$this->middleware('auth');
+    	$this->middleware(['auth','timeout']);
+
+        // $pendingFee = DB::table('transactions')->get();
+        // dd($pendingFee);   
+
     }
 
     public function index(){
@@ -44,9 +48,8 @@ class UserDashboardController extends Controller
         $ExchangeRate = new ExchangeRate();
         $presentRateNaira   = $ExchangeRate->rate();
 
-        $cancel = CancledMail::where('user_id',Auth::User()->id)->get();
-    
-        $market = MarketPlace::where('user_id',Auth::User()->id)->get();
+        $cancel = CancledMail::where('user_id',Auth::User()->id)->latest()->paginate(10);
+        $market = MarketPlace::where('user_id',Auth::User()->id)->latest()->paginate(10);
 
         $amount_balance = DB::table('authorizations')
                             ->where('authorizations.seller_id','=', Auth::User()->id)
@@ -97,14 +100,16 @@ class UserDashboardController extends Controller
             $contents = $res->getBody()->getContents();
             $json = json_decode($contents);
             $jsonFee =  $json->fastestFee;
-
-            $pendingFee = DB::table('sell_coins')
-                        ->join('users', 'users.id','=','sell_coins.user_id')
-                        ->join('transactions','transactions.sell_coin_id','=','sell_coins.id' )
-                        ->where(['transaction_status' => 0 AND 'transaction_token' <> Null])
-                        ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
-                        ->get();
-
+            $pendingFee = DB::table('transactions')
+                    ->where([
+                    ['transactions.user_id', '=', Auth::User()->id],
+                    ['transactions.transaction_status', '=', 0],
+                    ['transactions.transaction_token', '<>', Null]
+                    ])
+                    ->join('sell_coins','sell_coins.id','=','transactions.sell_coin_id')
+                    ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
+                    ->get();
+                 
         $pendingFee_total       = $pendingFee['0']->total;
         $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;
         $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
@@ -134,8 +139,11 @@ class UserDashboardController extends Controller
          'transaction_token'=>Str::random(22), 
              ]); 
 
-          $user = SellCoin::where('user_id', Auth::user()->id)->latest()->first();
-            return view('dashboard.confirmpage',compact('user', 'amount_naira', 'escrow_fee'));
+          
+            $transaction = new TransactionController();
+            $twofactor = $transaction->twoFActorSell();
+            return $twofactor;
+            
         }
            
     }
@@ -178,19 +186,22 @@ class UserDashboardController extends Controller
             $json = json_decode($contents);
             $jsonFee =  $json->fastestFee;
 
-            $pendingFee = DB::table('sell_coins')
-                        ->join('users', 'users.id','=','sell_coins.user_id')
-                        ->join('transactions','transactions.sell_coin_id','=','sell_coins.id' )
-                        ->where(['transaction_status' => 0 AND 'transaction_token' <> Null])
-                        ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
-                        ->get();
+            $pendingFee = DB::table('transactions')
+                    ->where([
+                    ['transactions.user_id', '=', Auth::User()->id],
+                    ['transactions.transaction_status', '=', 0],
+                    ['transactions.transaction_token', '<>', Null]
+                    ])
+                    ->join('sell_coins','sell_coins.id','=','transactions.sell_coin_id')
+                    ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
+                    ->get();
 
         $pendingFee_total       = $pendingFee['0']->total;
         $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;
         $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
         $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + ($jsonFee * 226 * 0.00000001));
 
-        if ($total_balance_btc > $total_amount_btc) {
+        if ($total_balance_btc < $total_amount_btc) {
 
             return bacK()->withErrors([
                 'insufficient fund'
@@ -206,6 +217,7 @@ class UserDashboardController extends Controller
             'rate'              => $rate
             ]);
           $user = SellCoin::where('user_id', Auth::user()->id)->latest()->first();
+
             return view('dashboard.confirmpage',compact('user', 'amount_naira', 'escrow_fee'));
         }
     }
@@ -276,14 +288,17 @@ class UserDashboardController extends Controller
                     'amount'        => request('amount'),
                     'user_id'       => Auth::User()->id
                     ]);
-                return redirect('/userDashboard')->with('status', 'your money will sent soon');
+                return redirect('/userDashboard')->with('status', 'your money will be sent soon');
         }
         
     }
 
     public function sellCoin(){
         
-        return view('dashboard.sell');
+        $current_price = new BlockIoTest();
+        $current_price_usd = $current_price->CurrentPriceInUsd();
+
+        return view('dashboard.sell',compact('current_price_usd'));
     }
 
     public function transactionMail(){

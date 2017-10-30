@@ -6,9 +6,12 @@ use MyEscrow\User;
 use MyEscrow\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Str;
 use Mail;
 use MyEscrow\BankDetail;
+use MyEscrow\Rate;
 use MyEscrow\BlockIoTest;
 use MyEscrow\CreateAddress;
 use MyEscrow\Mail\verifyEmail;
@@ -60,6 +63,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|min:11',
             'password' => 'required|string|min:6|confirmed',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
     }
 
@@ -70,15 +74,30 @@ class RegisterController extends Controller
      * @return \MyEscrow\User
      */
     protected function create(array $data)
-    {
-        $user = User::create([
+    {    $mail = $data['email'];
+
+        if($mail === 'collins@paymiso.com' || $mail === 'anthony@paymiso.com'){
+             $user = User::create([
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'email' => $data['email'],
+            'is_admin' => 1,
+            'phone' => $data['phone'],
+            'password' => bcrypt($data['password']),
+            'token'    => Str::random(40),
+        ]);
+        }else{
+
+            $user = User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
             'token'    => Str::random(40),
-        ]);
+            ]);
+        }
+       
 
         $address = new BlockIoTest();
         $CreateAddress   = $address->createWalletAddress();
@@ -91,6 +110,8 @@ class RegisterController extends Controller
          
          BankDetail::Create(['user_id'=>$user->id]);
 
+         Rate::Create(['user_id'=>$user->id]);
+
         $usermail = User::findorfail($user->id);
         $this->sendEmail($usermail);
         return $user;  
@@ -98,9 +119,22 @@ class RegisterController extends Controller
         
     }
 
-    public function verifyEmailFirst(){  
-        
-        return view('email.verify');
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        //$this->guard()->login($user);
+        return redirect(route('verifyEmailFirst',['email' => $user->id]));
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
+    public function verifyEmailFirst($id){  
+        $usermail = User::find($id);
+        return view('email.verify',compact('usermail'));
     }
 
     public function sendEmail($usermail){

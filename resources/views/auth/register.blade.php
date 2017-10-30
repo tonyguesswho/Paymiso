@@ -75,8 +75,21 @@
                       <input id="license" type="checkbox" class="checkbox-template">
                       <label for="license">Agree the terms and policy</label>
                     </div>
+                     <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                            
+
+                            <div class="col-md-6">
+                                {!! app('captcha')->display() !!}
+
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                     <button id="register" type="submit" class="btn btn-primary">Sign up</button>
-                  </form><small>Already have an account? </small><a href="login.html" class="signup">Login</a>
+                  </form><small>Already have an account? </small><a href="/login" class="signup">Login</a>
                 </div>
               </div>
             </div>

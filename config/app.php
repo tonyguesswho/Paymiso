@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -170,6 +171,8 @@ return [
         Blockavel\LaraBlockIo\LaraBlockIoServiceProvider::class,
         Swap\Laravel\SwapServiceProvider::class,
         Unicodeveloper\Paystack\PaystackServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+    
 
         /*
          * Application Service Providers...
@@ -231,6 +234,7 @@ return [
         'LaraBlockIo' => 'Blockavel\LaraBlockIo\LaraBlockIoFacade',
         'Swap' => Swap\Laravel\Facades\Swap::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
+        
 
     ],
 

@@ -62,7 +62,7 @@
                         <div class="left_list">
                           
                             <span>Buyer's Name:</span>
-                            <span>wallet Id:</span>
+                            <!-- <span>wallet Id:</span> -->
                             <span>Phone</span>
                             <span>Email</span>
                             <span>Amount USD:</span>
@@ -73,13 +73,11 @@
                             
                         </div>
                           <div class="right_list">
-                             <span>Buyer's Name:</span>
-                            <span>6666666666666666666666666666666666666666666666666666666:</span>
-                            <span>Buyer's Phone</span>
-                            <span>Buyer's Email</span>
-                            <span>Amount USD:</span>
-                            <span>Rate:</span>
-                            <span>Comments</span>
+                            <span>{{$marketplace_mail->name}}</span>
+                            <span>{{$marketplace_mail->phone}}</span>
+                            <span>{{$marketplace_mail->email}}</span>
+                            <span>{{$marketplace_mail->amount_dollar}}</span>
+                            <span>{{$marketplace_mail->comments}}</span>
                             
                                 
                         </div>
@@ -89,7 +87,7 @@
                     <div class="row">
                      <div class="invoice_trans col-lg-6 col-md-6">
                         <div class="invoice_left">
-                           <a href=""><button type="button" class="btn btn-fresh text-uppercase">Process Transaction</button></a>
+                           <a href="{{route('userDashboard')}}"><button  class="btn btn-fresh text-uppercase">Process Transaction</button></a>
                         </div>
                     </div>
                      <div class="invoice_trans col-lg-6 col-md-6">

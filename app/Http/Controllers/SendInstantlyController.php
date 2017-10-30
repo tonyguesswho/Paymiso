@@ -13,12 +13,12 @@ use Auth;
 
 class SendInstantlyController extends Controller
 {
-    public function __construct(){
+     public function __construct(){
 
-    $this->middleware('auth');
+        $this->middleware(['auth','timeout']);
     }
 
-    public function SendInstantly(){
+    public function sendInstantly(){
     	$this->validate(request(),[
             'wallet_id'     => 'required',
             'buyer_email'   => 'required',
@@ -44,12 +44,15 @@ class SendInstantlyController extends Controller
             $json = json_decode($contents);
             $jsonFee =  $json->fastestFee;
 
-             $pendingFee = DB::table('sell_coins')
-                        ->join('users', 'users.id','=','sell_coins.user_id')
-                        ->join('transactions','transactions.sell_coin_id','=','sell_coins.id' )
-                        ->where(['transaction_status' => 0 AND 'transaction_token' <> Null])
-                        ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
-                        ->get();
+         $pendingFee = DB::table('transactions')
+                    ->where([
+                    ['transactions.user_id', '=', Auth::User()->id],
+                    ['transactions.transaction_status', '=', 0],
+                    ['transactions.transaction_token', '<>', Null]
+                    ])
+                    ->join('sell_coins','sell_coins.id','=','transactions.sell_coin_id')
+                    ->select(DB::raw('sum(amount_btc) as total'), DB::raw('count(amount_btc) as count'))
+                    ->get();
 
 	        $pendingFee_total       = $pendingFee['0']->total;
 	        $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;
@@ -71,10 +74,36 @@ class SendInstantlyController extends Controller
             'amount_btc'    => request('amount_btc')        
             ]);
 
-        	$sendCoin_id = $sendCoin->id;
+            $transaction = new TransactionController();
+            $twofactor = $transaction->twoFActorSend();
+            return $twofactor;
 
-        	$SendInstantly = new BlockIoTest();
-        	$SendInstantly_id = $SendInstantly->sendInstantly($sendCoin_id,$btc_wallet_id);
+        	// $sendCoin_id = $sendCoin->id;
+
+        	// $SendInstantly = new BlockIoTest();
+        	// $SendInstantly_id = $SendInstantly->sendInstantly($sendCoin_id,$btc_wallet_id);
+        }
+    }
+
+      public function sendHomeInstantly(){
+        
+        $this->validate(request(),
+        ['confirmation_code' => 'required']);
+
+        $confirmation_code = request('confirmation_code');
+
+        $user = SendInstantly::where('user_id', Auth::user()->id)->latest()->first();
+        $SendInstantlyId = $user->id;
+
+        $btc_wallet = CreateAddress::where('user_id', Auth()->User()->id)->first();
+        $btc_wallet_id = $btc_wallet->btc_wallet_id;
+
+        $confirmation = TwoFactor::where('user_id', Auth::User()->id)->latest()->first();
+        $getConfirmation = $confirmation->confirmation_code;
+
+        if($getConfirmation === $confirmation_code){
+             $SendInstantly = new BlockIoTest();
+             $SendInstantlyClass = $SendInstantly->sendInstantly($SendInstantlyId,$btc_wallet_id);
         }
     }
 

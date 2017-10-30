@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        '\MyEscrow\Console\Commands\DeleteInactiveTransactions',
     ];
 
     /**
@@ -23,9 +23,9 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule)
-    {
-        // $schedule->command('inspire')
-        //          ->hourly();
+    { 
+        $schedule->command('DeleteInactiveTransactions:updatetransactions')
+                 ->everyMinute();
     }
 
     /**

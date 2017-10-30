@@ -29,9 +29,6 @@ class HomeController extends Controller
         $current_price_usd = $current_price->CurrentPriceInUsd();
         $ExchangeRate = new ExchangeRate();
         $presentRate   = $ExchangeRate->rate();
-       // dd($presentRate);
-        
-        //dd($current_price_usd);
         
         return view('welcome',compact('current_price_usd','presentRate'));
     }

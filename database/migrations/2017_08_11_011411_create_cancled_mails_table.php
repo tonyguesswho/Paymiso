@@ -15,6 +15,7 @@ class CreateCancledMailsTable extends Migration
     {
         Schema::create('cancled_mails', function (Blueprint $table) {
             $table->increments('id');
+            $table->bigInteger('user_id')->nullable();
             $table->string('name')->nullable();
             $table->bigInteger('user_id')->nullable();
             $table->longText('reason')->nullable();

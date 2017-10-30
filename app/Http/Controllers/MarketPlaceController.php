@@ -9,18 +9,23 @@ use MyEscrow\User;
 use Auth;
 use Mail;
 use Send;
+use Auth;
 
 class MarketPlaceController extends Controller
 {
     public function index(){
-        $user = Rate::paginate('5');
-        //dd($user);
+        $search = \Request::get('search');
+        $user = Rate::where('username','like', '%'.$search.'%' )
+                ->latest()
+                ->paginate();
+        
     	return view('dashboard.marketplace', compact('user'));
     }
 
-    public function marketForm(){
-        $id = Auth::User()->id;
-        return view('dashboard.marketForm',compact('id'));
+    public function joinMarket(){
+        $user = Rate::where('user_id', Auth::User()->id)->first();
+        
+        return view('dashboard.joinMarket', compact('user'));
     }
 
     public function join($id){
@@ -28,14 +33,16 @@ class MarketPlaceController extends Controller
         $this->validate(request(),[
             'rate'          => 'required',
             'availability'  => 'required',
-            'negotiable'    => 'required'
+            'negotiable'    => 'required',
+            'username'      => 'required'
          ]);   
 
-        $rate = Rate::create([
-            'user_id'       => $id,
+        $rate = Rate::where('user_id', Auth::User()->id)->update([
+            
             'rate'          => request('rate'),
             'availability'  => request('availability'),
-            'negotiable'    => request('negotiable')  
+            'negotiable'    => request('negotiable'),
+            'username'    => request('username')  
             ]);
         return redirect('/marketPlace');
     }
@@ -58,12 +65,13 @@ class MarketPlaceController extends Controller
             'amount_dollar' => request('amount_dollar'),
             'comments'    =>request('comments')
             ]);
-
+        $marketplace_id = $marketplace->id;
+        $marketplace_mail = MarketPLace::find($marketplace_id);
     	$marketMail = User::find($id);
     
-        Mail::to($marketMail['email'])->send(new marketPlaceEmail($marketMail));
+        Mail::to($marketMail['email'])->send(new marketPlaceEmail($marketplace_mail));
 
-        return 'Notiication sent sucessfully';
+        return back()->with('status', 'Notification sent successfully');
     }
 }
 

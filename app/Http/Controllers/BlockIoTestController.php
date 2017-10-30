@@ -5,7 +5,10 @@ namespace MyEscrow\Http\Controllers;
 use Illuminate\Http\Request;
 use MyEscrow\BlockIoTest;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use MyEscrow\Transaction;
+use Carbon\Carbon;
 
 
 //use MyEscrow\User;
@@ -18,13 +21,15 @@ class BlockIoTestController extends Controller
 	// }
 
     public function dump(){
-    
-    	// $balance = new BlockIoTest();
-    	// $bal   = $balance->Test();
-    	// dd($bal);
-        return view('dashboard.marketPlace');
-        
-    	
+   $transaction = Transaction::find(1);
+   $transaction_created_at = $transaction->created_at;
+    $current = Carbon::now();
+        $dt = Carbon::now();
+        $dt = $current->subHours(2);
+        if ($transaction_created_at <= $dt) {
+            
+           return 'transaction time out.';
+        }
     }
 
     public function bitco(){
@@ -39,6 +44,18 @@ class BlockIoTestController extends Controller
         $json = json_decode($contents);
         $json->hourFee;
     }
+
+     public function faq(){
+    
+        return view('dashboard.faq');
+        
+        
+    }
+
+    public function test(){
+        return view('dashboard.conv');
+
+    } 
     
     }
 

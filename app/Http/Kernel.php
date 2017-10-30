@@ -36,6 +36,8 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
+        
+
         'api' => [
             'throttle:60,1',
             'bindings',
@@ -56,5 +58,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \MyEscrow\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'admin' => \MyEscrow\Http\Middleware\Admin::class,
+        'timeout'=>\MyEscrow\Http\Middleware\SessionTimeout::class,
     ];
 }

@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname','lastname', 'email', 'phone', 'password','token'
+        'firstname','lastname', 'email', 'phone', 'password','token', 'is_admin'
     ];
 
     /**
@@ -55,5 +55,13 @@ class User extends Authenticatable
 
     public function SendInstantly(){
         return $this->hasMany('MyEscrow\SendInstantly');
+    }
+
+    public function CancledMail(){
+        return $this->hasMany('MyEscrow\CancledMail');
+    }
+
+      public function TwoFactor(){
+        return $this->hasMany('MyEscrow\TwoFactor');
     }
 }

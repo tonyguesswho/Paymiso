@@ -1,0 +1,1 @@
+your code is {{$confirmation_code['confirmation_code']}}

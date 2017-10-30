@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>PayMiso</title>
+    <title>Paymiso</title>
     <meta name="description" content=""> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -38,8 +38,9 @@
    
 
      </div>
+
      <!-- Javascript files-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/js/tether.min.js"></script>
     <script src="js/js/bootstrap.min.js"></script>
     <script src="js/js/jquery.cookie.js"> </script>
@@ -49,13 +50,25 @@
     <script src="js/js/front.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
     <!---->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
+    <script type="text/javascript">
+    
+        function toBTC() {
+            var usd = document.getElementById("amount_dollar").value;
+            var current_price_usd = {!! ! empty($current_price_usd->data->prices[1]->price) ? json_encode($current_price_usd->data->prices[1]->price): "{}" !!};
+
+            var btc = ( usd/current_price_usd);
+            document.getElementById("amount_btc").value = btc;
+        }
+        function toUSD() {
+            var current_price_usd = {!! ! empty($current_price_usd->data->prices[1]->price) ? json_encode($current_price_usd->data->prices[1]->price): "{}" !!};
+
+            var btc = document.getElementById("amount_btc").value;
+            var usd = (btc*current_price_usd);
+            document.getElementById("amount_dollar").value = usd;
+            console.log(current_price_usd);
+        }
+
     </script>
+    
   </body>
 </html>

@@ -1,0 +1,87 @@
+body {
+  background-color: #CCCCCC;
+}
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.5em;
+}
+a, a:hover, a:focus {
+  color: #9c27b0;
+}
+.nav-tabs {
+  background: #9c27b0;
+  border: 0;
+  border-radius: 3px;
+  padding: 0 15px;
+}
+.nav-tabs > li > a {
+  color: #FFFFFF;
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  line-height: 24px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.nav-tabs > li > a:hover {
+  background-color: transparent;
+  border: 0;
+}
+.nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+  background-color: transparent;
+  border: 0 !important;
+  color: #FFFFFF !important;
+  font-weight: 500;
+}
+.nav-tabs > li.disabled > a, .nav-tabs > li.disabled > a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+.nav-tabs > li .material-icons {
+  margin: -1px 5px 0 0;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: background-color .1s .2s;
+}
+.card {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  border-radius: 3px;
+  color: rgba(0,0,0, 0.87);
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.card .card-height-indicator {
+  margin-top: 100%;
+}
+.card .card-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.card .content {
+  padding: 15px;
+}
+
+
+
+.card .header-success {
+  background: linear-gradient(60deg, #66bb6a, #388e3c);
+}
+
+.card-nav-tabs {
+  margin-top: 45px;
+}
+.card-nav-tabs .header {
+  margin-top: -30px;
+}
+.card-nav-tabs .nav-tabs {
+  background: transparent;
+}
+

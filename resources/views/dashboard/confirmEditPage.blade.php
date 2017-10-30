@@ -56,7 +56,7 @@
                                 <input type="number" name="amount_dollar" placeholder="amount in dollar" class="form-control" required="" value="{{old('amount_dollar', $user->amount_dollar)}}">
                               </div>
                               <div class="col-md-6">
-                                <input type="number" name="amount_btc" placeholder="amount of btc" class="form-control" required="" value="{{old('amount_btc', $user->amount_btc)}}">
+                                <input type="text" name="amount_btc" placeholder="amount of btc" class="form-control" required="" value="{{old('amount_btc', $user->amount_btc)}}">
                               </div>
                             </div>
                         </div> 

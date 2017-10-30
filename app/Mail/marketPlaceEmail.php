@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use MyEscrow\User;
+use MyEscrow\MarketPlace;
 
 class marketPlaceEmail extends Mailable
 {
@@ -17,10 +17,10 @@ class marketPlaceEmail extends Mailable
      *
      * @return void
      */
-    public $marketPlace;
-    public function __construct(User $marketPlace)
+    public $marketplace_mail;
+    public function __construct(MarketPlace $marketplace_mail)
     {
-        $this->marketPlace = $marketPlace;
+        $this->marketplace_mail = $marketplace_mail;
     }
 
     /**
