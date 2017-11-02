@@ -18,7 +18,7 @@ class MarketPlaceController extends Controller
                 ->latest()
                 ->paginate();
         
-    	return view('dashboard.marketplace', compact('user'));
+    	return view('dashboard.marketPlace', compact('user'));
     }
 
     public function joinMarket(){
