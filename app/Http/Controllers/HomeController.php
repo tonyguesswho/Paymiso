@@ -32,4 +32,18 @@ class HomeController extends Controller
         
         return view('welcome',compact('current_price_usd','presentRate'));
     }
+
+     public function pp()
+    {   
+       
+        
+        return view('privacy');
+    }
+
+     public function tc()
+    {   
+       
+        
+        return view('terms');
+    }
 }

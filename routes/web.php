@@ -18,6 +18,7 @@ Route::post('/contactSeller/{id}', 'MarketPlaceController@create');
 Route::get('/faq','BlockIoTestController@faq');
 
 
+
 Auth::routes();
 
 Route::post('/sellInstantly','SendInstantlyController@sendInstantly');
@@ -89,6 +90,9 @@ Route::get('/action','AdminController@action');
 Route::get('/data', 'AdminController@data');
 
 Route::get('/', 'HomeController@index');
+Route::get('/privacy','HomeController@pp');
+Route::get('/terms','HomeController@tc');
+
 
 
 

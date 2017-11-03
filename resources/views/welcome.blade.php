@@ -296,10 +296,8 @@
                             <h3>Company</h3>
                             <ul class="fh5co-links">
                                 <li><a href="#">About Us</a></li>
-                                <li><a href="#">Careers</a></li>
-                                <li><a href="#">Features</a></li>
                                 <li><a href="#">Pricing</a></li>
-                                <li><a href="#">Team</a></li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -309,8 +307,8 @@
                             <h3>Support</h3>
                             <ul class="fh5co-links">
                                 <li><a href="#">24/7 Support</a></li>
-                                <li><a href="#">Terms of Use</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="/tc">Terms and Conditions</a></li>
+                                <li><a href="/pp">Privacy Policy</a></li>
                             </ul>
                         </div>
                     </div>
@@ -319,7 +317,7 @@
                         <div class="fh5co-footer-widget">
                             <h3>Contact Us</h3>
                             <p>
-                                <a href="mailto:support@myescrow.com">support@Paymiso.com</a> <br>
+                                <a href="mailto:support@paymiso.com">support@Paymiso.com</a> <br>
                                 Roar Hub, <br>
                                 UNN  <br>
                                 <a href="tel:+8107268142">+8107268142</a>
