@@ -307,8 +307,8 @@
                             <h3>Support</h3>
                             <ul class="fh5co-links">
                                 <li><a href="#">24/7 Support</a></li>
-                                <li><a href="/terms">Terms and Conditions</a></li>
-                                <li><a href="/privacy">Privacy Policy</a></li>
+                                <li><a href="/terms" target="_blank">Terms and Conditions</a></li>
+                                <li><a href="/privacy" target="_blank">Privacy Policy</a></li>
                             </ul>
                         </div>
                     </div>
