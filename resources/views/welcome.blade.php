@@ -105,12 +105,7 @@
                     </div>
                 </div>
             </div>
-            <div class="fh5co-learn-more animate-box">
-                <a href="#" class="scroll-btn">
-                    <span class="text">more</span>
-                    <span class="arrow"><i class="icon-chevron-down"></i></span>
-                </a>
-            </div>
+            
         </section>
         <!-- END #fh5co-hero 
 
