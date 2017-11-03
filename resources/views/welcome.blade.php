@@ -273,14 +273,26 @@
             <div class="container">
         
                 <h3 class="animate-box"><label for="email">Subscribe to our newsletter</label></h3>
-                <form action="#" method="post" class="animate-box">
+                <form action="https://outdear.us16.list-manage.com/subscribe/post?u=ef79da3c38a275b5d7f0001b6&amp;id=3ae57b52a0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                     <i class="fh5co-icon icon-paper-plane"></i>
-                    <input type="email" class="form-control" placeholder="Enter your email" id="email" name="email">
-                    <input type="submit" value="Send" class="btn btn-primary">
+                    <input type="email" class="form-control" placeholder="Enter your email" id="mce-EMAIL" name="EMAIL">
+                     <div id="mce-responses" class="clear">
+                     <div class="response" id="mce-error-response" style="display:none"></div>
+                     <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                    <input type="submit" value="Subscribe" name="subscribe" id ="mc-embedded-subscribe"class="btn btn-primary">
                 </form>
 
             </div>
         </section>
+<!-- Begin MailChimp Signup Form -->
+
+
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'>
+</script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = 
+    new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';}(jQuery));var $mcj = 
+jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
         <!-- END #fh5co-subscribe -->
 
         <footer id="fh5co-footer">
