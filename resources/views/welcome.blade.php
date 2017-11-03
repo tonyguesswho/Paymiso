@@ -328,7 +328,7 @@ jQuery.noConflict(true);</script>
                         <div class="fh5co-footer-widget">
                             <h3>Contact Us</h3>
                             <p>
-                                <a href="mailto:support@paymiso.com">support@Paymiso.com</a> <br>
+                                <a href="mailto:support@paymiso.com">support@paymiso.com</a> <br>
                                 Roar Hub, <br>
                                 UNN  <br>
                                 <a href="tel:+8107268142">+8107268142</a>
@@ -356,7 +356,7 @@ jQuery.noConflict(true);</script>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="fh5co-left"><small>&copy; 2017 <a href=""> Paymiso</a> All Rights Reserved.</small></p>
+                            <p class="fh5co-left"><small>&copy; 2017 <a href=""> Paymiso Technologies</a> All Rights Reserved.</small></p>
 <!--                             <p class="fh5co-right"><small class="fh5co-right">Designed by <a href="" target="_blank">FREEHTML5.co</a> Demo Images: <a href="" target="_blank">Unsplash</a></small></p>
  -->                        </div>
                     </div>
