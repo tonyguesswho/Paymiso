@@ -56,10 +56,10 @@
             <div class="container">
                 <nav role="navigation">
                     <ul class="pull-left left-menu">
-                        <li id="naira"><a href="#">BTC/NGN &nbsp {{number_format($current_price_usd->data->prices[1]->price*$presentRate,2)}}</a></li>
+                        <li id="naira"><a href="#"> &nbsp {{number_format($current_price_usd->data->prices[1]->price*$presentRate,2)}}</a></li>
                         <li><a href="/faq">FAQ</a></li>
                         <li><a href="https://blog.paymiso.com/" target="_blank">Blog</a></li>
-                        <li><a href="/marketPlace" target="_blank">Marketplace</a></li>
+                        <li><a href="#" target="_blank">Marketplace</a></li>
                     </ul>
                     <h1 id="fh5co-logo"><a href="{{ url('/') }}">Paymiso<span></span></a></h1>
                     <ul class="pull-right right-menu">
@@ -99,20 +99,20 @@
                             <div class="fh5co-right-position">
                         -->
                         <div class="fh5co-left-position">
-                            <h2 class="animate-box">Secure and fast way to sell Bitcoin</h2>
-                            <p class="animate-box"><a href="/sendhome" class="btn btn-outline popup-vimeo btn-video">SEND INSTANTLY </a> <a href="/sell" target="_blank" class="btn btn-primary">SELL WITH ESCROW</a></p>
+                            <h2 class="animate-box">Technology At Its Best</h2>
+                            <p class="animate-box"><a href="#" class="btn btn-outline popup-vimeo btn-video">SEND INSTANTLY </a> <a href="#" target="_blank" class="btn btn-primary">SELL WITH ESCROW</a></p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="fh5co-learn-more animate-box">
                 <a href="#" class="scroll-btn">
-                    <span class="text">Explore more about us</span>
+                    <span class="text">more</span>
                     <span class="arrow"><i class="icon-chevron-down"></i></span>
                 </a>
             </div>
         </section>
-        <!-- END #fh5co-hero -->
+        <!-- END #fh5co-hero 
 
 
         <section id="fh5co-projects">
@@ -161,7 +161,7 @@
                 </div>
             </div>
         </section>
-        <!-- END #fh5co-projects -->
+         END #fh5co-projects 
 
         <section id="fh5co-features">
             <div class="container">
@@ -229,11 +229,11 @@
             </div>
         </section>  
 
-        <!-- END #fh5co-features -->
+         END #fh5co-features 
 
 
         
-        <!-- END #fh5co-features-2 
+         END #fh5co-features-2 
         
         <section id="fh5co-testimonials">
             <div class="container">
