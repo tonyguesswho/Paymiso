@@ -3,7 +3,7 @@
 namespace MyEscrow\Http\Controllers;
 use Illuminate\Http\Request;
 use MyEscrow\Mail\marketPlaceEmail;
-use MyEscrow\MarketPLace;
+use MyEscrow\MarketPlace;
 use MyEscrow\Rate;
 use MyEscrow\User;
 use Mail;
@@ -56,7 +56,7 @@ class MarketPlaceController extends Controller
             'comments'    => 'required'
              ]);
 
-    	   $marketplace =  MarketPLace::create([
+    	   $marketplace =  MarketPlace::create([
             'user_id'       => $id,
             'name'     => request('name'),
             'email'   => request('email'),
@@ -65,7 +65,7 @@ class MarketPlaceController extends Controller
             'comments'    =>request('comments')
             ]);
         $marketplace_id = $marketplace->id;
-        $marketplace_mail = MarketPLace::find($marketplace_id);
+        $marketplace_mail = MarketPlace::find($marketplace_id);
     	$marketMail = User::find($id);
     
         Mail::to($marketMail['email'])->send(new marketPlaceEmail($marketplace_mail));
