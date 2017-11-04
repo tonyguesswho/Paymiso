@@ -57,7 +57,7 @@
                               </div>
                               <div class="col-md-6">
                               
-                                <input type="text" id="amount_btc"  name="amount_btc" placeholder="amount of btc" class="form-control" onkeyup ="toUSD()" required="">
+                                <input type="text" id="amount_btc"  name="amount_btc" placeholder="amount 2" class="form-control" onkeyup ="toUSD()" required="">
                               </div>
                             </div>
                         </div> 
