@@ -61,7 +61,7 @@
                         <li><a href="https://blog.paymiso.com/" target="_blank">Blog</a></li>
                         <li><a href="#" target="_blank">Marketplace</a></li>
                     </ul>
-                    <h1 id="fh5co-logo"><a href="{{ url('/') }}">Paymiso<span></span></a></h1>
+                    
                     <ul class="pull-right right-menu">
                         @if(Auth::guest())
                         
