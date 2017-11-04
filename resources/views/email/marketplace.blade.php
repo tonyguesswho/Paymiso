@@ -66,7 +66,7 @@
                             <span>Phone</span>
                             <span>Email</span>
                             <span>Amount USD:</span>
-                            <span>Rate:</span>
+                            
                             <span>Comments</span>
                             
                             
@@ -77,6 +77,7 @@
                             <span>{{$marketplace_mail->phone}}</span>
                             <span>{{$marketplace_mail->email}}</span>
                             <span>{{$marketplace_mail->amount_dollar}}</span>
+                            
                             <span>{{$marketplace_mail->comments}}</span>
                             
                                 
