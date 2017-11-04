@@ -9,7 +9,7 @@
               <div class="info d-flex align-items-center">
                 <div class="content">
                   <div class="logo center">
-                    <img src="images/logow2.jpg" alt="Image"
+                    <img src="images/logow2.png" alt="Image"
                      class="img-responsive">
                   </div>
                   
