@@ -36,7 +36,7 @@
                       <form method="POST" action="/sellInstantly">
                         {{csrf_field()}}
                         <div class="form-group">
-                          <label class="form-control-label">Buyers Wallet Id</label>
+                          <label class="form-control-label"> Id</label>
                           <input type="text" name="wallet_id" class="form-control" required="">
                         </div>
                         <div class="form-group">       
@@ -44,7 +44,7 @@
                           <input type="email" name="buyer_email" class="form-control" required="optional">
                         </div>
                         <div class="form-group">
-                         <label class="form-control-label">Amount of BTC in Dollar</label>
+                         <label class="form-control-label">Amount 1</label>
                             <div class="row">
                               <div class="col-md-6">
                                 <input type="number" id="amount_dollar" onkeyup ="toBTC()" name="amount_dollar"  class="form-control" required="">

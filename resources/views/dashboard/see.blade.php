@@ -64,9 +64,9 @@
                         <div class="left_list">
                           
                             <span>Seller's Name:</span>
-                            <span>Buyer's Id:</span>
-                            <span>Amount BTC:</span>
-                            <span>Amount USD:</span>
+                            <span>Id:</span>
+                            <span>Amount 1:</span>
+                            <span>Amount 2:</span>
                             <span>Rate:</span>
                             <span>Amount NGN:</span>
                             <span>Escrow fee (0.75% for each participant):</span>

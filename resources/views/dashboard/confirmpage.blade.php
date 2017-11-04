@@ -169,15 +169,15 @@ a, a:hover, a:focus {
                          <td>{{$user->User->firstname}}&nbsp&nbsp{{$user->User->lastname}}</td>
                        </tr>
                         <tr>
-                         <td>Buyer's Id</td>
+                         <td> Id</td>
                          <td>{{$user->wallet_id}}</td>
                        </tr>
                        <tr>
-                         <td>Amount BTC</td>
+                         <td>Amount 1</td>
                          <td>{{$user->amount_btc}}</td>
                        </tr>
                        <tr>
-                         <td>Amount USD</td>
+                         <td>Amount 2</td>
                          <td>{{number_format($user->amount_dollar,2)}}</td>
                        </tr>
                        <tr>

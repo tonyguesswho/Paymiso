@@ -87,7 +87,7 @@
                                                         <center style="border: none; margin: 0px; padding: 0px;">
                                                             
   
-  Buyer's wallet ID: {{$sellcoin->wallet_id}}
+  Buyer's  ID: {{$sellcoin->wallet_id}}
 
                                                             <center style="border: none; margin: 0px; padding: 0px;"></center>
                                                         </center>
@@ -154,7 +154,7 @@
                                                                                 <tr>
                                                                                     <td width="5%" valign="middle" style="border: none; margin: 0px; padding: 0px; width: 5%;"></td>
                                                                                     <td valign="middle" style="font-weight: 200; font-family:'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-                                                                                        Amount (BTC)
+                                                                                        Amount
                                                                                     </td>
                                                                                     <td width="20%" valign="middle" style="text-align: right; width: 20%; vertical-align: top; font-family:'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
                                                                                       {{$sellcoin->amount_btc}}
@@ -185,7 +185,7 @@
                                                                                 <tr>
                                                                                     <td width="5%" valign="middle" style="border: none; margin: 0px; padding: 0px; width: 5%;"></td>
                                                                                     <td valign="middle" style="font-weight: 200; font-family:'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-                                                                                        Amount(USD)
+                                                                                        Amount(2)
                                                                                     </td>
                                                                                     <td width="20%" valign="middle" style="text-align: right; width: 20%; vertical-align: top; font-family:'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
                                                                                       {{number_format($sellcoin->amount_dollar,2)}}

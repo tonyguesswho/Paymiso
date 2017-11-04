@@ -6,7 +6,7 @@
 	    <div class="container-fluid">
 	        <div class="row"> 
 	            <span class="col-sm-6"><a id="login" href="/sell" class="btn btn-primary">SELL WITH ESCROW</a></span> 
-	            <span class="col-sm-6"><a id="login" href="/sendhome" class="btn btn-primary">SEND INSTANTLY</a></span> 
+	            <span class="col-sm-6"><a id="login" href="#" class="btn btn-primary">Sell</a></span> 
 	       	</div> 
 	    </div>
 	</header>
@@ -28,7 +28,7 @@
                     <div class="icon bg-violet"><i class="icon-padnote"></i></div>
                     <div class="title"><span>Balance</span>
                     </div>
-                    <div class="number"><span><span>BTC&nbsp</span><span><b> {{$balance->data->available_balance}}</b></span><br><span class="h4">USD {{number_format(($balance->data->available_balance*$current_price_usd->data->prices[1]->price),2)}}</span></span></div>
+                    <div class="number"><span><span>&nbsp</span><span><b> {{$balance->data->available_balance}}</b></span><br><span class="h4">USD {{number_format(($balance->data->available_balance*$current_price_usd->data->prices[1]->price),2)}}</span></span></div>
                   <!-- </div> -->
                 </div>
               </div>
@@ -54,7 +54,7 @@
                    <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
                      	<div class="project-title d-flex align-items-center"> 
 	                      <div class="text">
-	                        <h3 class="h4"><span>WALLET-ID:&nbsp<strong>{{$btc_wallet_id->btc_wallet_id}}</strong></span></h3>
+	                        <h3 class="h4"><span>ID:&nbsp<strong>{{$btc_wallet_id->btc_wallet_id}}</strong></span></h3>
 	                      </div>
                    		</div> 
                 	</div> 
