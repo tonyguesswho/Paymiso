@@ -29,7 +29,7 @@
                                 <tr valign="middle" style="border: none; margin: 0px; padding: 0px;">
                                     <td width="6.25%" valign="middle" style="border: none; margin: 0px; padding: 0px; width: 6.25%;"></td>
                                     <td valign="middle" style="border: none; margin: 0px; padding: 0px;">
-                                        <a href="https://www.spotify.com/" style="border: none; margin: 0px; padding: 0px; text-decoration: none;" target="_blank"><img class="logo" src="" width="122" height="37" alt="paymiso" style="border: none; margin: 0px; padding: 0px; display: block; max-width: 100%; width: 122px; height: 37px;"></a>
+                                        <a href="#" style="border: none; margin: 0px; padding: 0px; text-decoration: none;" target="_blank"><img class="logo" src="images/logognn.png" width="122" height="37" alt="paymiso" style="border: none; margin: 0px; padding: 0px; display: block; max-width: 100%; width: 122px; height: 37px;"></a>
                                     </td>
                                     <td width="6.25%" valign="middle" style="border: none; margin: 0px; padding: 0px; width: 6.25%;"></td>
                                 </tr>

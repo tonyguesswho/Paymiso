@@ -37,8 +37,8 @@
                       <form method="POST" action="/update">
                         {{csrf_field()}}
                         <div class="form-group">
-                          <label class="form-control-label">Buyers Wallet Id</label>
-                          <input type="text" name="wallet_id" placeholder="wallet id" class="form-control" required="" value="{{old('wallet_id', $user->wallet_id)}}">
+                          <label class="form-control-label">Buyers  Id</label>
+                          <input type="text" name="wallet_id" placeholder=" id" class="form-control" required="" value="{{old('wallet_id', $user->wallet_id)}}">
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Buyers Email</label>
@@ -50,13 +50,13 @@
                           required="" value="{{old('buyer_phone', $user->buyer_phone)}}">
                         </div>
                         <div class="form-group">
-                         <label class="form-control-label">Amount of BTC in Dollar</label>
+                         <label class="form-control-label">Amount 2</label>
                             <div class="row">
                               <div class="col-md-6">
-                                <input type="number" name="amount_dollar" placeholder="amount in dollar" class="form-control" required="" value="{{old('amount_dollar', $user->amount_dollar)}}">
+                                <input type="number" name="amount_dollar" placeholder="amount 2" class="form-control" required="" value="{{old('amount_dollar', $user->amount_dollar)}}">
                               </div>
                               <div class="col-md-6">
-                                <input type="text" name="amount_btc" placeholder="amount of btc" class="form-control" required="" value="{{old('amount_btc', $user->amount_btc)}}">
+                                <input type="text" name="amount_btc" placeholder="amount 1" class="form-control" required="" value="{{old('amount_btc', $user->amount_btc)}}">
                               </div>
                             </div>
                         </div> 
