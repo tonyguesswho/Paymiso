@@ -61,7 +61,7 @@
                         <li><a href="https://blog.paymiso.com/" target="_blank">Blog</a></li>
                         <li><a href="/marketPlace" target="_blank">Marketplace</a></li>
                     </ul>
-                    <ul>
+                    <ul class="pull-right right-menu">
                     <h1 id="fh5co-logo"><a href="{{ url('/') }}"><img src="images/logownn.png" alt="Image"
                      class="img-responsive"><span></span></a></h1>
                     </ul>
