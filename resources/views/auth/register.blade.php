@@ -9,9 +9,10 @@
               <div class="info d-flex align-items-center">
                 <div class="content">
                   <div class="logo">
-                    <h1>Dashboard</h1>
+                    <img src="images/logown.jpg" alt="Image"
+                     class="img-responsive">
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  
                 </div>
               </div>
             </div>
