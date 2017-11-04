@@ -6,7 +6,7 @@
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
                  <h4 class="panel-title">
-                    <a href="#" class="ing">Q: What is Lorem Ipsum?</a>
+                    <a href="#" class="ing">Q: How does Paymiso work</a>
               </h4>
 
             </div>
@@ -14,8 +14,15 @@
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five <a href="http://jquery2dotnet.com/" class="label label-success">http://jquery2dotnet.com/</a> centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
+                    <p>Paymiso enables sellers/buyers of bitcoin to trasact secuerly</p>
+                    <ul>
+                        <li>Seller creates and funds his/her Paymiso bitcoin wallet</li>
+                        <li>Seller starts the trasaction and the details are sent to the buyer</li>
+                        <li>Buyer confirms the details and makes payment via our payment gateway</li>
+                        <li>Buyer instantly gets butcoin funds in his/her wallet</li>
+                        <li>Seller can withdraw from his/her paymiso dashboard instantly</li>
+                    </ul>
+
                 </div>
             </div>
         </div>
