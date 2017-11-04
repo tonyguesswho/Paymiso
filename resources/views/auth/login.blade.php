@@ -8,10 +8,11 @@
             <div class="col-lg-6">
               <div class="info d-flex align-items-center">
                 <div class="content">
-                  <div class="logo">
-                    <h1>Dashboard</h1>
+                  <div class="logo center">
+                    <img src="images/logown.jpg" alt="Image"
+                     class="img-responsive">
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  
                 </div>
               </div>
             </div>
