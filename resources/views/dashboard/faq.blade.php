@@ -76,13 +76,13 @@
             </div>
         </div>
         <div class="panel panel-default ">
-            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question4">
                  <h4 class="panel-title">
                     <a href="#" class="ing">Q: How can i know the network fee?</a>
               </h4>
 
             </div>
-            <div id="question3" class="panel-collapse collapse" style="height: 0px;">
+            <div id="question4" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 
@@ -93,13 +93,13 @@
             </div>
         </div>
         <div class="panel panel-default ">
-            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question5">
                  <h4 class="panel-title">
                     <a href="#" class="ing">Q: Am i paying the actual network fee or the estimated network fee?</a>
               </h4>
 
             </div>
-            <div id="question3" class="panel-collapse collapse" style="height: 0px;">
+            <div id="question5" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 
@@ -111,13 +111,13 @@
             </div>
         </div>
         <div class="panel panel-default ">
-            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question6">
                  <h4 class="panel-title">
-                    <a href="#" class="ing">Q: How long does a trasaction last?</a>
+                    <a href="#" class="ing">Q: How long does a transaction last?</a>
               </h4>
 
             </div>
-            <div id="question3" class="panel-collapse collapse" style="height: 0px;">
+            <div id="question6" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 
@@ -128,13 +128,13 @@
             </div>
         </div>
         <div class="panel panel-default ">
-            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question7">
                  <h4 class="panel-title">
                     <a href="#" class="ing">Q: As a seller how can i get my money?</a>
               </h4>
 
             </div>
-            <div id="question3" class="panel-collapse collapse" style="height: 0px;">
+            <div id="question7" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 
@@ -145,13 +145,13 @@
             </div>
         </div>
         <div class="panel panel-default ">
-            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
+            <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question8">
                  <h4 class="panel-title">
                     <a href="#" class="ing">Q: How can i get more information?</a>
               </h4>
 
             </div>
-            <div id="question3" class="panel-collapse collapse" style="height: 0px;">
+            <div id="question8" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 
