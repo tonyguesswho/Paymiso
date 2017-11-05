@@ -9,7 +9,7 @@ class ExchangeRate extends Model
 {
     public function rate(){
 
-    	$rate = Swap::latest('USD/EUR');
+    	$rate = Swap::latest('USD/NGN');
 		$finalrate=$rate->getValue();
 
 		return $finalrate;
