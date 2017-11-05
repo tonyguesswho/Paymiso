@@ -21,11 +21,12 @@ Route::get('/faq','BlockIoTestController@faq');
 
 Auth::routes();
 
+Route::post('/send','SendInstantlyController@sendHomeInstantly')->name('send');
 Route::post('/sellInstantly','SendInstantlyController@sendInstantly');
 
-Route::post('/send','SendInstantlyController@sendHomeInstantly')->name('send');
 
-Route::get('verifyEmailFirst/{id}', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
+
+Route::get('verifyEmailFirst/{email}', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
 Route::get('verify/{email}/{token}', 'Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 
 

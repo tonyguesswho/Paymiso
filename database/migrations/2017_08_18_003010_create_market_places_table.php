@@ -18,7 +18,7 @@ class CreateMarketPlacesTable extends Migration
             $table->bigInteger('user_id')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
-            $table->bigInteger('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->bigInteger('amount_dollar')->nullable();
             $table->string('comments')->nullable();
             $table->timestamps();

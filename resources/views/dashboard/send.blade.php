@@ -14,6 +14,7 @@
               <li class="breadcrumb-item active">Sell Coins</li>
             </div>
           </ul>
+          @include('layouts.error')
           <!-- Forms Section-->
           <section class="forms"> 
             <div class="container-fluid">

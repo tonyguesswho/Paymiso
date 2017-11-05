@@ -18,7 +18,7 @@ class CreateBankDetailsTable extends Migration
             $table->bigInteger('user_id')->nullable();
             $table->string('bank_name')->nullable();
             $table->string('account_name')->nullable();
-            $table->bigInteger('account_number')->nullable();
+            $table->string('account_number')->nullable();
             $table->timestamps();
         });
     }

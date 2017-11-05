@@ -20,6 +20,8 @@
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
+            @include('layouts.error')
+                  
                   <form id="login-form" method="POST" action="{{ route('login') }}">
                     {{csrf_field()}}
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

@@ -8,7 +8,7 @@ use Closure;
 
 class SessionTimeout {
     protected $session;
-    protected $timeout=300000000000;
+    protected $timeout=300;
     public function __construct(Store $session){
         $this->session=$session;
     }

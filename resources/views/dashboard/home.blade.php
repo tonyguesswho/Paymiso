@@ -11,7 +11,7 @@
 	    </div>
 	</header>
   @if (session('status'))
-  <center>
+  <center style="font-family: "Roboto", Arial, sans-serif">
       <div class="alert alert-success title">
           <b>{{ session('status') }}</b>
       </div>
@@ -85,7 +85,7 @@
                           <div class="col-8 content">
                             <h5 style="color: green;">You have a Buyer</h5>
                             <p>phone: &nbsp{{$markets->phone}}</p>
-                            <p>Amount in Dollar: &nbsp{{$markets->amount_dollar}}</p>
+                            <p>Amount in Dollar: &nbsp${{$markets->amount_dollar}}</p>
                           </div>
                         </div>
                       </div>

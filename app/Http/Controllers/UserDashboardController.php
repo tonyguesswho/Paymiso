@@ -115,12 +115,12 @@ class UserDashboardController extends Controller
         $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
         $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + ($jsonFee * 226 * 0.00000001));
 
-        if ($total_balance_btc > $total_amount_btc) {
+        if ($total_balance_btc < $total_amount_btc) {
 
             return bacK()->withErrors([
                 'insufficient fund'
                 ]);
-        }else{
+        }else{ 
 
             $sellCoin =  SellCoin::create([
             'user_id'       => Auth::User()->id,
@@ -304,10 +304,12 @@ class UserDashboardController extends Controller
     public function transactionMail(){
 
         $sellcoin = SellCoin::where('user_id', Auth::User()->id)->latest()->first();
+        
 
         Mail::to($sellcoin['buyer_email'])->send(new transactionEmail($sellcoin));
         
-        return redirect('/userDashboard')->with('status', 'Comfirmation email has been sent successfully');
+        return redirect('/userDashboard')->with('status', 
+            'Transaction details has been sent to the Buyer, Transaction ends after two hours of initaition');
 
     }
 }

@@ -45,7 +45,7 @@ class TransactionController extends Controller
 
         Mail::to($user)->send(new twoFactorMail($confirmation_code));
         
-        return view('dashboard.twoFActorSend');
+        return view('dashboard.twoFactorSend');
     }
      public function sell(){
         
