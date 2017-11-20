@@ -99,7 +99,7 @@ class UserDashboardController extends Controller
                 );
             $contents = $res->getBody()->getContents();
             $json = json_decode($contents);
-            $jsonFee =  $json->fastestFee;
+            $jsonFee =  $json->hourFee;
             $pendingFee = DB::table('transactions')
                     ->where([
                     ['transactions.user_id', '=', Auth::User()->id],
@@ -113,8 +113,8 @@ class UserDashboardController extends Controller
         $pendingFee_total       = $pendingFee['0']->total;
         $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;
         $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
-        $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + ($jsonFee * 226 * 0.00000001));
-
+        $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + (($jsonFee + 50) * 226 * 0.00000001));
+        
         if ($total_balance_btc < $total_amount_btc) {
 
             return bacK()->withErrors([
