@@ -99,7 +99,7 @@ class UserDashboardController extends Controller
                 );
             $contents = $res->getBody()->getContents();
             $json = json_decode($contents);
-            $jsonFee =  $json->hourFee;
+            $jsonFee =  $json->halfHourFee;
             $pendingFee = DB::table('transactions')
                     ->where([
                     ['transactions.user_id', '=', Auth::User()->id],
