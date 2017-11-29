@@ -70,7 +70,7 @@ class MarketPlaceController extends Controller
     
         Mail::to($marketMail['email'])->send(new marketPlaceEmail($marketplace_mail));
 
-        return back()->with('status', 'Notification sent successfully');
+        return back()->with('status', 'Notification sent to seller successfully');
     }
 }
 

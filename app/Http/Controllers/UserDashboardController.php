@@ -309,7 +309,7 @@ class UserDashboardController extends Controller
         Mail::to($sellcoin['buyer_email'])->send(new transactionEmail($sellcoin));
         
         return redirect('/userDashboard')->with('status', 
-            'Transaction details has been sent to the Buyer, Transaction ends after two hours of initaition');
+            'Transaction details has been sent to the Buyer, Transaction ends after an hour of initaition');
 
     }
 }
