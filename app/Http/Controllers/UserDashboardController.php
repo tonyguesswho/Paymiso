@@ -115,7 +115,7 @@ class UserDashboardController extends Controller
         $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
         $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + (($jsonFee + 50) * 226 * 0.00000001));
         
-        if ($total_balance_btc < $total_amount_btc) {
+        if ($total_balance_btc > $total_amount_btc) {
 
             return bacK()->withErrors([
                 'insufficient fund'
@@ -199,7 +199,7 @@ class UserDashboardController extends Controller
         $pendingFee_total       = $pendingFee['0']->total;
         $pendingFee_count       = $pendingFee['0']->count * $jsonFee * 226 * 0.00000001;
         $pendingFeeTotalAmount  = $pendingFee_total + $pendingFee_count;
-        $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + ($jsonFee * 226 * 0.00000001));
+        $total_amount_btc       = $pendingFeeTotalAmount + ($amount_btc + (($jsonFee + 50) * 226 * 0.00000001));
 
         if ($total_balance_btc < $total_amount_btc) {
 
