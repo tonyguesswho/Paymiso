@@ -73,7 +73,7 @@ class PaymentController extends Controller
            return 'Transaction time out.';
         }
         else{
-            if ($total_balance_btc > $total_amount_btc) {
+            if ($total_balance_btc < $total_amount_btc) {
 
                 return 'Transaction was canceled due to high transaction fee, please try again.';
                 
