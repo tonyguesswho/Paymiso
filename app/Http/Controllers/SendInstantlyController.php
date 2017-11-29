@@ -42,7 +42,7 @@ class SendInstantlyController extends Controller
                 );
             $contents = $res->getBody()->getContents();
             $json = json_decode($contents);
-            $jsonFee =  $json->fastestFee;
+            $jsonFee =  $json->halfHourFee;
 
          $pendingFee = DB::table('transactions')
                     ->where([
